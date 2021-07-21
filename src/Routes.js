@@ -1,5 +1,7 @@
-import React from "react";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+// component import
+import Nav from './Components/Nav/Nav';
 
 // 동우's 컴포넌트
 import LoginDongwu from './pages/Dongwu/Login/Login';
@@ -24,27 +26,28 @@ import MainJungwoo from './pages/Jungwoo/Main/Main';
 // import 한 컴포넌트 경로
 
 class Routes extends React.Component {
-    render() {
-      return (
-        <Router>
-          <Switch>
-            <Route exact path='/login-dongwu' component={LoginDongwu} />
-            <Route exact path='/main-dongwu' component={MainDongwu} />
+  render() {
+    return (
+      <Router>
+        <Nav />
+        <Switch>
+          <Route exact path="/login-dongwu" component={LoginDongwu} />
+          <Route exact path="/main-dongwu" component={MainDongwu} />
 
-            <Route exact path='/login-doyun' component={LoginDoyun} />
-            <Route exact path='/main-doyun' component={MainDoyun} />
+          <Route exact path="/login-doyun" component={LoginDoyun} />
+          <Route exact path="/main-doyun" component={MainDoyun} />
 
-            <Route exact path='/login-hojung' component= {LoginHojung} />
-            <Route exact path='/main-hojung' component= {MainHojung} />
+          <Route exact path="/login-hojung" component={LoginHojung} />
+          <Route exact path="/main-hojung" component={MainHojung} />
 
-            <Route exact path='/login-jungmin' component= {LoginJungmin} />
-            <Route exact path='/main-jungmin' component= {MainJungmin} />
+          <Route exact path="/login-jungmin" component={LoginJungmin} />
+          <Route exact path="/main-jungmin" component={MainJungmin} />
 
-            <Route exact path='/login-jungwoo' component= {LoginJungwoo} />
-            <Route exact path='/main-jungwoo' component= {MainJungwoo} />
-          </Switch>
+          <Route exact path="/login-jungwoo" component={LoginJungwoo} />
+          <Route exact path="/main-jungwoo" component={MainJungwoo} />
+        </Switch>
       </Router>
-    )
+    );
   }
 }
 
