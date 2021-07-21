@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Login from './Pages/Login/Login';
-import Main from './Pages/Main/Main';
-import Signup from './Pages/Signup/Signup'
-import Routes from './Routes'
-import Common from './Styles/Common.scss'
+import Routes from './Routes';
+import  './styles/common.scss';
+import  './styles/reset.scss'
 
 ReactDOM.render(<Routes />, document.getElementById('root'));
 
