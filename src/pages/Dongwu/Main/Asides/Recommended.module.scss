@@ -1,0 +1,99 @@
+@mixin flex-set(
+  $flex-direction: column,
+  $justify-content: center,
+  $align-items: center
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin size($width: 0px, $height: 0px) {
+  width: $width;
+  height: $height;
+}
+
+@mixin translateCenter() {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Recommended {
+  @include flex-set(column, initial, initial);
+  @include size(293px, 100%);
+  position: fixed;
+  top: 88px;
+
+  .userProfile {
+    @include flex-set(row, space-between, center);
+    width: 293px;
+
+    .userProfileDesc {
+      @include flex-set(row, initial, center);
+
+      > img {
+        @include size(56px, 56px);
+      }
+
+      > span {
+        margin-left: 12px;
+        font-size: 14px;
+      }
+    }
+
+    .userProfileConvert {
+      color: var(--blue);
+    }
+  }
+
+  .recommendText {
+    @include flex-set(row, space-between, initial);
+    margin: 12px 0 0 0;
+    padding: 4px 0;
+  }
+
+  .recommendedUserContainer {
+    @include flex-set(column, center, initial);
+    padding: 8px 0;
+
+    .recommendedUserProfile {
+      @include flex-set(row, space-between, center);
+      padding: 8px 8px;
+
+      .recommendedUserProfileDesc {
+        @include flex-set(row, initial, center);
+
+        > img {
+          @include size(32px, 32px);
+        }
+
+        .recommendedUserProfileId {
+          @include flex-set(column, initial, initial);
+          margin-left: 5px;
+
+          > span {
+            font-size: 14px;
+          }
+
+          > span {
+            &:first-child {
+              font-weight: 700;
+            }
+          }
+
+          > span {
+            &:last-child {
+              color: var(--text-grey);
+            }
+          }
+        }
+      }
+      > a {
+        text-decoration: none;
+        color: var(--blue);
+      }
+    }
+  }
+}

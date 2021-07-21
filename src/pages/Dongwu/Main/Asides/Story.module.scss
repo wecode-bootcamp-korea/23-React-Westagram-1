@@ -1,0 +1,88 @@
+@mixin flex-set(
+  $flex-direction: column,
+  $justify-content: center,
+  $align-items: center
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin size($width: 0px, $height: 0px) {
+  width: $width;
+  height: $height;
+}
+
+@mixin translateCenter() {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+body {
+  background-color: var(--light-grey);
+}
+
+.widthMax {
+  width: 100%;
+}
+
+.heightMax {
+  height: 100%;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+#move-left {
+  left: 30px;
+  transform: translate(0, -50%);
+}
+
+.black {
+  color: black;
+}
+
+.red {
+  color: red;
+}
+
+.Story {
+  display: flex;
+  margin: 0 0 24px 0;
+  padding: 12px 0;
+  border: 1px solid var(--grey);
+}
+
+.storyWrapBlock {
+  display: flex;
+  width: 614px;
+}
+
+.storyProfile {
+  @include flex-set(column, initial, center);
+  padding-left: 20px;
+
+  > a {
+    @include flex-set(row, center, center);
+    @include size(66px, 66px);
+    margin: 4px 0 8px 0;
+
+    > img {
+      @include size(56px, 56px);
+      border: 1px solid var(--pink);
+      border-radius: 50%;
+      z-index: -1;
+    }
+  }
+
+  > span {
+    font-size: 14px;
+  }
+}

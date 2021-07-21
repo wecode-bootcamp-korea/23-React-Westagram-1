@@ -1,0 +1,159 @@
+@mixin flex-set(
+  $flex-direction: column,
+  $justify-content: center,
+  $align-items: center
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin size($width: 0px, $height: 0px) {
+  width: $width;
+  height: $height;
+}
+
+@mixin translateCenter() {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.header {
+  @include flex-set(row, initial, center);
+  @include size(100%, 54px);
+  position: fixed;
+  top: 0px;
+  border-bottom: 1px solid var(--grey);
+  background-color: white;
+  z-index: 99;
+
+  .headerContainer {
+    @include flex-set(row, center, initial);
+    width: 100%;
+
+    .headerWrap {
+      @include flex-set(row, space-between, center);
+      width: 975px;
+      padding: 0 20px;
+
+      .headerLogo {
+        > a {
+          color: black;
+          font-family: 'Lobster', cursive;
+          text-decoration: none;
+          font-size: 25px;
+        }
+      }
+
+      .headerSearch {
+        @include flex-set(row, center, center);
+        @include size(215px, 28px);
+        position: relative;
+
+        > label {
+          @include flex-set(row, center, center);
+          width: 215px;
+          background-color: var(--light-grey);
+          border: 1px solid var(--grey);
+          color: var(--grey);
+
+          > span {
+            position: absolute;
+            display: flex;
+            @include translateCenter();
+
+            > i {
+              font-size: 12px;
+              margin-right: 5px;
+            }
+          }
+
+          > input {
+            @include size(175px, 28px);
+            background-color: var(--light-grey);
+            border: none;
+            outline: none;
+          }
+        }
+      }
+
+      .headerIcons {
+        > img {
+          @include size(22px, 22px);
+          margin: 0 0 0 22px;
+        }
+      }
+    }
+  }
+}
+
+.searchModal {
+  @include flex-set(column, initial, initial);
+  position: fixed;
+  top: 53px;
+  left: 50%;
+  padding: 12px 0 0 0;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, 0);
+  z-index: 100;
+
+  .lastSearchList {
+    @include flex-set(row, space-between, center);
+    width: 343px;
+    margin: 4px 16px 0 16px;
+
+    > div {
+      &:first-child {
+        font-size: 16px;
+      }
+
+      &:last-child {
+        font-size: 14px;
+        color: var(--blue);
+      }
+    }
+  }
+
+  .searchList {
+    @include flex-set(row, space-between, center);
+    padding: 8px 16px;
+
+    > img {
+      @include size(44px, 44px);
+      margin: 10px;
+    }
+
+    .searchListProfile {
+      @include flex-set(column, center, flex-start);
+      width: 247px;
+      font-size: 14px;
+      line-height: 18px;
+
+      > span {
+        &:first-child {
+          font-weight: 600;
+        }
+
+        &:last-child {
+          color: var(--text-grey);
+        }
+      }
+    }
+
+    .searchListIcon {
+      @include flex-set(row, center, center);
+      @include size(32px, 32px);
+      margin-left: 8px;
+      font-size: 20px;
+      color: var(--text-grey);
+    }
+  }
+}

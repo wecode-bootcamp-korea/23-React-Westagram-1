@@ -1,0 +1,58 @@
+@mixin flex-set(
+  $flex-direction: column,
+  $justify-content: center,
+  $align-items: center
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin size($width: 0px, $height: 0px) {
+  width: $width;
+  height: $height;
+}
+
+@mixin translateCenter() {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+body {
+  background-color: var(--light-grey);
+}
+
+.widthMax {
+  width: 100%;
+}
+
+.heightMax {
+  height: 100%;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+#moveLeft {
+  left: 30px;
+  transform: translate(0, -50%);
+}
+
+.black {
+  color: black;
+}
+
+.red {
+  color: red;
+}
+
+.mainMain {
+  @include flex-set(row, center, initial);
+}

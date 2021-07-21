@@ -1,0 +1,48 @@
+@mixin flex-set(
+  $flex-direction: column,
+  $justify-content: center,
+  $align-items: center
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+.Footer {
+  .footerDesc {
+    @include flex-set(row, flex-start, center);
+    flex-wrap: wrap;
+    flex: 0 0 auto;
+    width: 100%;
+    font-size: 11px;
+
+    > li {
+      display: flex;
+      margin: 0 1px 12px 1px;
+
+      > a {
+        display: flex;
+        color: var(--text-grey);
+        text-decoration: none;
+
+        &::after {
+          content: '·';
+          margin: 0 2.75px;
+        }
+      }
+    }
+
+    > li {
+      &:last-child a::after {
+        content: '';
+      }
+    }
+  }
+  .fromFacebook {
+    display: flex;
+    margin-top: 16px;
+    color: var(--text-grey);
+    font-size: 11px;
+  }
+}
