@@ -14,7 +14,10 @@ class Modal extends React.Component {
           </div>
         </li>
         <li className={`${styles.searchList}`}>
-          <img alt="search-profile" src="/images/freeImage.png" />
+          <img
+            alt="search-profile"
+            src={process.env.PUBLIC_URL + `/images/Dongwu/Main/freeImage.png`}
+          />
           <div className={`${styles.searchListProfile}`}>
             <span>steam_udon</span>
             <span>난 그런거 몰러유</span>

@@ -8,7 +8,10 @@ class Recommended extends React.Component {
       <div className={`${styles.Recommended}`}>
         <div className={`${styles.userProfile}`}>
           <div className={`${styles.userProfileDesc}`}>
-            <img alt="profile img" src="/images/freeImage.png" />
+            <img
+              alt="profile img"
+              src={process.env.PUBLIC_URL + `/images/Dongwu/Main/freeImage.png`}
+            />
             <span>steam_udon</span>
           </div>
           <div className={`${styles.userProfileConvert}`}>
@@ -24,7 +27,9 @@ class Recommended extends React.Component {
             <div className={`${styles.recommendedUserProfileDesc}`}>
               <img
                 alt="recommended user profile img"
-                src="/images/freeImage.png"
+                src={
+                  process.env.PUBLIC_URL + `/images/Dongwu/Main/freeImage.png`
+                }
               />
               <div className={`${styles.recommendedUserProfileId}`}>
                 <span>id</span>

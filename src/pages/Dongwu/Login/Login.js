@@ -33,7 +33,8 @@ class LoginInput extends React.Component {
             type={inputType}
             placeholder={placeholder}
             onChange={event => {
-              console.log(event.target.value);
+              this.setState({ [labelId]: event.target.value });
+              this.props.setParentValue(labelId, this.state[labelId]);
             }}
           />
         </label>
@@ -42,6 +43,7 @@ class LoginInput extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <>
         {this.renderInput(
@@ -60,8 +62,8 @@ class LoginForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      loginId: [],
-      loginPw: [],
+      loginId: ``,
+      loginPw: ``,
     };
   }
 
@@ -75,7 +77,7 @@ class LoginForm extends React.Component {
       alert(`ID, 비밀번호를 확인해주세요.`);
     } else {
       e.preventDefault();
-      this.props.history.push(`/main`);
+      this.props.history.push(`/main-dongwu`);
     }
   };
 
@@ -92,7 +94,12 @@ class LoginForm extends React.Component {
         <div className={`${styles.loginBlockWrap}`}>
           <div className={`${styles.loginBlockFacebook}`}>
             <button>
-              <img alt="facebook Logo" src="/images/facebook.svg" />
+              <img
+                alt="facebook Logo"
+                src={
+                  process.env.PUBLIC_URL + `/images/Dongwu/Login/facebook.svg`
+                }
+              />
               Facebook으로 계속하기
             </button>
           </div>
@@ -179,7 +186,7 @@ class LoginFooter extends React.Component {
   }
 }
 
-class Login extends React.Component {
+class LoginDongwu extends React.Component {
   goToMain = () => {
     this.props.history.push(`/main`);
   };
@@ -203,4 +210,4 @@ class Login extends React.Component {
   }
 }
 
-export default withRouter(Login);
+export default withRouter(LoginDongwu);

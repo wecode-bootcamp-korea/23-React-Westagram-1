@@ -12,13 +12,21 @@ class Feed extends React.Component {
         <div className={`${styles.photoWrap}`}>
           <div className={`${styles.photoTitle}`}>
             <div className={`${styles.photoProfile}`}>
-              <img alt="프로필 사진" src="/images/freeImage.png" />
+              <img
+                alt="프로필 사진"
+                src={
+                  process.env.PUBLIC_URL + `/images/Dongwu/Main/freeImage.png`
+                }
+              />
               <span>steam_udon</span>
             </div>
             <i className="fas fa-ellipsis-h"></i>
           </div>
           <div className={`${styles.photoMain}`}>
-            <img alt="main photo" src="/images/freeImage.png" />
+            <img
+              alt="main photo"
+              src={process.env.PUBLIC_URL + `/images/Dongwu/Main/freeImage.png`}
+            />
           </div>
           <div className={`${styles.photoIcons}`}>
             <div className={`${styles.photoIconsLeft}`}>

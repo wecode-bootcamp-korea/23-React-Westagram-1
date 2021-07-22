@@ -1,10 +1,11 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import styles from './Main.module.scss';
 import Feed from './Asides/Feed';
-import Recommended from './Asides/Feed/Recommended';
-import Nav from './Asides/Feed/Nav';
+import Recommended from './Asides/Recommended';
+import Nav from './Asides/Nav';
 
-class Main extends React.Component {
+class MainDongwu extends React.Component {
   render() {
     return (
       <section className={`${styles.widthMax} ${styles.heightMax}`}>
@@ -28,4 +29,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+export default withRouter(MainDongwu);
