@@ -1,0 +1,22 @@
+.mainRightHead {
+  display: flex;
+  margin-bottom: 10px;
+
+  .profile {
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    margin-right: 5px;
+  }
+  .nickNameContainer {
+    .name {
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding-bottom: 4px;
+    }
+    .nickName {
+      font-size: 0.5rem;
+      color: #8e8e8e;
+    }
+  }
+}
