@@ -12,18 +12,18 @@ class LoginHojung extends React.Component {
     };
   }
   goToMain = () => {
-    this.props.history.push('/Main');
+    this.props.history.push('/main-hojung');
   };
 
-  handleIdInput = event => {
+  handleIdInput = e => {
     this.setState({
-      id: event.target.value,
+      id: e.target.value,
     });
   };
 
-  handlePwInput = event => {
+  handlePwInput = e => {
     this.setState({
-      pw: event.target.value,
+      pw: e.target.value,
     });
   };
 
@@ -64,7 +64,7 @@ class LoginHojung extends React.Component {
               로그인
             </button>
           </form>
-          <a href="#" className="forgetLink">
+          <a href="/" className="forgetLink">
             비밀번호를 잊으셨나요?
           </a>
         </div>

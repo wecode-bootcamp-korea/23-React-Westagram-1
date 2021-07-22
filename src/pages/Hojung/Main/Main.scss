@@ -1,0 +1,578 @@
+@mixin flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: top !important;
+}
+
+* {
+  font-size: 14px;
+}
+
+/* nav */
+#header {
+  border-bottom: 1px solid #ddd;
+  nav {
+    height: 55px;
+    @include flex-align-center;
+    justify-content: space-between;
+    .logoZone {
+      font-family: 'Lobster', cursive;
+      font-size: 20px;
+      line-height: 1.3em;
+      font-weight: 400;
+    }
+    .searchZone {
+      position: relative;
+      .searchPop {
+        display: none;
+        width: 230px;
+        min-height: 50px;
+        position: absolute;
+        top: calc(100% + 15px);
+        left: 50%;
+        margin-left: -115px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        z-index: 0;
+        &:before {
+          content: '';
+          display: block;
+          width: 15px;
+          height: 15px;
+          background: #fff;
+          position: absolute;
+          top: -5px;
+          left: 50%;
+          margin-left: -7px;
+          box-shadow: -3px -3px 8px #ddd;
+          transform: rotate(45deg);
+          z-index: -1;
+        }
+        ul {
+          li {
+            border-bottom: 1px solid #ddd;
+            &:last-child {
+              border-bottom: 0;
+            }
+            a {
+              padding: 15px;
+              @include flex-align-center;
+              .searchImg {
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                overflow: hidden;
+              }
+              .searchInfo {
+                width: calc(100% - 32px);
+                padding-left: 15px;
+                .userId {
+                  color: #000;
+                  font-size: 16px;
+                  line-height: 1.3em;
+                  letter-spacing: 0;
+                }
+                .userInfo {
+                  color: #a9a9a9;
+                  font-size: 12px;
+                  line-height: 1.3em;
+                  letter-spacing: 0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .linkZone {
+      @include flex-align-center;
+      .icon {
+        display: inline-block;
+        margin-right: 20px;
+        line-height: 0;
+        img {
+          height: 22px;
+        }
+      }
+      .heartIcon {
+        position: relative;
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: -7px;
+          left: 50%;
+          margin-left: -2px;
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background: red;
+        }
+      }
+      .mypageBox {
+        position: relative;
+        line-height: 0;
+        cursor: pointer;
+        img {
+          border-radius: 50%;
+          height: 22px;
+        }
+        .mypagePop {
+          display: none;
+          width: 230px;
+          position: absolute;
+          top: calc(100% + 15px);
+          left: 50%;
+          margin-left: -115px;
+          background: #fff;
+          border-radius: 5px;
+          box-shadow: 2px 2px 8px #ddd;
+          z-index: 0;
+
+          &:before {
+            content: '';
+            display: block;
+            width: 15px;
+            height: 15px;
+            background: #fff;
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            margin-left: -7px;
+            box-shadow: -3px -3px 8px #ddd;
+            transform: rotate(45deg);
+            z-index: -1;
+          }
+          ul {
+            a {
+              display: block;
+              padding: 12px;
+
+              &:hover {
+                background: #f5f5f5;
+              }
+
+              span {
+                display: block;
+                position: relative;
+                padding-left: 30px;
+                color: #000;
+                font-size: 16px;
+                line-height: 1.3em;
+
+                &:before {
+                  content: '';
+                  display: block;
+                  position: absolute;
+                  top: 0px;
+                  left: 0;
+                  width: 15px;
+                  height: 15px;
+                  background-size: 100% 100%;
+                }
+              }
+            }
+            .icon1 {
+              span {
+                &:before {
+                  background-image: url('https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/profile.png');
+                }
+              }
+            }
+            .icon2 {
+              span {
+                &:before {
+                  background-image: url('./images/feed_link_right1.png');
+                }
+              }
+            }
+            .icon3 {
+              span {
+                &:before {
+                  background-image: url('./images/setting.png');
+                }
+              }
+            }
+          }
+          .logout {
+            border-top: 1px solid #ddd;
+            a {
+              display: block;
+              padding: 15px;
+              color: #000;
+              font-size: 14px;
+              line-height: 1.3em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 공통 최대 넓이 */
+#main {
+  padding-top: 30px;
+  background: #fafafa;
+  padding-bottom: 100px;
+  .contain {
+    display: flex;
+    justify-content: space-between;
+  }
+  /* 왼쪽 영역 */
+  .feeds {
+    width: 615px;
+    background: #fff;
+    .feed {
+      .writer {
+        @include flex-align-center;
+        justify-content: space-between;
+        padding: 15px;
+        border: 1px solid #ddd;
+        .writerInfo {
+          @include flex-align-center;
+          .writerImg {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            overflow: hidden;
+          }
+          .writerId {
+            padding-left: 15px;
+            color: 14px;
+            line-height: 1.3em;
+          }
+        }
+        .writerOtherMenu {
+          a {
+            display: block;
+          }
+        }
+      }
+      .imgs {
+        img {
+          width: 100%;
+        }
+      }
+      .feedInfoWrap {
+        border: 1px solid #ddd;
+        border-top: 0;
+        padding: 15px;
+      }
+      .feedLink {
+        @include flex-align-center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        a {
+          display: inline-block;
+        }
+        .feedLinkLeft {
+          a {
+            margin-right: 5px;
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+      .likeCount {
+        @include flex-align-center;
+        margin-bottom: 15px;
+        .likeImg {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          overflow: hidden;
+        }
+        .likeInfo {
+          padding-left: 12px;
+          font-size: 15px;
+          a {
+            display: inline-block;
+            font-weight: 700;
+            color: #000;
+          }
+        }
+      }
+      .feedDecs {
+        @include flex-align-center;
+        margin-bottom: 8px;
+        .feedWriter {
+          color: #000;
+          font-weight: 700;
+          margin-right: 10px;
+        }
+        .feedTxt {
+          a {
+            display: inline-block;
+            color: #a39f9f;
+            padding-left: 8px;
+          }
+        }
+      }
+      .feedComment {
+        ul {
+          margin-bottom: 15px;
+          li {
+            position: relative;
+            @include flex-align-center;
+            margin-bottom: 8px;
+            a {
+              display: inline-block;
+              color: #000;
+              font-weight: 700;
+              margin-right: 10px;
+            }
+            button {
+              border: 0;
+              text-indent: -999em;
+              display: block;
+              width: 15px;
+              height: 15px;
+              position: absolute;
+              top: 50%;
+              margin-top: -10px;
+              background-color: transparent;
+              background-size: 100% 100%;
+            }
+            .heartBtn {
+              right: 30px;
+              background-image: url('./images/feed_link_left1.png');
+            }
+            .heartBtn.active {
+              background-image: url('./images/feed_link_left1_active.png');
+            }
+            button.deleteBtn {
+              right: 0;
+              background-image: url('./images/close.png');
+            }
+          }
+        }
+
+        .feed-time {
+          color: #a39f9f;
+          font-size: 12px;
+        }
+      }
+      .feedCommentInput {
+        padding: 0 15px;
+        border: 1px solid #ddd;
+        border-top: 0;
+        form {
+          @include flex-align-center;
+          .input {
+            border: 0;
+            padding-left: 0;
+            height: 45px;
+            width: calc(100% - 35px);
+          }
+          .commentBtn {
+            display: block;
+            color: #00376b;
+            font-weight: 700;
+            opacity: 0.3;
+            border: 0;
+            background-color: transparent;
+          }
+          .commentBtn.active {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  /* 오른쪽 영역 */
+  .sideMenu {
+    width: 290px;
+    .myProfile {
+      @include flex-align-center;
+      margin-bottom: 15px;
+      .myImg {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      .myInfo {
+        padding-left: 15px;
+        .myId {
+          color: #000;
+          font-size: 14px;
+          line-height: 1.3em;
+        }
+        .myDesc {
+          color: #a9a9a9;
+          font-size: 12px;
+          line-height: 1.3em;
+        }
+      }
+    }
+    .storyBox {
+      height: 200px;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      border: 1px solid #ddd;
+      background: #fff;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 10px;
+      .con ul li {
+        margin-bottom: 10px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        a {
+          @include flex-align-center;
+          .storyImg {
+            position: relative;
+            width: 45px;
+            height: 45px;
+            padding: 5px;
+            &:after {
+              content: '';
+              display: block;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border-radius: 100%;
+              border: 2px solid red;
+              box-sizing: border-box;
+            }
+            .storyLine {
+              overflow: hidden;
+              border-radius: 100%;
+            }
+          }
+        }
+        .storyWriter {
+          padding-left: 12px;
+          .writer {
+            color: #000;
+            line-height: 1.3em;
+          }
+          .writerTime {
+            color: #a39f9f;
+            line-height: 1.3em;
+          }
+        }
+      }
+    }
+    .recommendationBox {
+      border: 1px solid #ddd;
+      background: #fff;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .tit {
+      @include flex-align-center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      h3 {
+        font-size: 15px;
+        line-height: 1.3em;
+      }
+      a {
+        display: block;
+        font-size: 12px;
+        line-height: 1.3em;
+      }
+    }
+    .con {
+      ul {
+        li {
+          position: relative;
+          margin-bottom: 10px;
+          @include flex-align-center;
+          &:last-child {
+            margin-bottom: 0;
+          }
+          .recommedImg {
+            width: 40px;
+            height: 40px;
+            overflow: hidden;
+            border-radius: 100%;
+          }
+          .recommedUser {
+            padding-left: 12px;
+            width: calc(100% - 40px);
+            padding-right: 50px;
+            .user {
+              color: #000;
+              line-height: 1.3em;
+            }
+            .userTxt {
+              font-size: 14px;
+              color: #a39f9f;
+              line-height: 1.3em;
+              overflow: hidden;
+              word-break: break-all;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+            }
+          }
+          .userFollow {
+            display: block;
+            position: absolute;
+            top: 11px;
+            right: 0;
+            font-size: 13px;
+            color: #00376b;
+          }
+        }
+      }
+    }
+  }
+  /* 푸터 */
+  footer {
+    color: #b1afaf;
+    font-size: 14px;
+    line-height: 1.5em;
+    .footLink {
+      li {
+        display: inline-block;
+        a {
+          display: block;
+          padding-right: 10px;
+          position: relative;
+
+          &:after {
+            content: '';
+            display: block;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #b1afaf;
+            position: absolute;
+            top: 8px;
+            right: 3px;
+          }
+
+          &:last-child:after {
+            display: none;
+          }
+        }
+      }
+    }
+    .copyRight {
+      margin-top: 15px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .sideMenu {
+    display: none;
+  }
+  #main .feeds {
+    width: 100%;
+  }
+}
