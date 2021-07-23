@@ -2,18 +2,28 @@ import React from 'react';
 import styles from './FeedCommentsForm.module.scss';
 
 class FeedCommentsInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visibility: `visible`,
+      input: React.createRef(),
+    };
+  }
   handleInput = e => {
     this.props.setCommentsText(`commentsText`, e.target.value);
+    this.props.setCommentsText(`input`, this.state.input);
+    !e.target.value
+      ? this.setState({ visibility: `visible` })
+      : this.setState({ visibility: `hidden` });
   };
 
   render() {
-    // console.log(`props>>>>>>`, this.props);
-    // console.log(`state>>>>>>`, this.state);
-
     return (
       <label>
-        <span id="commentsPlaceholder">댓글 달기...</span>
-        <input type="text" name={123} onChange={this.handleInput} />
+        <span id="commentsPlaceholder" style={this.state}>
+          댓글 달기...
+        </span>
+        <input type="text" onChange={this.handleInput} ref={this.state.input} />
       </label>
     );
   }
@@ -25,6 +35,7 @@ class FeedCommentsForm extends React.Component {
     this.state = {
       commentsText: ``,
       comment: [],
+      input: {},
     };
   }
 
@@ -41,11 +52,13 @@ class FeedCommentsForm extends React.Component {
     };
     this.setState(state => {
       state.comment.push(commentsInfo);
+      state.input.current.value = ``;
       this.props.setParentState(`commentsInfo`, this.state.comment);
     });
   };
 
   render() {
+    console.log(this.state.input.current);
     return (
       <form className={`${styles.commentsForm}`} onSubmit={this.handleSubmit}>
         <FeedCommentsInput

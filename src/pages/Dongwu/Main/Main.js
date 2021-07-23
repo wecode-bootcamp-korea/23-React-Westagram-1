@@ -13,7 +13,6 @@ class MainDongwu extends React.Component {
   //   };
   // }
   render() {
-    console.log(this.props.history.location.state.loginId);
     return (
       <section className={`${styles.widthMax} ${styles.heightMax}`}>
         <link

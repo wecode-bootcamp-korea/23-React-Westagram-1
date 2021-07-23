@@ -3,7 +3,6 @@ import styles from './FeedComments.module.scss';
 class FeedComments extends React.Component {
   render() {
     const commentsArr = this.props.commentsInfo;
-    console.log(commentsArr);
     let comments = commentsArr.map(elem => {
       return (
         <div key={elem.id} className={`${styles.commentsDesc}`}>

@@ -28,7 +28,6 @@ class LoginInput extends React.Component {
   }
 
   render() {
-    console.log(this.props.state[`loginId`]);
     return (
       <>
         {this.renderInput(

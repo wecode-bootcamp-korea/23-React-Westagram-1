@@ -158,13 +158,18 @@ body {
 
       .photoDescUploader {
         height: 18px;
+        span {
+          margin-right: 5px;
+          font-size: 14px;
 
-        .photoDescId {
-          font-weight: 700;
-        }
-
-        .photoDescMore {
-          color: var(--text-grey);
+          &:first-child {
+            font-weight: 700;
+          }
+          &:nth-child(2) {
+          }
+          &:last-child {
+            color: var(--text-grey);
+          }
         }
       }
 
