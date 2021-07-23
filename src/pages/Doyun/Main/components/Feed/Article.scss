@@ -1,96 +1,96 @@
 .article {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #fff;
+  width: 400px;
+  margin: 0 auto 20px auto;
+  border: 1px solid #bbbbbb;
+  border-radius: 5px;
+  overflow: hidden;
+
+  .articleHeader {
+    width: 100%;
+    padding: 10px 9px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .profile {
+      width: 30px;
+      height: 30px;
+      border-radius: 20px;
+      margin-right: 5px;
+    }
+    span {
+      font-size: 0.8rem;
+    }
+    i:nth-child(1) {
+      margin-right: 5px;
+    }
+    i:nth-child(3) {
+      margin-left: auto;
+    }
+  }
+  .articleImg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .articleInfoIcon {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 7px 10px;
+
+    i {
+      padding-right: 10px;
+    }
+    i:nth-child(4) {
+      margin-left: auto;
+      padding-right: 0;
+    }
+  }
+  .articleLikes {
+    font-size: 0.8rem;
+    padding-left: 10px;
+  }
+  .articleTimeGap {
+    font-size: 0.6rem;
+    padding-left: 10px;
+    color: #8e8e8e;
+  }
+  .commentLine {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    background-color: #FFF;
-    width: 400px;
-    margin: 0 auto 20px auto;
-    border: 1px solid #BBBBBB;
-    border-radius: 5px;
-    overflow: hidden;
+    padding: 10px 0 7px 15px;
+    width: 100%;
+  }
+  .articleComment {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    border-top: 1px solid #ebebeb;
 
-    .articleHeader {
-        width: 100%;
-        padding: 10px 9px;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        .profile {
-            width: 30px;
-            height: 30px;
-            border-radius: 20px;
-            margin-right: 5px;
-        }
-        span {
-            font-size: .8rem;
-        }
-        i:nth-child(1) {
-            margin-right: 5px;
-        }
-        i:nth-child(3) {
-            margin-left: auto;
-        }
+    i.far.fa-smile {
+      padding-left: 10px;
     }
-    .articleImg {
-        width: 100%;
-        height: 100%;
-        display: block;
+    .comment {
+      width: 100%;
+      border: none;
+      margin-left: 7px;
+      height: 20px;
     }
-    .articleInfoIcon {
-        display: flex;
-        justify-content: flex-start;
-        width: 100%;
-        padding: 7px 10px;
-
-        i {
-            padding-right: 10px; 
-        }
-        i:nth-child(4){
-            margin-left: auto; 
-            padding-right: 0;
-        }
-
+    button {
+      margin-left: auto;
+      border: none;
+      height: 30px;
+      padding: 5px 5px 5px 0;
+      text-align: center;
+      background-color: #ffffff;
+      color: #0095f6;
+      cursor: pointer;
     }
-    .articleLikes {
-        font-size: .8rem;
-        padding-left: 10px;
-    }
-    .articleTimeGap {
-        font-size: .6rem;
-        padding-left: 10px;
-        color: #8E8E8E
-    }
-    .commentLine {
-        display: flex;
-        flex-direction: column;
-        padding: 10px 0 7px 15px;
-        width: 100%;
-    }
-    .articleComment {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        width: 100%;
-        margin-top: 10px;
-        border-top: 1px solid #EBEBEB;
-
-        i.far.fa-smile{
-            padding-left: 10px;
-        }
-        .comment {
-            width: 100%;
-            border: none;
-            margin-left: 7px;
-            height: 20px;
-        }
-        button{
-            margin-left: auto;
-            border: none;
-            height: 30px;
-            padding: 5px 5px 5px 0;
-            text-align: center;
-            background-color: #FFFFFF;
-            color: #0095F6;
-        }
-    }
+  }
 }
