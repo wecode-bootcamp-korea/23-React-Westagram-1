@@ -24,7 +24,6 @@ class LoginDoyun extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="login">
         <h1 className="mainLogo">Westargram</h1>

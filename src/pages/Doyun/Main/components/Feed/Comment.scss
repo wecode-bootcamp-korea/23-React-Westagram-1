@@ -1,7 +1,11 @@
 div.comment {
+  display: flex;
+  align-items: center;
   img {
     width: 20px;
     height: 20px;
+    border-radius: 20px;
+    margin: 3px 4px;
   }
   li {
     font-family: 0.8rem;

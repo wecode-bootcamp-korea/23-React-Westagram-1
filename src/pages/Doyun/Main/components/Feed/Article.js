@@ -11,33 +11,34 @@ export class Article extends Component {
     };
   }
 
-  getValue = event => {
+  getValue = e => {
     this.setState({
-      value: event.target.value,
+      value: e.target.value,
     });
   };
 
-  addComment = e => {
-    this.setState({
-      commentList: this.state.commentList.concat([this.state.value]),
-      value: '',
-    });
-    e.preventDefault();
-  };
-  addCommEnter = e => {
-    if (e.key === 'Enter') {
+  addComment = () => {
+    if (!this.state.value) {
+      alert('add comment pls');
+    } else {
       this.setState({
         commentList: this.state.commentList.concat([this.state.value]),
         value: '',
       });
+      document.getElementsByClassName('commentInput')[0].value = '';
     }
-    e.preventDefault();
+  };
+
+  addCommEnter = e => {
+    console.log(e.key);
+    if (e.key === 'Enter') {
+      this.addComment();
+    }
   };
 
   render() {
     return (
       <>
-        {console.log(this.state)}
         <article className="article">
           <div className="articleHeader">
             <img className="profile" src={this.props.profile} alt="profile" />
@@ -55,25 +56,24 @@ export class Article extends Component {
           <p className="articleTimeGap">8 hours ago</p>
           <div className="commentLine">
             <ul>
-              <li>hello</li>
               {this.state.commentList.map((comm, idx) => {
                 return <Comment key={idx} msg={comm} />;
               })}
             </ul>
           </div>
-          <form className="articleComment">
+          <div className="articleComment">
             <i className="far fa-smile"></i>
             <input
-              className="comment"
+              className="commentInput"
               type="text"
               placeholder="add a comment.."
               onChange={this.getValue}
-              //onKeyPress={this.addCommEnter}
+              onKeyPress={this.addCommEnter}
             />
             <button onClick={this.addComment}>
               <i className="fas fa-check"></i>
             </button>
-          </form>
+          </div>
         </article>
       </>
     );
