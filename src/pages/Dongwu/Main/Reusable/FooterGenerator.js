@@ -1,8 +1,4 @@
-import React from 'react';
-import styles from './Footer.module.scss';
-
-class Footer extends React.Component {
-  setListInfo = () => {
+setListInfo = () => {
     let list = [];
     let listInfo = {};
     const listText = [
@@ -36,15 +32,3 @@ class Footer extends React.Component {
         </li>
       );
     });
-    return (
-      <div className={`${styles.Footer}`}>
-        <nav className={`${styles.footerDesc}`}>{list}</nav>
-        <span className={`${styles.fromFacebook}`}>
-          © 2021 Instagram from Facebook
-        </span>
-      </div>
-    );
-  }
-}
-
-export default Footer;

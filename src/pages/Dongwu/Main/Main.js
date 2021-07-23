@@ -6,14 +6,14 @@ import Recommended from './Asides/Recommended';
 // import Nav from './Asides/Nav';
 
 class MainDongwu extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loginInfo: this.props.history.location.state,
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     loginInfo: ,
+  //   };
+  // }
   render() {
-    // console.log(this.state);
+    console.log(this.props.history.location.state.loginId);
     return (
       <section className={`${styles.widthMax} ${styles.heightMax}`}>
         <link
@@ -28,7 +28,7 @@ class MainDongwu extends React.Component {
         />
         {/* <Nav /> */}
         <main className={`${styles.mainMain}`}>
-          <Feed userInfo={this.state[`loginInfo`]} />
+          <Feed userInfo={this.props.history.location.state.loginId} />
           <Recommended />
         </main>
       </section>
