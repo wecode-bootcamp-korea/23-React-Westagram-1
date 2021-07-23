@@ -7,18 +7,17 @@ class LoginDoyun extends React.Component {
     this.state = {
       id: '',
       password: '',
+      buttonId: false,
     };
   }
 
   handleIdInput = e => {
-    console.log(e.target.value);
     this.setState({
       id: e.target.value,
     });
   };
 
   handlePasswordInput = e => {
-    console.log(e.target.value);
     this.setState({
       password: e.target.value,
     });
@@ -41,8 +40,17 @@ class LoginDoyun extends React.Component {
           placeholder="Password"
           onChange={this.handlePasswordInput}
         />
-        <button className="loginButton">log in</button>
-        <a href="fds">forgot your password?</a>
+        <button
+          className="loginButton"
+          style={
+            this.state.id.indexOf('@') !== -1 && this.state.password.length >= 5
+              ? { backgroundColor: '#0295F6', cursor: 'pointer' }
+              : null
+          }
+        >
+          log in
+        </button>
+        <a href="/">forgot your password?</a>
       </div>
     );
   }
