@@ -1,0 +1,21 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginMain {
+  @include flex-center;
+  height: 100vh;
+  .loginContainer {
+    padding: 19px 35px;
+    border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+    text-align: center;
+    h1 {
+      margin: 24px auto 41px;
+      font-family: 'Lobster', cursive;
+      font-weight: 400;
+      font-size: 37px;
+    }
+  }
+}

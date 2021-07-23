@@ -1,0 +1,64 @@
+.feedName {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  width: 614px;
+  margin-top: 60px;
+  background-color: white;
+  border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+
+  .feedimg {
+    height: 612px;
+    width: 612px;
+  }
+
+  .feedmessage {
+    padding: 5px 0px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    .heart {
+      height: 26px;
+      padding: 0 10px 0 0;
+    }
+
+    .messageButton button {
+      background: 0 0;
+      border: 0;
+      padding: 8px 14px 8px 8px;
+    }
+    i {
+      font-size: 24px;
+    }
+  }
+}
+
+// 공통
+.moreicon {
+  margin-right: 10px;
+  font-size: small;
+  color: gray;
+}
+
+.feedUserIdandImg {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+
+  .profil {
+    height: 32px;
+    border-radius: 100%;
+    display: block;
+    margin-right: 10px;
+  }
+  p {
+    font-weight: 600;
+    display: inline;
+  }
+}
