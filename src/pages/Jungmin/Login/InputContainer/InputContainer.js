@@ -5,7 +5,12 @@ import './InputContainer.scss';
 class Button extends React.Component {
   render() {
     return (
-      <button className="loginButton" onClick={this.props.goToMain}>
+      <button
+        className="loginButton"
+        disabled={this.props.disabled}
+        onClick={this.props.goToMain}
+        style={this.props.style}
+      >
         로그인
       </button>
     );
@@ -32,7 +37,14 @@ class InputBox extends React.Component {
 
   handleChange(e) {
     const { name, value } = e.target;
-    this.props.onchange(name, value);
+    let disable;
+    if (name === 'username') {
+      value.indexOf('@') !== -1 ? (disable = false) : (disable = true);
+    } else if (name === 'password') {
+      value.length >= 5 ? (disable = false) : (disable = true);
+    }
+
+    this.props.onchange(name, value, disable);
   }
 
   render() {
@@ -44,7 +56,8 @@ class InputBox extends React.Component {
           type={this.props.type}
           id={this.props.id}
           placeholder={this.props.placeholder}
-          onChange={this.handleChange}
+          onKeyUp={this.handleChange}
+          state={this.props.State}
         />
       </form>
     );
@@ -56,14 +69,18 @@ class InputContainer extends React.Component {
     this.state = {
       username: '',
       password: '',
+      disableId: true,
+      disablePw: true,
     };
   }
-  changeState = (name, value) => {
+  changeState = (name, value, disabled) => {
     this.setState({
       [name]: value,
+      [name === 'username' ? 'disableId' : 'disablePw']: disabled,
     });
     console.log(this.state);
   };
+
   goToMain = () => {
     this.props.history.push('/main-jungmin');
   };
@@ -77,6 +94,7 @@ class InputContainer extends React.Component {
           value={this.state.username}
           onchange={this.changeState}
           placeholder="전화번호, 사용자 이름 또는 이메일"
+          State={this.state}
         />
         <InputBox
           name="password"
@@ -84,13 +102,22 @@ class InputContainer extends React.Component {
           onchange={this.changeState}
           value={this.state.pw}
           placeholder="비밀번호"
+          State={this.state}
         />
         <Andline />
-        <Button goToMain={this.goToMain} />
+        <Button
+          goToMain={this.goToMain}
+          disabled={this.state.disableId || this.state.disablePw}
+          style={
+            this.state.disableId || this.state.disablePw
+              ? { backgroundColor: 'rgba(var(--d69, 0, 149, 246), 0.3)' }
+              : { backgroundColor: 'rgba(var(--d69, 0, 149, 246), 1)' }
+          }
+        />
         <p className="forgetPw">비밀번호를 잊으셨나요?</p>
       </div>
     );
   }
 }
-
+//
 export default withRouter(InputContainer);
