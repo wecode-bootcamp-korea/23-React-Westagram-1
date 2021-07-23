@@ -1,11 +1,32 @@
 import React from 'react';
-
 import styles from './Feed.module.scss';
-
-import Story from './Story';
+import Story from '../Story';
+import FeedCommentsForm from './FeedCommentsForm';
+import FeedComments from './FeedComments';
 
 class Feed extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userInfo: this.props.userInfo,
+    };
+  }
+
+  renderComments() {
+    return (
+      <div className={`${styles.commentsDesc}`}>
+        <div>
+          <a href="">steam_udon</a>
+        </div>
+        <div>
+          <a href="">hi</a>
+        </div>
+      </div>
+    );
+  }
+
   render() {
+    // console.log(this.state);
     return (
       <div className={`${styles.Feed}`}>
         <Story />
@@ -56,31 +77,12 @@ class Feed extends React.Component {
               <span className={`${styles.photoDescText}`}>가나다라마바사</span>
               <span className={`${styles.photoDescMore}`}>...더 보기</span>
             </div>
-            <div className={`${styles.photoComments}`}>
-              <div className={`${styles.hidden}`}>
-                <a href="#">
-                  댓글
-                  <span id="commentsCount">3</span>개 모두 보기
-                </a>
-              </div>
-            </div>
+            <FeedComments />
             <div className={`${styles.photoDate}`}>
               <span>55분 전</span>
             </div>
           </div>
-          <form
-            className={`${styles.commentsForm}`}
-            onSubmit={() => {
-              return false;
-            }}
-          >
-            <i className="far fa-smile-wink"></i>
-            <label>
-              <span id="commentsPlaceholder">댓글 달기...</span>
-              <input type="text" id="commentsInput" />
-            </label>
-            <button id="addCommentsBtn">게시</button>
-          </form>
+          <FeedCommentsForm userInfo={this.state[`userInfo`]} />
         </div>
       </div>
     );

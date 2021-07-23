@@ -1,13 +1,6 @@
 {
-<<<<<<< HEAD
-   "tabWidth": 2,
-   "endOfLine": "lf",
-   "arrowParens": "avoid",
-   "singleQuote": true
-=======
-  "tabWidth": 4,
+  "tabWidth": 2,
   "endOfLine": "lf",
   "arrowParens": "avoid",
   "singleQuote": true
->>>>>>> master
 }

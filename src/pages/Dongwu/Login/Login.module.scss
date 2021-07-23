@@ -28,6 +28,12 @@
   height: $height;
 }
 
+@mixin translateCenter() {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .loginSection {
   @include flex-set(column, center, stretch);
 
@@ -52,152 +58,6 @@
       }
     }
 
-    .login {
-      @include flex-set(column, center, center);
-      @include size(100%, 100%);
-      margin-top: 32px;
-      padding-bottom: 32px;
-
-      .loginContainer {
-        @include flex-set(row, center, center);
-        height: 100%;
-        margin-top: 12px;
-        padding-bottom: 60px;
-
-        .loginBlock {
-          @include flex-set(column, center, center);
-          padding: 10px 0;
-          border: 1px solid var(--grey);
-
-          .logo {
-            @include flex-set(row, center, center);
-            width: 175px;
-            margin: 39.5px auto 12px auto;
-            text-align: center;
-            font-family: 'Lobster', cursive;
-            font-size: 2.5rem;
-          }
-
-          .loginBlockForm {
-            @include flex-set(column, initial, center);
-
-            .loginBlockWrap {
-              @include flex-set(column, initial, center);
-              margin: 24px 0 0 0;
-
-              .loginBlockFacebook {
-                position: relative;
-                margin: 8px 40px;
-
-                > button {
-                  @include flex-set(row, center, center);
-                  @include size(268px, 32px);
-                  padding: 5px 9px;
-                  border: 1px solid var(--grey);
-                  border-radius: 4px;
-                  background-color: var(--blue);
-                  color: white;
-                  font-size: 14px;
-                  line-height: 18px;
-
-                  > img {
-                    @include size(18px, 18px);
-                    margin-right: 8px;
-                  }
-                }
-              }
-
-              .loginBlockOr {
-                @include flex-set(row, center, center);
-                @include size(268px, 15px);
-                margin: 14px 40px 22px 40px;
-
-                .lineDiv {
-                  @include size(104.75px, 1px);
-                  display: flex;
-                  background-color: var(--grey);
-                }
-
-                .loginBlockOrText {
-                  display: flex;
-                  margin: 0 18px;
-                  font-size: 13px;
-                }
-              }
-
-              .loginBlockLabel {
-                @include size(268px, 40px);
-                position: relative;
-                margin: 0 40px 8px 40px;
-                border: 1px solid var(--grey);
-                border-radius: 4px;
-                background-color: var(--light-grey);
-                color: var(--input-font-color);
-
-                > label {
-                  @include flex-set(column, center, center);
-                  position: relative;
-
-                  > input {
-                    @include size(258px, 36px);
-                    padding: 9px 0 7px 8px;
-                    border: none;
-                    background-color: var(--light-grey);
-                    outline: none;
-                  }
-                }
-              }
-
-              .loginBlockNewPw {
-                @include flex-set(row, flex-end, center);
-                @include size(268px, 35px);
-                margin: 0 40px;
-                padding: 12px 0;
-                font-size: 14px;
-
-                > a {
-                  color: var(--blue);
-                  text-decoration: none;
-                }
-              }
-
-              .loginBlockButton {
-                @include flex-set(row, center, center);
-                @include size(268px, 30px);
-                margin: 8px 40px;
-
-                > button {
-                  @include size(268px, 30px);
-                  padding: 5px 9px;
-                  border: 1px solid var(--grey);
-                  border-radius: 4px;
-                  background-color: var(--light-blue);
-                  color: white;
-                  font-size: 14px;
-                  line-height: 18px;
-                }
-              }
-            }
-
-            .signUp {
-              @include flex-set(row, center, initial);
-              width: 348px;
-              margin: 10px 0 14.5px 0;
-              font-size: 14px;
-
-              > span {
-                > a {
-                  color: var(--blue);
-                  text-decoration: none;
-                  font-weight: 700;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
     .facebookLogo {
       @include flex-set(column, center, center);
       align-items: center;
@@ -207,36 +67,6 @@
 
       > span:first-child {
         color: var(--grey);
-      }
-    }
-  }
-}
-
-footer {
-  display: flex;
-  padding: 0 16px;
-  background-color: var(--light-grey);
-
-  .loginFooterWrap {
-    @include flex-set(row, initial, center);
-    @include size(100%, 78px);
-
-    .loginFooterDesc {
-      @include flex-set(row, center, center);
-      width: 100%;
-      flex-wrap: wrap;
-      flex: 0 0 auto;
-      font-size: 12px;
-
-      > div {
-        display: flex;
-        margin: 0 8px 12px 8px;
-
-        > a {
-          display: flex;
-          color: var(--text-grey);
-          text-decoration: none;
-        }
       }
     }
   }

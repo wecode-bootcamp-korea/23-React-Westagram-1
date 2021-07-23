@@ -1,12 +1,19 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import styles from './Main.module.scss';
-import Feed from './Asides/Feed';
+import Feed from './Asides/Feed/Feed';
 import Recommended from './Asides/Recommended';
-import Nav from './Asides/Nav';
+// import Nav from './Asides/Nav';
 
 class MainDongwu extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loginInfo: this.props.history.location.state,
+    };
+  }
   render() {
+    // console.log(this.state);
     return (
       <section className={`${styles.widthMax} ${styles.heightMax}`}>
         <link
@@ -19,9 +26,9 @@ class MainDongwu extends React.Component {
           integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
           crossOrigin="anonymous"
         />
-        <Nav />
+        {/* <Nav /> */}
         <main className={`${styles.mainMain}`}>
-          <Feed />
+          <Feed userInfo={this.state[`loginInfo`]} />
           <Recommended />
         </main>
       </section>

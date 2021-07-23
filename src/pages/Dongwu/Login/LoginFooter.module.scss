@@ -1,0 +1,65 @@
+:root {
+  --blue: #0095f6;
+  --light-blue: rgb(198, 222, 250);
+  --grey: rgb(219, 219, 219);
+  --light-grey: rgb(250, 250, 250);
+  --input-font-color: rgb(142, 142, 142);
+  --pink: #cd2e83;
+  --text-grey: rgba(38, 38, 38, 0.5);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+@mixin flex-set(
+  $flex-direction: column,
+  $justify-content: center,
+  $align-items: center
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin size($width: 0px, $height: 0px) {
+  width: $width;
+  height: $height;
+}
+
+@mixin translateCenter() {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+footer {
+  display: flex;
+  padding: 0 16px;
+  background-color: var(--light-grey);
+
+  .loginFooterWrap {
+    @include flex-set(row, initial, center);
+    @include size(100%, 78px);
+
+    .loginFooterDesc {
+      @include flex-set(row, center, center);
+      width: 100%;
+      flex-wrap: wrap;
+      flex: 0 0 auto;
+      font-size: 12px;
+
+      > div {
+        display: flex;
+        margin: 0 8px 12px 8px;
+
+        > a {
+          display: flex;
+          color: var(--text-grey);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

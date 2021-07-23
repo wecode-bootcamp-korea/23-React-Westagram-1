@@ -1,10 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-<<<<<<< HEAD
-=======
 // component import
 import Nav from './Components/Nav/Nav';
->>>>>>> dba7c7934d4b72bab1ed644c3e120041b6fe878e
 
 // 동우's 컴포넌트
 import LoginDongwu from './pages/Dongwu/Login/Login';
@@ -32,10 +29,7 @@ class Routes extends React.Component {
   render() {
     return (
       <Router>
-<<<<<<< HEAD
-=======
         <Nav />
->>>>>>> dba7c7934d4b72bab1ed644c3e120041b6fe878e
         <Switch>
           <Route exact path="/login-dongwu" component={LoginDongwu} />
           <Route exact path="/main-dongwu" component={MainDongwu} />

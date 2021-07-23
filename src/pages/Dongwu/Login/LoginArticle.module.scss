@@ -1,0 +1,66 @@
+:root {
+  --blue: #0095f6;
+  --light-blue: rgb(198, 222, 250);
+  --grey: rgb(219, 219, 219);
+  --light-grey: rgb(250, 250, 250);
+  --input-font-color: rgb(142, 142, 142);
+  --pink: #cd2e83;
+  --text-grey: rgba(38, 38, 38, 0.5);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+@mixin flex-set(
+  $flex-direction: column,
+  $justify-content: center,
+  $align-items: center
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin size($width: 0px, $height: 0px) {
+  width: $width;
+  height: $height;
+}
+
+@mixin translateCenter() {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login {
+  @include flex-set(column, center, center);
+  @include size(100%, 100%);
+  margin-top: 32px;
+  padding-bottom: 32px;
+
+  .loginContainer {
+    @include flex-set(row, center, center);
+    height: 100%;
+    margin-top: 12px;
+    padding-bottom: 60px;
+
+    .loginBlock {
+      @include flex-set(column, center, center);
+      @include translateCenter();
+      position: absolute;
+      padding: 10px 0;
+      border: 1px solid var(--grey);
+
+      .logo {
+        @include flex-set(row, center, center);
+        width: 175px;
+        margin: 39.5px auto 12px auto;
+        text-align: center;
+        font-family: 'Lobster', cursive;
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
