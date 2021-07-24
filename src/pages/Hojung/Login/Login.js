@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import './Login.scss';
 
 class LoginHojung extends React.Component {
@@ -11,23 +11,18 @@ class LoginHojung extends React.Component {
       btn: false,
     };
   }
+
   goToMain = () => {
     this.props.history.push('/main-hojung');
   };
 
-  handleIdInput = e => {
+  handleInput = e => {
     this.setState({
-      id: e.target.value,
+      [e.target.name]: e.target.value,
     });
   };
 
-  handlePwInput = e => {
-    this.setState({
-      pw: e.target.value,
-    });
-  };
-
-  handleKeyPress = () => {
+  handleKeyPress = e => {
     this.state.id.length >= 1 &&
     this.state.pw.length >= 5 &&
     this.state.id.indexOf('@') > -1
@@ -45,7 +40,7 @@ class LoginHojung extends React.Component {
               type="text"
               className="input idInput"
               value={this.state.id}
-              onChange={this.handleIdInput}
+              onChange={this.handleInput}
               name="id"
               placeholder="전화번호, 사용자 이름 또는 이메일"
             />
@@ -53,16 +48,25 @@ class LoginHojung extends React.Component {
               type="password"
               className="input pwdInput"
               value={this.state.pw}
-              onChange={this.handlePwInput}
-              name="password"
+              onChange={this.handleInput}
+              name="pw"
               placeholder="비밀번호"
             />
-            <button
-              onClick={this.goToMain}
-              className={this.state.btn ? 'active' : ''}
+            <Link
+              to={{
+                state: {
+                  id: this.state.id,
+                },
+              }}
             >
-              로그인
-            </button>
+              <button
+                onClick={this.goToMain}
+                className={this.state.btn ? 'active' : ''}
+                disabled={!this.state.btn ? true : false}
+              >
+                로그인
+              </button>
+            </Link>
           </form>
           <a href="/" className="forgetLink">
             비밀번호를 잊으셨나요?

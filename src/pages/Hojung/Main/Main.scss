@@ -228,8 +228,12 @@ img {
   /* 왼쪽 영역 */
   .feeds {
     width: 615px;
-    background: #fff;
     .feed {
+      margin-bottom: 30px;
+      background: #fff;
+      &:last-child {
+        margin-bottom: 0;
+      }
       .writer {
         @include flex-align-center;
         justify-content: space-between;
