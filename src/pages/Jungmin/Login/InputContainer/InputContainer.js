@@ -30,23 +30,6 @@ class Andline extends React.Component {
 }
 
 class InputBox extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(e) {
-    const { name, value } = e.target;
-    let disable;
-    if (name === 'username') {
-      value.indexOf('@') !== -1 ? (disable = false) : (disable = true);
-    } else if (name === 'password') {
-      value.length >= 5 ? (disable = false) : (disable = true);
-    }
-
-    this.props.onchange(name, value, disable);
-  }
-
   render() {
     return (
       <form className="inputBox">
@@ -56,7 +39,8 @@ class InputBox extends React.Component {
           type={this.props.type}
           id={this.props.id}
           placeholder={this.props.placeholder}
-          onKeyUp={this.handleChange}
+          // onChange={this.handleChange}
+          onChange={this.props.onchange}
           state={this.props.State}
         />
       </form>
@@ -73,12 +57,23 @@ class InputContainer extends React.Component {
       disablePw: true,
     };
   }
-  changeState = (name, value, disabled) => {
-    this.setState({
-      [name]: value,
-      [name === 'username' ? 'disableId' : 'disablePw']: disabled,
-    });
-    console.log(this.state);
+  componentDidUpdate() {
+    console.log('update', this.state);
+  }
+  // changeState = (name, value, disabled) => {
+  //   this.setState({
+  //     [name]: value,
+  //     [name === 'username' ? 'disableId' : 'disablePw']: disabled,
+  //   });
+  // };
+  changeState = e => {
+    const { name, value } = e.target;
+    if (name === 'username') {
+      this.setState({ username: value, disableId: value.indexOf('@') === -1 });
+    } else if (name === 'password') {
+      this.setState({ password: value, disablePw: value.length < 5 });
+    }
+    console.log('event', this.state);
   };
 
   goToMain = () => {
@@ -86,21 +81,22 @@ class InputContainer extends React.Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div className="inputContainer">
         <InputBox
           name="username"
           type="text"
-          value={this.state.username}
-          onchange={this.changeState}
+          // onchange={this.changeState}
           placeholder="전화번호, 사용자 이름 또는 이메일"
           State={this.state}
+          onchange={this.changeState}
         />
         <InputBox
           name="password"
           type="password"
+          // onchange={this.changeState}
           onchange={this.changeState}
-          value={this.state.pw}
           placeholder="비밀번호"
           State={this.state}
         />
@@ -121,3 +117,20 @@ class InputContainer extends React.Component {
 }
 //
 export default withRouter(InputContainer);
+
+// constructor(props) {
+//   super(props);
+//   this.handleChange = this.handleChange.bind(this);
+// }
+
+// handleChange(e) {
+//   const { name, value } = e.target;
+//   let disable;
+//   if (name === 'username') {
+//     value.indexOf('@') !== -1 ? (disable = false) : (disable = true);
+//   } else if (name === 'password') {
+//     value.length >= 5 ? (disable = false) : (disable = true);
+//   }
+
+//   this.props.onchange(name, value, disable);
+// }
