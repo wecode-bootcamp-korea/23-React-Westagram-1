@@ -22,7 +22,7 @@ class NewComment extends React.Component {
   render() {
     const save = this.props.save;
     const post = save.map((value, index) => (
-      <Comment nickname={index} comment={value} />
+      <Comment nickname={index} comment={value} key={value + index} />
     ));
     return <>{post}</>;
   }
