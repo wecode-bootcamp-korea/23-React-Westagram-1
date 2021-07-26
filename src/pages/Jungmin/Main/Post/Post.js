@@ -22,7 +22,7 @@ class NewComment extends React.Component {
   render() {
     const save = this.props.save;
     const post = save.map((value, index) => (
-      <Comment nickname={index} comment={value} key={index + value} />
+      <Comment nickname={index} comment={value} />
     ));
     return <>{post}</>;
   }
@@ -68,7 +68,6 @@ class Post extends React.Component {
 
   sumitCommend = e => {
     e.preventDefault();
-    console.log(e.target.value);
     if (e.target.value === undefined && this.state.content !== '') {
       this.setState({
         save: this.state.save.concat(this.state.content),

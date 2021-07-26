@@ -39,8 +39,10 @@ class InputBox extends React.Component {
           type={this.props.type}
           id={this.props.id}
           placeholder={this.props.placeholder}
-          // onChange={this.handleChange}
           onChange={this.props.onchange}
+          onKeyPress={e => {
+            if (e.key === 'Enter') this.props.goToMain();
+          }}
           state={this.props.State}
         />
       </form>
@@ -57,15 +59,7 @@ class InputContainer extends React.Component {
       disablePw: true,
     };
   }
-  componentDidUpdate() {
-    console.log('update', this.state);
-  }
-  // changeState = (name, value, disabled) => {
-  //   this.setState({
-  //     [name]: value,
-  //     [name === 'username' ? 'disableId' : 'disablePw']: disabled,
-  //   });
-  // };
+
   changeState = e => {
     const { name, value } = e.target;
     if (name === 'username') {
@@ -73,7 +67,6 @@ class InputContainer extends React.Component {
     } else if (name === 'password') {
       this.setState({ password: value, disablePw: value.length < 5 });
     }
-    console.log('event', this.state);
   };
 
   goToMain = () => {
@@ -81,21 +74,24 @@ class InputContainer extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="inputContainer">
         <InputBox
           name="username"
           type="text"
-          // onchange={this.changeState}
           placeholder="전화번호, 사용자 이름 또는 이메일"
           State={this.state}
+          goToMain={
+            this.state.disableId || this.state.disablePw || this.goToMain
+          }
           onchange={this.changeState}
         />
         <InputBox
           name="password"
           type="password"
-          // onchange={this.changeState}
+          goToMain={
+            this.state.disableId || this.state.disablePw || this.goToMain
+          }
           onchange={this.changeState}
           placeholder="비밀번호"
           State={this.state}
@@ -117,20 +113,3 @@ class InputContainer extends React.Component {
 }
 //
 export default withRouter(InputContainer);
-
-// constructor(props) {
-//   super(props);
-//   this.handleChange = this.handleChange.bind(this);
-// }
-
-// handleChange(e) {
-//   const { name, value } = e.target;
-//   let disable;
-//   if (name === 'username') {
-//     value.indexOf('@') !== -1 ? (disable = false) : (disable = true);
-//   } else if (name === 'password') {
-//     value.length >= 5 ? (disable = false) : (disable = true);
-//   }
-
-//   this.props.onchange(name, value, disable);
-// }
