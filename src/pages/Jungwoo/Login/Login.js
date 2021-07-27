@@ -1,8 +1,8 @@
 /*eslint-disable*/
 
 import React from 'react';
-import './Login.scss';
 import { withRouter } from 'react-router-dom';
+import './Login.scss';
 
 class BoxLogin extends React.Component {
   render(props) {
