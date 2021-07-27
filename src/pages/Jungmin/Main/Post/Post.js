@@ -1,6 +1,39 @@
 import React from 'react';
 import './Post.scss';
 
+// class CommentList extends React.Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//       commentList: [],
+//     };
+//   }
+
+//   componentDidMount() {
+//     fetch('http://localhost:3000/data/Jungmin/commentData.json', {
+//       method: 'GET',
+//     })
+//       .then(res => res.json())
+//       .then(data => {
+//         this.setState({ CommentList: data });
+//       });
+//   }
+
+//   render() {
+//     const commentList = this.state;
+
+//     let po = commentList.map(comment => {
+//       <Comment
+//         key={comment.id}
+//         nickname={comment.userName}
+//         comment={comment.content}
+//       />;
+//     });
+
+//     return <div className="CommentList">{po}</div>;
+//   }
+// }
+
 class Comment extends React.Component {
   render() {
     return (
@@ -20,10 +53,14 @@ class Comment extends React.Component {
 
 class NewComment extends React.Component {
   render() {
-    const save = this.props.save;
-    const post = save.map((value, index) => (
-      <Comment nickname={index} comment={value} key={value + index} />
-    ));
+    // console.log(this.props.save.comment);
+    let post = [];
+    if (this.props.save !== undefined) {
+      post = this.props.save.map((value, index) => (
+        <Comment nickname={index} comment={value} key={value + index} />
+      ));
+      console.log(post);
+    }
     return <>{post}</>;
   }
 }
@@ -51,6 +88,19 @@ class Sumit extends React.Component {
   }
 }
 
+// class CommentAdd extends React.Componenet {
+//   render() {
+//     return (
+//       <>
+//         <div>
+//           <span>{this.props.userName}</span>
+//           <span>{this.props.content}</span>
+//         </div>
+//       </>
+//     );
+//   }
+// }
+
 class Post extends React.Component {
   constructor(props) {
     super(props);
@@ -58,6 +108,18 @@ class Post extends React.Component {
       content: '',
       save: [],
     };
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/data/Jungmin/commentData.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          save: data,
+        });
+      });
   }
 
   changeCommend = e => {
@@ -77,14 +139,31 @@ class Post extends React.Component {
   };
 
   render() {
+    let test = ``;
+    if (this.state.save !== undefined) {
+      test = this.state.save.map(elem => {
+        return (
+          <Comment
+            key={elem.id}
+            nickname={elem.userName}
+            comment={elem.content}
+          />
+        );
+      });
+    }
+
     return (
       <div className="post">
         <Comment nickname={'hh.vv'} comment={'오 멋진 걸'} />
         <Comment nickname={'seoyun1203'} comment={'하이 에이치 아이 !!'} />
+        {test}
+        {/* <CommentList /> */}
         <NewComment save={this.state.save} />
+
         <div className="commendTime  username ">
           <div>42분 전</div>
         </div>
+
         <Sumit
           messageChangeState={this.sumitCommend}
           value={this.state.content}
