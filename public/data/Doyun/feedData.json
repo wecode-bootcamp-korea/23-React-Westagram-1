@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "profile": "/images/Doyun/profile.png",
+    "time": 8,
+    "like": 31,
+    "img": "/images/Doyun/dua_lipa.jpeg"
+  },
+  {
+    "id": 2,
+    "profile": "/images/Doyun/dua_lipa.jpeg",
+    "time": 14,
+    "like": 100,
+    "img": "/images/Doyun/billie.jpeg"
+  },
+  {
+    "id": 3,
+    "profile": "/images/Doyun/instagram.png",
+    "time": 20,
+    "like": 200,
+    "img": "/images/Doyun/oliviaRodrigo.jpeg"
+  }
+]

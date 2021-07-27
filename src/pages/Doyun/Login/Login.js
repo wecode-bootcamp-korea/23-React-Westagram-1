@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Login.scss';
 
 class LoginDoyun extends React.Component {
@@ -24,6 +25,7 @@ class LoginDoyun extends React.Component {
   };
 
   render() {
+    const { handleIdInput, handlePasswordInput } = this;
     return (
       <div className="login">
         <h1 className="mainLogo">Westargram</h1>
@@ -31,25 +33,24 @@ class LoginDoyun extends React.Component {
           className="idInput"
           type="text"
           placeholder="Phone Number, Name or Email"
-          onChange={this.handleIdInput}
+          onChange={handleIdInput}
         />
         <input
           className="passwordInput"
           type="password"
           placeholder="Password"
-          onChange={this.handlePasswordInput}
+          onChange={handlePasswordInput}
         />
         <button
-          className="loginButton"
-          style={
+          className={
             this.state.id.indexOf('@') !== -1 && this.state.password.length >= 5
-              ? { backgroundColor: '#0295F6', cursor: 'pointer' }
-              : null
+              ? 'active'
+              : ''
           }
         >
           log in
         </button>
-        <a href="/">forgot your password?</a>
+        <Link to="/">forgot your password?</Link>
       </div>
     );
   }

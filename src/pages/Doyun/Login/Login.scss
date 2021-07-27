@@ -27,7 +27,7 @@
       font-family: 'Quicksand', sans-serif;
     }
   }
-  .loginButton {
+  button {
     font-family: 'Quicksand', sans-serif;
     width: 250px;
     border: none;
@@ -36,6 +36,10 @@
     padding: 10px 5px;
     margin-bottom: 70px;
     transition: 0.3s ease background-color;
+  }
+  .active {
+    background-color: #0295f6;
+    cursor: pointer;
   }
   a {
     font-size: 0.8rem;

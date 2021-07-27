@@ -3,14 +3,32 @@ import Article from './Article';
 import './Feed.scss';
 
 class Feed extends Component {
+  constructor() {
+    super();
+    this.state = {
+      feed: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('/data/Doyun/feedData.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          feed: data,
+        });
+      });
+  }
+
   render() {
     return (
       <>
         <div className="feed">
-          <Article
-            profile="/images/Doyun/profile.png"
-            main="/images/Doyun/dua_lipa.jpeg"
-          />
+          {this.state.feed.map((c, i) => {
+            return <Article key={c.id} profile={c.profile} main={c.img} />;
+          })}
         </div>
       </>
     );

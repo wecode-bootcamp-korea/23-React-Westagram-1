@@ -11,6 +11,18 @@ export class Article extends Component {
     };
   }
 
+  componentDidMount() {
+    fetch('/data/Doyun/commentData.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          commentList: data,
+        });
+      });
+  }
+
   getValue = e => {
     this.setState({
       value: e.target.value,
@@ -18,11 +30,16 @@ export class Article extends Component {
   };
 
   addComment = () => {
-    if (!this.state.value) {
+    const { value, commentList } = this.state;
+    if (!value) {
       alert('add comment pls');
     } else {
       this.setState({
-        commentList: this.state.commentList.concat([this.state.value]),
+        commentList: commentList.concat({
+          id: Math.random(),
+          content: value,
+          img: '/images/Doyun/profile.png',
+        }),
         value: '',
       });
       document.getElementsByClassName('commentInput')[0].value = '';
@@ -30,22 +47,25 @@ export class Article extends Component {
   };
 
   addCommEnter = e => {
-    console.log(e.key);
     if (e.key === 'Enter') {
       this.addComment();
     }
   };
 
   render() {
+    const { getValue, addComment, addCommEnter } = this;
+    const { commentList } = this.state;
+    const { profile, main } = this.props;
+
     return (
       <>
         <article className="article">
           <div className="articleHeader">
-            <img className="profile" src={this.props.profile} alt="profile" />
+            <img className="profile" src={profile} alt="profile" />
             <span>winni_dominguez</span>
             <i className="fas fa-ellipsis-h"></i>
           </div>
-          <img className="articleImg" src={this.props.main} alt="dua-lipa" />
+          <img className="articleImg" src={main} alt="dua-lipa" />
           <div className="articleInfoIcon">
             <i className="far fa-heart"></i>
             <i className="far fa-comment"></i>
@@ -56,8 +76,14 @@ export class Article extends Component {
           <p className="articleTimeGap">8 hours ago</p>
           <div className="commentLine">
             <ul>
-              {this.state.commentList.map((comm, idx) => {
-                return <Comment key={idx} msg={comm} />;
+              {commentList.map((comment, i) => {
+                return (
+                  <Comment
+                    key={comment.id}
+                    msg={comment.content}
+                    img={comment.img}
+                  />
+                );
               })}
             </ul>
           </div>
@@ -67,10 +93,10 @@ export class Article extends Component {
               className="commentInput"
               type="text"
               placeholder="add a comment.."
-              onChange={this.getValue}
-              onKeyPress={this.addCommEnter}
+              onChange={getValue}
+              onKeyPress={addCommEnter}
             />
-            <button onClick={this.addComment}>
+            <button onClick={addComment}>
               <i className="fas fa-check"></i>
             </button>
           </div>
