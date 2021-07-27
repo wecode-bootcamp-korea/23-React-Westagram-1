@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Comments.module.scss';
-import FeedComment from './CommentTemplate';
-class FeedComments extends React.Component {
+import CommentTemplate from './CommentTemplate';
+class Comments extends React.Component {
   render() {
     return (
       <div className={`${styles.photoComments}`}>
@@ -10,7 +10,11 @@ class FeedComments extends React.Component {
         </div>
         {this.props.comments.map(elem => {
           return (
-            <FeedComment key={elem.id} userId={elem.userId} text={elem.text} />
+            <CommentTemplate
+              key={elem.id}
+              userId={elem.userId}
+              text={elem.text}
+            />
           );
         })}
       </div>
@@ -18,4 +22,4 @@ class FeedComments extends React.Component {
   }
 }
 
-export default FeedComments;
+export default Comments;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './PhotoComment.module.scss';
-import FeedComments from './Comments/Comments';
+import Comments from './Comments/Comments';
 
 class PhotoComment extends React.Component {
   render() {
@@ -16,7 +16,7 @@ class PhotoComment extends React.Component {
           </span>
           <span className={`${styles.photoDescMore}`}>...더 보기</span>
         </div>
-        <FeedComments comments={this.props.comments} />
+        <Comments comments={this.props.comments} />
         <div className={`${styles.photoDate}`}>
           <span>55분 전</span>
         </div>
