@@ -1,0 +1,35 @@
+@mixin flex-set(
+  $flex-direction: column,
+  $justify-content: center,
+  $align-items: center
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+.photoComments {
+  @include flex-set(column, initial, initial);
+
+  > div {
+    > span {
+      &:first-child {
+        font-size: 14px;
+        color: var(--text-grey);
+      }
+    }
+  }
+  .commentsMore {
+    @include flex-set(row, initial, initial);
+    position: relative;
+    height: 18px;
+    line-height: 1.5rem;
+    font-size: 14px;
+
+    > a {
+      text-decoration: none;
+      color: var(--text-grey);
+    }
+  }
+}

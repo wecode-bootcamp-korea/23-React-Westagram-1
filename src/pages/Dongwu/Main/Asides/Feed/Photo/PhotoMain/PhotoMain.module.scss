@@ -1,0 +1,14 @@
+@mixin size($width: 0px, $height: 0px) {
+  width: $width;
+  height: $height;
+}
+
+.photoMain {
+  @include size(614px, 614px);
+  display: flex;
+  border-bottom: 1px solid var(--grey);
+
+  > img {
+    @include size(612px, 612px);
+  }
+}

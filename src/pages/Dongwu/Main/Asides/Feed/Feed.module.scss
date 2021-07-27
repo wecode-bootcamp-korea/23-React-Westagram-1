@@ -1,17 +1,3 @@
-:root {
-  --blue: #0095f6;
-  --light-blue: rgb(198, 222, 250);
-  --grey: rgb(219, 219, 219);
-  --light-grey: rgb(250, 250, 250);
-  --input-font-color: rgb(142, 142, 142);
-  --pink: #cd2e83;
-  --text-grey: rgba(38, 38, 38, 0.5);
-}
-
-.hidden {
-  visibility: hidden;
-}
-
 @mixin flex-set(
   $flex-direction: column,
   $justify-content: center,
@@ -28,157 +14,45 @@
   height: $height;
 }
 
-@mixin translateCenter() {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-body {
-  background-color: var(--light-grey);
-}
-
-.widthMax {
-  width: 100%;
-}
-
-.heightMax {
-  height: 100%;
-}
-
-.visible {
-  visibility: visible;
-}
-
-.hidden {
-  visibility: hidden;
-}
-
-#move-left {
-  left: 30px;
-  transform: translate(0, -50%);
-}
-
-.black {
-  color: black;
-}
-
-.red {
-  color: red;
-}
-
 .Feed {
-  padding: 30px 0 0 0;
-  margin: 55px 28px 0 0;
+  @include flex-set(column, initial, initial);
+  margin-bottom: 30px;
+  border: 1px solid var(--grey);
+  background-color: white;
 
-  .photoWrap {
-    @include flex-set(column, initial, initial);
-    border: 1px solid var(--grey);
-    background-color: white;
+  .photoIcons {
+    display: flex;
+    width: 100%;
+    margin: 4px 0 0 0;
+    padding: 0 16px;
 
-    .photoTitle {
-      @include flex-set(row, initial, center);
-      @include size(100%, 60px);
-      padding: 16px;
-      border-bottom: 1px solid var(--grey);
-
-      .photoProfile {
-        @include flex-set(row, initial, center);
-        @include size(100%, 100%);
-
-        > img {
-          @include size(32px, 32px);
-          display: flex;
-          margin: 0 14px 0 0;
-          border: 1px solid var(--pink);
-          border-radius: 50%;
-        }
-      }
-    }
-
-    .photoMain {
-      @include size(614px, 614px);
+    .photoIconsLeft {
       display: flex;
-      border-bottom: 1px solid var(--grey);
+      width: 50%;
 
-      > img {
-        @include size(612px, 612px);
+      > button {
+        @include flex-set(row, initial, center);
+        @include size(40px, 40px);
+        padding: 8px;
+        border: none;
+        background-color: white;
+        font-size: 24px;
+        outline: none;
       }
     }
 
-    .photoIcons {
-      display: flex;
-      width: 100%;
-      margin: 4px 0 0 0;
-      padding: 0 16px;
+    .photoIconsRight {
+      @include flex-set(row, flex-end, initial);
+      width: 50%;
 
-      .photoIconsLeft {
-        display: flex;
-        width: 50%;
-
-        > button {
-          @include flex-set(row, initial, center);
-          @include size(40px, 40px);
-          padding: 8px;
-          border: none;
-          background-color: white;
-          font-size: 24px;
-          outline: none;
-        }
-      }
-
-      .photoIconsRight {
-        @include flex-set(row, flex-end, initial);
-        width: 50%;
-
-        > button {
-          @include flex-set(row, initial, center);
-          @include size(40px, 40px);
-          padding: 8px;
-          border: none;
-          background-color: white;
-          font-size: 24px;
-          outline: none;
-        }
-      }
-    }
-
-    .photoDesc {
-      @include flex-set(column, initial, initial);
-      width: 100%;
-      padding: 0 16px;
-
-      .photoDescLike {
+      > button {
         @include flex-set(row, initial, center);
-        height: 18px;
-        margin-bottom: 8px;
-        font-size: 14px;
-        font-weight: 700;
-      }
-
-      .photoDescUploader {
-        height: 18px;
-        span {
-          margin-right: 5px;
-          font-size: 14px;
-
-          &:first-child {
-            font-weight: 700;
-          }
-          &:nth-child(2) {
-          }
-          &:last-child {
-            color: var(--text-grey);
-          }
-        }
-      }
-
-      .photoDate {
-        @include flex-set(row, initial, center);
-        @include size(100%, 19px);
-        margin: 0 0 4px 0;
-        color: var(--text-grey);
-        font-size: 10px;
+        @include size(40px, 40px);
+        padding: 8px;
+        border: none;
+        background-color: white;
+        font-size: 24px;
+        outline: none;
       }
     }
   }

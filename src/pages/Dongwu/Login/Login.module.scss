@@ -8,10 +8,6 @@
   --text-grey: rgba(38, 38, 38, 0.5);
 }
 
-.hidden {
-  visibility: hidden;
-}
-
 @mixin flex-set(
   $flex-direction: column,
   $justify-content: center,
@@ -26,12 +22,6 @@
 @mixin size($width: 0px, $height: 0px) {
   width: $width;
   height: $height;
-}
-
-@mixin translateCenter() {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .loginSection {

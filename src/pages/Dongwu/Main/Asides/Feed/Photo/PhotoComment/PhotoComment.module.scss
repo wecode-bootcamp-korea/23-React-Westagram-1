@@ -1,0 +1,54 @@
+@mixin flex-set(
+  $flex-direction: column,
+  $justify-content: center,
+  $align-items: center
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin size($width: 0px, $height: 0px) {
+  width: $width;
+  height: $height;
+}
+
+.photoDesc {
+  @include flex-set(column, initial, initial);
+  width: 100%;
+  padding: 0 16px;
+
+  .photoDescLike {
+    @include flex-set(row, initial, center);
+    height: 18px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .photoDescUploader {
+    height: 18px;
+    span {
+      margin-right: 5px;
+      font-size: 14px;
+
+      &:first-child {
+        font-weight: 700;
+      }
+      &:nth-child(2) {
+      }
+      &:last-child {
+        color: var(--text-grey);
+      }
+    }
+  }
+
+  .photoDate {
+    @include flex-set(row, initial, center);
+    @include size(100%, 19px);
+    margin: 0 0 4px 0;
+    color: var(--text-grey);
+    font-size: 10px;
+  }
+}

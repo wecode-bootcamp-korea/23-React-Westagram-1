@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Recommended.module.scss';
-import Footer from './Footer';
+import Footer from './Footer/Footer';
 
 class Recommended extends React.Component {
   render() {

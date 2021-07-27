@@ -1,17 +1,3 @@
-:root {
-  --blue: #0095f6;
-  --light-blue: rgb(198, 222, 250);
-  --grey: rgb(219, 219, 219);
-  --light-grey: rgb(250, 250, 250);
-  --input-font-color: rgb(142, 142, 142);
-  --pink: #cd2e83;
-  --text-grey: rgba(38, 38, 38, 0.5);
-}
-
-.hidden {
-  visibility: hidden;
-}
-
 @mixin flex-set(
   $flex-direction: column,
   $justify-content: center,
@@ -37,8 +23,8 @@
 .Recommended {
   @include flex-set(column, initial, initial);
   @include size(293px, 100%);
-  position: fixed;
-  top: 88px;
+  position: sticky;
+  top: 85px;
 
   .userProfile {
     @include flex-set(row, space-between, center);

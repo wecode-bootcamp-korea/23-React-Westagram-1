@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "feedProfileImg": "/images/Dongwu/Main/freeImage.png",
+    "feedImg": "/images/Dongwu/Main/freeImage.png",
+    "feedId": "steam_udon1",
+    "feedText": "가나다라마바사"
+  },
+  {
+    "id": 2,
+    "feedProfileImg": "/images/Dongwu/Main/freeImage.png",
+    "feedImg": "/images/Dongwu/Main/freeImage.png",
+    "feedId": "1nodu_maets",
+    "feedText": "사바마라다나가"
+  },
+  {
+    "id": 3,
+    "feedProfileImg": "/images/Dongwu/Main/freeImage.png",
+    "feedImg": "/images/Dongwu/Main/freeImage.png",
+    "feedId": "steam_udon2",
+    "feedText": "아자차카타파하"
+  }
+]

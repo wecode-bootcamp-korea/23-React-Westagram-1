@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './LoginForm.module.scss';
-import LoginInput from './LoginInput';
+import LoginInput from './LoginInput/LoginInput';
 
 class LoginForm extends React.Component {
   constructor() {
@@ -18,7 +18,9 @@ class LoginForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.history.push(`/main-dongwu`, this.state);
+    this.state[`loginId`].includes(`@`) && this.state[`loginPw`].length > 8
+      ? this.props.history.push(`/main-dongwu`, this.state)
+      : alert('ID, Password를 확인하세요.');
   };
 
   render() {

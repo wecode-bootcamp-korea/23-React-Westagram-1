@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './Feed.module.scss';
-import Story from '../Story';
-import FeedCommentsForm from './FeedCommentsForm';
-import FeedComments from './FeedComments';
-
+import PhotoProfile from './Photo/PhotoProfile/PhotoProfile';
+import PhotoComment from './Photo/PhotoComment/PhotoComment';
+import PhotoMain from './Photo/PhotoMain/PhotoMain';
+import PhotoCommentForm from './Photo/PhotoCommentForm/PhotoCommentForm';
 class Feed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      commentsInfo: [],
+      comments: [],
     };
   }
 
@@ -16,68 +16,56 @@ class Feed extends React.Component {
     this.setState({ [key]: value });
   };
 
+  componentDidMount() {
+    fetch('http://localhost:3000/data/Dongwu/commentData.json')
+      .then(res => {
+        console.log(res);
+        return res.json();
+      })
+      .then(data => {
+        this.setState({
+          comments: data,
+        });
+      });
+  }
+
   render() {
+    console.log(this.state.comments);
     return (
       <div className={`${styles.Feed}`}>
-        <Story />
-        <div className={`${styles.photoWrap}`}>
-          <div className={`${styles.photoTitle}`}>
-            <div className={`${styles.photoProfile}`}>
-              <img
-                alt="프로필 사진"
-                src={
-                  process.env.PUBLIC_URL + `/images/Dongwu/Main/freeImage.png`
-                }
-              />
-              <span>steam_udon</span>
-            </div>
-            <i className="fas fa-ellipsis-h"></i>
+        <PhotoProfile
+          feedProfileImg={this.props.feedProfileImg}
+          feedId={this.props.feedId}
+        />
+        <PhotoMain feedImg={this.props.feedImg} />
+        <div className={`${styles.photoIcons}`}>
+          <div className={`${styles.photoIconsLeft}`}>
+            <button>
+              <i className="far fa-heart"></i>
+            </button>
+            <button>
+              <i className="far fa-comment"></i>
+            </button>
+            <button>
+              <i className="fab fa-telegram-plane"></i>
+            </button>
           </div>
-          <div className={`${styles.photoMain}`}>
-            <img
-              alt="main photo"
-              src={process.env.PUBLIC_URL + `/images/Dongwu/Main/freeImage.png`}
-            />
+          <div className={`${styles.photoIconsRight}`}>
+            <button>
+              <i className="far fa-bookmark"></i>
+            </button>
           </div>
-          <div className={`${styles.photoIcons}`}>
-            <div className={`${styles.photoIconsLeft}`}>
-              <button>
-                <i className="far fa-heart"></i>
-              </button>
-              <button>
-                <i className="far fa-comment"></i>
-              </button>
-              <button>
-                <i className="fab fa-telegram-plane"></i>
-              </button>
-            </div>
-
-            <div className={`${styles.photoIconsRight}`}>
-              <button>
-                <i className="far fa-bookmark"></i>
-              </button>
-            </div>
-          </div>
-          <div className={`${styles.photoDesc}`}>
-            <div className={`${styles.photoDescLike}`}>
-              <span>Like</span>
-            </div>
-            <div className={`${styles.photoDescUploader}`}>
-              <span className={`${styles.photoDescId}`}>steam_udon</span>
-              <span className={`${styles.photoDescText}`}>가나다라마바사</span>
-              <span className={`${styles.photoDescMore}`}>...더 보기</span>
-            </div>
-            <FeedComments commentsInfo={this.state.commentsInfo} />
-            <div className={`${styles.photoDate}`}>
-              <span>55분 전</span>
-            </div>
-          </div>
-          <FeedCommentsForm
-            userInfo={this.props.userInfo}
-            commentsInfo={this.state.commentsInfo}
-            setParentState={this.setParentState}
-          />
         </div>
+        <PhotoComment
+          feedId={this.props.feedId}
+          feedText={this.props.feedText}
+          comments={this.state.comments}
+        />
+        <PhotoCommentForm
+          userInfo={this.props.userInfo}
+          comments={this.state.comments}
+          setParentState={this.setParentState}
+        />
       </div>
     );
   }
