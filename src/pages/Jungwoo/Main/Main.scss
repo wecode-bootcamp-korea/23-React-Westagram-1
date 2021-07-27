@@ -7,7 +7,6 @@
 }
 
 .feedsArticle {
-  width: 614px;
   margin-left: 13px;
   margin-top: 60px;
   border: 1px solid rgba(var(--ce3, 239, 239, 239), 1);
@@ -69,23 +68,21 @@
 }
 
 .commentIcons {
-  height: 40px;
-  padding: 5px 16px;
+  margin: 5px 0 5px 15px;
 
   img {
     padding-top: 7px;
+    margin-right: 15px;
   }
 }
 
 .iconHeart {
-  width: 23px;
+  width: 26px;
 }
 
 .iconChat {
   width: 22px;
   padding-bottom: 2px;
-  padding-left: 10px;
-  padding-right: 12px;
   transform: scaleX(-1);
 }
 
@@ -95,8 +92,8 @@
 }
 
 .iconBookMark {
-  width: 24px;
-  padding-left: 450px;
+  width: 22px;
+  margin-left: 440px;
 }
 
 .commentLike {
@@ -113,14 +110,23 @@
   }
 }
 
-.commentContents {
+.textBox {
   padding-left: 16px;
   padding-right: 16px;
   z-index: 1px;
 
-  ul {
-    display: inline-block;
-    font-size: 30px;
+  li {
+    display: flex;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 8px;
+
+    a {
+      display: inline-block;
+      margin-left: 10px;
+      font-weight: 400;
+    }
   }
 }
 
@@ -130,7 +136,7 @@
   padding-left: 16px;
   padding-right: 16px;
   margin-top: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   color: rgba(var(--f52, 142, 142, 142), 1);
   border: 0 solid #000;
   font-size: 10px;

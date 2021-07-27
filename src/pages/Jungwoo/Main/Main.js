@@ -3,6 +3,7 @@
 import React from 'react';
 import './Main.scss';
 import { withRouter } from 'react-router-dom';
+import CommentList from '../../../Components/Main/CommentList.js';
 
 class Footer extends React.Component {
   render() {
@@ -41,7 +42,12 @@ class MainJungwoo extends React.Component {
     super();
     this.state = {
       newReply: '',
-      replies: [{ userId: '', text: '' }],
+      replies: [
+        {
+          userId: '',
+          text: '',
+        },
+      ],
       userProfile: [
         {
           url: '../../images/Jungwoo/ photo-124941274df.jpeg',
@@ -79,8 +85,7 @@ class MainJungwoo extends React.Component {
     });
   };
 
-  add = () => {
-    // Button 요소의 onClick 이벤트 핸들러
+  addComment = () => {
     let arr = this.state.replies;
     arr.push({
       userId: '안녕하세요',
@@ -95,7 +100,7 @@ class MainJungwoo extends React.Component {
 
   pressEnter = e => {
     if (e.key === 'Enter' && this.state.newReply) {
-      this.add();
+      this.addComment();
       e.target.value = '';
     }
   };
@@ -115,7 +120,7 @@ class MainJungwoo extends React.Component {
               <img src="https://source.unsplash.com/user/erondu/1600x900" />
             </div>
 
-            <div className="articleComment" id="comment">
+            <div className="articleComment">
               <div className="commentIcons">
                 <img
                   className="iconHeart"
@@ -137,16 +142,10 @@ class MainJungwoo extends React.Component {
                 <p>5시간 전</p>
               </div>
 
-              <div id="commentBlock">
-                <div id="commentContents">
-                  <ul className="textbox">
-                    {this.state.replies.map(
-                      comment => (
-                        (<li>{comment.userId}</li>), (<li>{comment.text}</li>)
-                      )
-                    )}
-                  </ul>
-                </div>
+              <div>
+                <ul className="textBox">
+                  <CommentList commentList={this.state.replies} />
+                </ul>
               </div>
 
               <div className="commentInput">
@@ -159,13 +158,7 @@ class MainJungwoo extends React.Component {
                   onKeyPress={this.pressEnter}
                   value={this.state.newReply}
                 />
-                <button
-                  className="comment_button"
-                  onClick={this.add}
-                  id="commentBtn"
-                >
-                  게시
-                </button>
+                <button onClick={this.addComment}>게시</button>
               </div>
             </div>
           </article>
