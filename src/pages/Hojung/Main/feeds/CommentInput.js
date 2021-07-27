@@ -2,37 +2,42 @@ import React from 'react';
 
 class CommentInput extends React.Component {
   commentAdd = e => {
+    const { commentData, onSubmit, userId } = this.props;
+    const { comment } = e.target;
     e.preventDefault();
-    if (e.target.comment.value === '') {
+    if (comment.value === '') {
       alert('댓글을 입력해주세요!');
       return;
     }
-    const _comments = this.props.commentData.concat({
-      id: this.props.userId,
-      txt: e.target.comment.value,
+    const _comments = commentData.concat({
+      id: userId,
+      txt: comment.value,
       likeHeartBtn: false,
-      key: this.props.keyData,
+      key: commentData[commentData.length - 1].key + 1,
     });
-    this.props.onSubmit(_comments);
-    e.target.comment.value = '';
+    onSubmit(_comments);
+    comment.value = '';
   };
+
   handleButton = e => {
-    this.props.handleButtonState(e);
+    const { handleButtonState } = this.props;
+    handleButtonState(e);
   };
+
   render() {
+    const { commentAdd } = this;
+    const { handleButtonState, btnState } = this.props;
     return (
       <div className="feedCommentInput">
-        <form onSubmit={this.commentAdd}>
+        <form onSubmit={commentAdd}>
           <input
             type="text"
             className="input"
             name="comment"
             placeholder="댓글달기..."
-            onKeyUp={this.props.handleButtonState}
+            onKeyUp={handleButtonState}
           />
-          <button
-            className={this.props.btnState ? 'commentBtn active' : 'commentBtn'}
-          >
+          <button className={btnState ? 'commentBtn active' : 'commentBtn'}>
             게시
           </button>
         </form>

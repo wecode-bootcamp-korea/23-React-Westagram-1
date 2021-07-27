@@ -2,24 +2,27 @@ import React from 'react';
 
 class CommentList extends React.Component {
   commentLike = e => {
-    const _comments = Array.from(this.props.commentData);
+    const { commentData, commentLikeState } = this.props;
+    const { parentElement } = e.target;
+    const _comments = Array.from(commentData);
     _comments.map(el => {
-      console.log(el.key, e.target.parentElement.id);
-      if (el.key === Number(e.target.parentElement.id)) {
+      if (el.key === Number(parentElement.id)) {
         el.likeHeartBtn = !el.likeHeartBtn;
       }
     });
-    this.props.commentLikeState(_comments);
+    commentLikeState(_comments);
   };
 
   commentDelete = e => {
-    const _comments = Array.from(this.props.commentData);
+    const { commentData, commentDelete } = this.props;
+    const { parentElement } = e.target;
+    const _comments = Array.from(commentData);
     _comments.map((el, index) => {
-      if (el.key === Number(e.target.parentElement.id)) {
+      if (el.key === Number(parentElement.id)) {
         _comments.splice(index, 1);
       }
     });
-    this.props.commentDelete(_comments);
+    commentDelete(_comments);
   };
 
   render() {

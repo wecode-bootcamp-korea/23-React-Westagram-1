@@ -2,13 +2,14 @@ import React from 'react';
 
 class FeedWriter extends React.Component {
   render() {
+    const { writer } = this.props;
     return (
       <div className="writer">
         <a href="/" className="writerInfo">
           <div className="writerImg">
             <img alt="프로필 이미지" src="/images/Hojung/profile_img.jpeg" />
           </div>
-          <div className="writerId">{this.props.writer}</div>
+          <div className="writerId">{writer}</div>
         </a>
         <a href="/" className="writerOtherMenu">
           <img

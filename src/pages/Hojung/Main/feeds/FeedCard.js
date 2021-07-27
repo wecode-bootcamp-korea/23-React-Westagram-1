@@ -7,19 +7,28 @@ import FeedInfo from './FeedInfo';
 class Feed extends React.Component {
   constructor(props) {
     super(props);
-    this.commentKey = 0;
     this.state = {
       comments: [],
       commentBtn: false,
     };
   }
   bringState = _comments => {
-    this.commentKey = this.commentKey + 1;
     this.setState({
       comments: _comments,
       commentBtn: true,
     });
   };
+
+  componentDidMount() {
+    fetch('/data/Hojung/commentData.json')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          comments: data,
+        });
+      });
+  }
+
   handleButtonState = e => {
     e.target.value.length >= 1
       ? this.setState({ commentBtn: true })
@@ -37,24 +46,27 @@ class Feed extends React.Component {
     });
   };
   render() {
+    const { writer, imgs, userId } = this.props;
+    const { comments, commentBtn, commentKey } = this.state;
+    const { commentLikeState, commentDelete, bringState, handleButtonState } =
+      this;
     return (
       <>
         <div className="feed">
-          <FeedWriter writer={this.props.writer} />
-          <FeedImgs imgs={this.props.imgs} />
+          <FeedWriter writer={writer} />
+          <FeedImgs imgs={imgs} />
           <FeedInfo
-            commentData={this.state.comments}
-            commentLikeState={this.commentLikeState}
-            commentDelete={this.commentDelete}
+            commentData={comments}
+            commentLikeState={commentLikeState}
+            commentDelete={commentDelete}
           />
           <CommentInput
-            commentData={this.state.comments}
-            btnState={this.state.commentBtn}
-            keyData={this.commentKey}
-            onSubmit={this.bringState}
-            handleButtonState={this.handleButtonState}
-            userId={this.props.userId}
-            commentKey={this.commentKey}
+            commentData={comments}
+            btnState={commentBtn}
+            commentKey={commentKey}
+            onSubmit={bringState}
+            handleButtonState={handleButtonState}
+            userId={userId}
           />
         </div>
       </>

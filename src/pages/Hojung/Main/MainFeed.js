@@ -2,19 +2,37 @@ import React from 'react';
 import FeedCard from './feeds/FeedCard';
 
 class MainFeed extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      feedList: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('/data/Hojung/FeedData.json')
+      .then(res => {
+        console.log(res);
+        return res.json();
+      })
+      .then(data => {
+        console.log(data);
+        this.setState({
+          feedList: data,
+        });
+      });
+  }
+
   render() {
+    const { userId } = this.props;
     return (
       <div className="feeds">
         <article>
-          <FeedCard
-            writer={'hj___s2'}
-            imgs={'/images/Hojung/feed_img.png'}
-            userId={this.props.userId}
-          />
-          <FeedCard
-            writer={'w0nhong__'}
-            imgs={'/images/Hojung/feed_img2.png'}
-          />
+          {this.state.feedList.map(feed => {
+            return (
+              <FeedCard writer={feed.writer} imgs={feed.imgs} userId={userId} />
+            );
+          })}
         </article>
       </div>
     );
