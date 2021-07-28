@@ -1,0 +1,48 @@
+{
+  "story": [
+    {
+      "id": 1,
+      "nickname": "jjiny_1019",
+      "Information": "2분 전",
+      "alt": "jjiny_1019Profilimg",
+      "src": "/images/Jungmin/sel2.jpg"
+    },
+    {
+      "id": 2,
+      "nickname": "joomxxyoung",
+      "Information": "18분 전",
+      "alt": "joomxxyoungProfilimg",
+      "src": "/images/Jungmin/sel2.jpg"
+    },
+    {
+      "id": 3,
+      "nickname": "noey._.os",
+      "Information": "2시간 전",
+      "alt": "noey._.osProfilimg",
+      "src": "/images/Jungmin/sel2.jpg"
+    }
+  ],
+  "recommend": [
+    {
+      "id": 1,
+      "nickname": "choi077770",
+      "Information": "회원님을 위한 추천",
+      "alt": "choi077770Profilimg",
+      "src": "/images/Jungmin/sel2.jpg"
+    },
+    {
+      "id": 2,
+      "nickname": "ji.won.59",
+      "Information": "회원님을 위한 추천",
+      "alt": "ji.won.59Profilimg",
+      "src": "/images/Jungmin/sel2.jpg"
+    },
+    {
+      "id": 3,
+      "nickname": "8jungmin",
+      "Information": "회원님을 위한 추천",
+      "alt": "8jungminProfilimg",
+      "src": "/images/Jungmin/sel2.jpg"
+    }
+  ]
+}

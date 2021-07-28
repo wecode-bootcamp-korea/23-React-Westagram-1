@@ -6,10 +6,13 @@ class Button extends React.Component {
   render() {
     return (
       <button
-        className="loginButton"
+        className={
+          !this.props.disabled
+            ? 'loginButton loginButtonOn'
+            : 'loginButton loginButtonOff '
+        }
         disabled={this.props.disabled}
         onClick={this.props.goToMain}
-        style={this.props.style}
       >
         로그인
       </button>
@@ -60,6 +63,8 @@ class InputContainer extends React.Component {
     };
   }
 
+  componentDidMount() {}
+
   changeState = e => {
     const { name, value } = e.target;
     if (name === 'username') {
@@ -70,10 +75,28 @@ class InputContainer extends React.Component {
   };
 
   goToMain = () => {
-    this.props.history.push('/main-jungmin');
+    // fetch('http://10.58.0.158:8000/users/signin', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     email: this.state.username,
+    //     password: this.state.password,
+    //   }),
+    // })
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     if (result.token) {
+    //       localStorage.setItem('token', result.token);
+    //       this.props.history.push('/main-jungmin', this.state);
+    //     } else {
+    //       alert('다시 입력해주세요');
+    //     }
+    //     console.log('결과: ', result);
+    //   });
+    this.props.history.push('/main-jungmin', this.state);
   };
 
   render() {
+    let logindisable = this.state.disableId || this.state.disablePw;
     return (
       <div className="inputContainer">
         <InputBox
@@ -81,32 +104,20 @@ class InputContainer extends React.Component {
           type="text"
           placeholder="전화번호, 사용자 이름 또는 이메일"
           State={this.state}
-          goToMain={
-            this.state.disableId || this.state.disablePw || this.goToMain
-          }
+          goToMain={logindisable || this.goToMain}
           onchange={this.changeState}
         />
         <InputBox
           name="password"
           type="password"
-          goToMain={
-            this.state.disableId || this.state.disablePw || this.goToMain
-          }
+          goToMain={logindisable || this.goToMain}
           onchange={this.changeState}
           placeholder="비밀번호"
           State={this.state}
         />
         <Andline />
-        <Button
-          goToMain={this.goToMain}
-          disabled={this.state.disableId || this.state.disablePw}
-          style={
-            this.state.disableId || this.state.disablePw
-              ? { backgroundColor: 'rgba(var(--d69, 0, 149, 246), 0.3)' }
-              : { backgroundColor: 'rgba(var(--d69, 0, 149, 246), 1)' }
-          }
-        />
-        <p className="forgetPw">비밀번호를 잊으셨나요?</p>
+        <Button goToMain={this.goToMain} disabled={logindisable} />
+        <botton className="forgetPw">비밀번호를 잊으셨나요?</botton>
       </div>
     );
   }

@@ -8,11 +8,18 @@ class Comment extends React.Component {
         <div>
           <p>{this.props.nickname}</p> {this.props.comment}
         </div>
-        <img
-          alt="heart"
-          id="heart"
-          src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png "
-        />
+        <button onClick={this.props.changeLiked}>
+          <img
+            alt="heart"
+            className="heart"
+            id={this.props.id}
+            src={
+              this.props.isLiked
+                ? '/images/Jungmin/heart.png'
+                : 'https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png '
+            }
+          />
+        </button>
       </div>
     );
   }
@@ -27,8 +34,11 @@ class NewComment extends React.Component {
           return (
             <Comment
               key={element.id}
+              id={element.id}
               nickname={element.userName}
               comment={element.content}
+              isLiked={element.isLiked}
+              changeLiked={this.props.changeLiked}
             />
           );
         })}
@@ -37,7 +47,7 @@ class NewComment extends React.Component {
   }
 }
 
-class Sumit extends React.Component {
+class Submit extends React.Component {
   render() {
     return (
       <form className="sumit" onSubmit={this.props.messageChangeState}>
@@ -49,9 +59,12 @@ class Sumit extends React.Component {
           onChange={this.props.changeCommend}
         />
         <button
-          className="postButton"
+          className={
+            this.props.value
+              ? 'postButton postButtonOn'
+              : 'postButton postButtonoff'
+          }
           type="submit"
-          style={this.props.value ? { opacity: 1 } : { opacity: 0.5 }}
         >
           게시
         </button>
@@ -74,26 +87,26 @@ class Post extends React.Component {
       method: 'GET',
     })
       .then(res => res.json())
-      .then(data => {
+      .then(datas => {
         this.setState({
-          save: data,
+          save: datas,
         });
       });
   }
 
-  changeCommend = e => {
+  changeComment = e => {
     this.setState({
       content: e.target.value,
     });
   };
 
-  sumitCommend = e => {
+  submitComment = e => {
     e.preventDefault();
     const contentObject = {
       id: this.state.save[this.state.save.length - 1].id + 1,
-      userName: 'mango',
+      userName: this.props.userInfo.username,
       content: this.state.content,
-      isLiked: true,
+      isLiked: false,
     };
     if (e.target.value === undefined && this.state.content !== '') {
       this.setState({
@@ -103,17 +116,31 @@ class Post extends React.Component {
     }
   };
 
+  changeLiked = e => {
+    const changeSave = Array.from(this.state.save);
+    changeSave.map(ele => {
+      console.log(Number(ele.id));
+      if (ele.id === Number(e.target.id)) {
+        ele.isLiked = !ele.isLiked;
+      }
+    });
+
+    this.setState({
+      save: changeSave,
+    });
+  };
+
   render() {
     return (
       <div className="post">
-        <NewComment save={this.state.save} />
+        <NewComment save={this.state.save} changeLiked={this.changeLiked} />
         <div className="commendTime  username ">
           <div>42분 전</div>
         </div>
-        <Sumit
-          messageChangeState={this.sumitCommend}
+        <Submit
+          messageChangeState={this.submitComment}
           value={this.state.content}
-          changeCommend={this.changeCommend}
+          changeCommend={this.changeComment}
         />
       </div>
     );

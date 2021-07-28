@@ -20,6 +20,7 @@ class Personal extends React.Component {
 
 class StoryBox extends React.Component {
   render() {
+    const story1 = this.props.story;
     return (
       <div className="storyBox">
         <div className="storybar">
@@ -27,24 +28,18 @@ class StoryBox extends React.Component {
           <span className="bold">모두보기</span>
         </div>
         <div>
-          <Personal
-            nickname="jjiny_1019"
-            Information="2분 전"
-            alt="jjiny_1019Profilimg"
-            src="/images/Jungmin/sel2.jpg"
-          />
-          <Personal
-            nickname="joomxxyoung"
-            Information="18분 전"
-            alt="joomxxyoungProfilimg"
-            src="/images/Jungmin/sel2.jpg"
-          />
-          <Personal
-            nickname="noey._.os"
-            Information="2시간 전"
-            alt="noey._.osProfilimg"
-            src="/images/Jungmin/sel2.jpg"
-          />
+          {story1 &&
+            story1.map(ele => {
+              return (
+                <Personal
+                  key={ele.id}
+                  nickname={ele.nickname}
+                  Information={ele.Information}
+                  alt={ele.alt}
+                  src={ele.src}
+                />
+              );
+            })}
         </div>
       </div>
     );
@@ -53,6 +48,7 @@ class StoryBox extends React.Component {
 
 class RecommendBox extends React.Component {
   render() {
+    const recommendBox = this.props.recommendBox;
     return (
       <div className="recommendBox">
         <div className="recommendbar">
@@ -60,24 +56,18 @@ class RecommendBox extends React.Component {
           <span className="bold">모두보기</span>
         </div>
         <div>
-          <Personal
-            nickname="choi077770"
-            Information="회원님을 위한 추천"
-            alt="choi077770Profilimg"
-            src="/images/Jungmin/sel2.jpg"
-          />
-          <Personal
-            nickname="ji.won.59"
-            Information="회원님을 위한 추천"
-            alt="ji.won.59Profilimg"
-            src="/images/Jungmin/sel2.jpg"
-          />
-          <Personal
-            nickname="8jungmin"
-            Information="회원님을 위한 추천"
-            alt="8jungminProfilimg"
-            src="/images/Jungmin/sel2.jpg"
-          />
+          {recommendBox &&
+            recommendBox.map(ele => {
+              return (
+                <Personal
+                  key={ele.id}
+                  nickname={ele.nickname}
+                  Information={ele.Information}
+                  alt={ele.alt}
+                  src={ele.src}
+                />
+              );
+            })}
         </div>
       </div>
     );
@@ -85,7 +75,24 @@ class RecommendBox extends React.Component {
 }
 
 class MainAside extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      save: {},
+    };
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/data/Jungmin/StoryBox.json')
+      .then(res => res.json())
+      .then(dates => {
+        this.setState({
+          save: dates,
+        });
+      });
+  }
   render() {
+    console.log(this.state.save.story);
     return (
       <div className="mainAside">
         <div className="myprofil">
@@ -99,8 +106,8 @@ class MainAside extends React.Component {
             <div className="username">최정민</div>
           </div>
         </div>
-        <StoryBox />
-        <RecommendBox />
+        <StoryBox story={this.state.save.story} />
+        <RecommendBox recommendBox={this.state.save.recommend} />
         <div className="info">
           westagram
           정보.지원.홍보센터.API.채용정보.개인정보처리방침.약관.디렉터리.프로필.해시태그.언어

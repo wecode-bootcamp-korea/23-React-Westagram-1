@@ -43,6 +43,14 @@
     color: rgba(var(--eca, 255, 255, 255), 1);
   }
 
+  .loginButtonOn {
+    background-color: rgba(var(--d69, 0, 149, 246), 1);
+  }
+
+  .loginButtonOff {
+    background-color: rgba(var(--d69, 0, 149, 246), 0.3);
+  }
+
   .forgetPw {
     color: #00376b;
     text-decoration: none;
