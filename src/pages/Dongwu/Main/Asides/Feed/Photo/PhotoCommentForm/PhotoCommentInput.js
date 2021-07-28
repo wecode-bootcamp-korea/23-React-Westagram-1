@@ -1,28 +1,36 @@
 import React from 'react';
+import styles from './PhotoCommentInput.module.scss';
 
 class PhotoCommentInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      visibility: `visible`,
+      visibility: styles.visible,
       input: React.createRef(),
     };
   }
   handleInput = e => {
-    this.props.setCommentsText(`commentsText`, e.target.value);
-    this.props.setCommentsText(`input`, this.state.input);
-    !e.target.value
-      ? this.setState({ visibility: `visible` })
-      : this.setState({ visibility: `hidden` });
+    const { input } = this.state;
+    const { setCommentFormState } = this.props;
+    const { value } = e.target;
+
+    setCommentFormState(`commentsText`, value);
+    setCommentFormState(`input`, input);
+
+    !value
+      ? this.setState({ visibility: styles.visible })
+      : this.setState({ visibility: styles.hidden });
   };
 
   render() {
+    const { handleInput } = this;
+    const { visibility, input } = this.state;
     return (
       <label>
-        <span id="commentsPlaceholder" style={this.state}>
+        <span id="commentsPlaceholder" className={`${visibility}`}>
           댓글 달기...
         </span>
-        <input type="text" onChange={this.handleInput} ref={this.state.input} />
+        <input type="text" onChange={handleInput} ref={input} />
       </label>
     );
   }

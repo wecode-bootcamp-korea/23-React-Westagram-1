@@ -1,15 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './CommentTemplate.module.scss';
 
 class CommentTemplate extends React.Component {
   render() {
+    const { userId, text, userInfo } = this.props;
     return (
       <li className={`${styles.commentsDesc}`}>
         <div>
-          <a href="#">{this.props.userId}</a>
+          <Link to={{ pathname: '/main-dongwu', state: { loginId: userInfo } }}>
+            {userId}
+          </Link>
         </div>
         <div>
-          <a href="#">{this.props.text}</a>
+          <Link to={{ pathname: '/main-dongwu', state: { loginId: userInfo } }}>
+            {text}
+          </Link>
         </div>
       </li>
     );

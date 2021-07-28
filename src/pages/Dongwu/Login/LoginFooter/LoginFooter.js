@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './LoginFooter.module.scss';
 import FOOTER_LIST from './LoginFooterList';
+import styles from './LoginFooter.module.scss';
 
 class LoginFooter extends React.Component {
   render() {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import styles from './Main.module.scss';
 import Story from './Asides/Story/Story';
 import Feed from './Asides/Feed/Feed';
 import Recommended from './Asides/Recommended/Recommended';
+import styles from './Main.module.scss';
 // import Nav from './Asides/Nav';
 
 class MainDongwu extends React.Component {
@@ -21,6 +21,8 @@ class MainDongwu extends React.Component {
   }
 
   render() {
+    const { feedInfo } = this.state;
+    const { loginId } = this.props.history.location.state;
     return (
       <section className={`${styles.widthMax} ${styles.heightMax}`}>
         <link
@@ -36,12 +38,12 @@ class MainDongwu extends React.Component {
         {/* <Nav /> */}
         <main className={`${styles.mainMain}`}>
           <section className={`${styles.feedSection}`}>
-            <Story />
-            {this.state.feedInfo.map(elem => {
+            <Story userInfo={loginId} />
+            {feedInfo.map(elem => {
               return (
                 <Feed
                   key={elem.id}
-                  userInfo={this.props.history.location.state.loginId}
+                  userInfo={loginId}
                   feedProfileImg={elem.feedProfileImg}
                   feedImg={elem.feedImg}
                   feedId={elem.feedId}
@@ -50,7 +52,7 @@ class MainDongwu extends React.Component {
               );
             })}
           </section>
-          <Recommended />
+          <Recommended userInfo={loginId} />
         </main>
       </section>
     );

@@ -9,7 +9,7 @@ class LoginArticle extends React.Component {
         <div className={`${styles.loginContainer}`}>
           <div className={`${styles.loginBlock}`}>
             <h1 className={`${styles.logo}`}>Westagram</h1>
-            <LoginForm history={this.props.history} />
+            <LoginForm />
           </div>
         </div>
       </article>

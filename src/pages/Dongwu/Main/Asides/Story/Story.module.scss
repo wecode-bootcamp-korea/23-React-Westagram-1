@@ -58,31 +58,31 @@ body {
   margin: 0 0 24px 0;
   padding: 12px 0;
   border: 1px solid var(--grey);
-}
 
-.storyWrapBlock {
-  display: flex;
-  width: 614px;
-}
+  .storyWrapBlock {
+    display: flex;
+    width: 614px;
 
-.storyProfile {
-  @include flex-set(column, initial, center);
-  padding-left: 20px;
+    .storyProfile {
+      @include flex-set(column, initial, center);
+      padding-left: 20px;
 
-  > a {
-    @include flex-set(row, center, center);
-    @include size(66px, 66px);
-    margin: 4px 0 8px 0;
+      > a {
+        @include flex-set(row, center, center);
+        @include size(66px, 66px);
+        margin: 4px 0 8px 0;
 
-    > img {
-      @include size(56px, 56px);
-      border: 1px solid var(--pink);
-      border-radius: 50%;
-      z-index: -1;
+        > img {
+          @include size(56px, 56px);
+          border: 1px solid var(--pink);
+          border-radius: 50%;
+          z-index: -1;
+        }
+      }
+
+      > span {
+        font-size: 14px;
+      }
     }
-  }
-
-  > span {
-    font-size: 14px;
   }
 }

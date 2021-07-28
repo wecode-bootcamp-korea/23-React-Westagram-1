@@ -1,12 +1,16 @@
 import React from 'react';
-import styles from './Footer.module.scss';
+import { Link } from 'react-router-dom';
 import FOOTER_LIST from './FooterList';
+import styles from './Footer.module.scss';
 class Footer extends React.Component {
   render() {
+    const { userInfo } = this.props;
     const list = FOOTER_LIST.map(elem => {
       return (
         <li key={elem.id}>
-          <a href={elem.href}>{elem.text}</a>
+          <Link to={{ pathname: '/main-dongwu', state: { loginId: userInfo } }}>
+            {elem.text}
+          </Link>
         </li>
       );
     });

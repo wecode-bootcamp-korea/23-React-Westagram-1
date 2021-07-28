@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './LoginForm.module.scss';
+import { withRouter, Link } from 'react-router-dom';
 import LoginInput from './LoginInput/LoginInput';
+import styles from './LoginForm.module.scss';
 
 class LoginForm extends React.Component {
   constructor() {
@@ -17,18 +18,21 @@ class LoginForm extends React.Component {
   };
 
   handleSubmit = e => {
+    const { loginId, loginPw } = this.state;
+    const { history } = this.props;
     e.preventDefault();
-    this.state[`loginId`].includes(`@`) && this.state[`loginPw`].length > 8
-      ? this.props.history.push(`/main-dongwu`, this.state)
+    loginId.includes(`@`) && loginPw.length > 8
+      ? history.push(`/main-dongwu`, this.state)
       : alert('ID, Password를 확인하세요.');
   };
 
   render() {
+    const { handleSubmit, setParentState } = this;
+    const { disabled } = this.state;
     return (
       <form
         className={`${styles.loginBlockForm}`}
-        // action="./main"
-        onSubmit={this.handleSubmit}
+        onSubmit={handleSubmit}
         action=""
       >
         <div className={`${styles.loginBlockWrap}`}>
@@ -50,19 +54,19 @@ class LoginForm extends React.Component {
             </div>
             <div className={`${styles.lineDiv}`}></div>
           </div>
-          <LoginInput state={this.state} setParentState={this.setParentState} />
+          <LoginInput state={this.state} setParentState={setParentState} />
           <div className={`${styles.loginBlockNewPw}`}>
-            <a href="#">비밀번호를 잊으셨나요?</a>
+            <Link to="/login-dongwu">비밀번호를 잊으셨나요?</Link>
           </div>
           <div className={`${styles.loginBlockButton}`}>
-            <button id="loginBtn" disabled={this.state.disabled}>
+            <button id="loginBtn" disabled={disabled}>
               로그인
             </button>
           </div>
         </div>
         <div className={`${styles.signUp}`}>
           <span>
-            계정이 없으신가요? <a href="#">가입하기</a>
+            계정이 없으신가요? <Link to="/login-dongwu">가입하기</Link>
           </span>
         </div>
       </form>
@@ -70,4 +74,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);

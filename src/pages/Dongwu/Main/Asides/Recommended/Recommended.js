@@ -1,9 +1,12 @@
 import React from 'react';
-import styles from './Recommended.module.scss';
+import { Link } from 'react-router-dom';
+
 import Footer from './Footer/Footer';
+import styles from './Recommended.module.scss';
 
 class Recommended extends React.Component {
   render() {
+    const { userInfo } = this.props;
     return (
       <div className={`${styles.Recommended}`}>
         <div className={`${styles.userProfile}`}>
@@ -36,10 +39,14 @@ class Recommended extends React.Component {
                 <span>Westagram 신규 가입</span>
               </div>
             </div>
-            <a href="#">팔로우</a>
+            <Link
+              to={{ pathname: '/main-dongwu', state: { loginId: userInfo } }}
+            >
+              팔로우
+            </Link>
           </div>
         </div>
-        <Footer />
+        <Footer userInfo={userInfo} />
       </div>
     );
   }

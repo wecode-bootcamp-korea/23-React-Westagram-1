@@ -1,8 +1,7 @@
 import React from 'react';
-import styles from './Login.module.scss';
-import { withRouter } from 'react-router-dom';
 import LoginArticle from './LoginArticle/LoginArticle';
 import LoginFooter from './LoginFooter/LoginFooter';
+import styles from './Login.module.scss';
 class LoginDongwu extends React.Component {
   render() {
     return (
@@ -11,7 +10,7 @@ class LoginDongwu extends React.Component {
         <section className={`${styles.loginSection}`}>
           <main className={`${styles.loginMain}`}>
             {/* <LoginNav /> */}
-            <LoginArticle history={this.props.history} />
+            <LoginArticle />
             <div className={`${styles.facebookLogo}`}>
               <span>from</span>
               <span>FACEBOOK</span>
@@ -24,4 +23,4 @@ class LoginDongwu extends React.Component {
   }
 }
 
-export default withRouter(LoginDongwu);
+export default LoginDongwu;

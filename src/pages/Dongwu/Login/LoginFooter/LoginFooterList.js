@@ -1,14 +1,3 @@
-// setListInfo = () => {
-//   let list = [];
-//   let listInfo = {};
-//   const listText = listText.forEach((elem, idx) => {
-//     listInfo = { id: idx + 1, href: `#`, text: elem };
-//     list.push(listInfo);
-//   });
-
-//   return list;
-// };
-
 const FOOTER_LIST = [];
 const FOOTER_LIST_TEXT = [
   `소개`,

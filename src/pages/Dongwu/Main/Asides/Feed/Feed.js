@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './Feed.module.scss';
 import PhotoProfile from './Photo/PhotoProfile/PhotoProfile';
 import PhotoComment from './Photo/PhotoComment/PhotoComment';
 import PhotoMain from './Photo/PhotoMain/PhotoMain';
 import PhotoCommentForm from './Photo/PhotoCommentForm/PhotoCommentForm';
+import styles from './Feed.module.scss';
 class Feed extends React.Component {
   constructor(props) {
     super(props);
@@ -19,7 +19,6 @@ class Feed extends React.Component {
   componentDidMount() {
     fetch('http://localhost:3000/data/Dongwu/commentData.json')
       .then(res => {
-        console.log(res);
         return res.json();
       })
       .then(data => {
@@ -30,14 +29,14 @@ class Feed extends React.Component {
   }
 
   render() {
-    console.log(this.state.comments);
+    const { setParentState } = this;
+    const { comments } = this.state;
+    const { feedProfileImg, feedId, feedImg, feedText, userInfo } = this.props;
+
     return (
       <div className={`${styles.Feed}`}>
-        <PhotoProfile
-          feedProfileImg={this.props.feedProfileImg}
-          feedId={this.props.feedId}
-        />
-        <PhotoMain feedImg={this.props.feedImg} />
+        <PhotoProfile feedProfileImg={feedProfileImg} feedId={feedId} />
+        <PhotoMain feedImg={feedImg} />
         <div className={`${styles.photoIcons}`}>
           <div className={`${styles.photoIconsLeft}`}>
             <button>
@@ -57,14 +56,15 @@ class Feed extends React.Component {
           </div>
         </div>
         <PhotoComment
-          feedId={this.props.feedId}
-          feedText={this.props.feedText}
-          comments={this.state.comments}
+          feedId={feedId}
+          feedText={feedText}
+          comments={comments}
+          userInfo={userInfo}
         />
         <PhotoCommentForm
-          userInfo={this.props.userInfo}
-          comments={this.state.comments}
-          setParentState={this.setParentState}
+          userInfo={userInfo}
+          comments={comments}
+          setParentState={setParentState}
         />
       </div>
     );
