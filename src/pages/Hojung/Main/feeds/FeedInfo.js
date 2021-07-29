@@ -6,7 +6,7 @@ import FeedDesc from './FeedDesc';
 
 class MainFeed extends React.Component {
   render() {
-    const { commentData, commentLikeState, commentDelete, userId, content } =
+    const { commentData, commentLikeState, commentDelete, username, content } =
       this.props;
     return (
       <div className="feedInfoWrap">
@@ -17,7 +17,7 @@ class MainFeed extends React.Component {
           commentData={commentData}
           commentLikeState={commentLikeState}
           commentDelete={commentDelete}
-          userId={userId}
+          username={username}
         />
       </div>
     );

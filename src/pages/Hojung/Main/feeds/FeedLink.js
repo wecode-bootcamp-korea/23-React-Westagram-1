@@ -5,9 +5,7 @@ class MainFeed extends React.Component {
     return (
       <div className="feedLink">
         <div className="feedLinkLeft">
-          <a href="/">
-            <img alt="좋아요 아이콘" src="/images/Hojung/feed_link_left1.png" />
-          </a>
+          <button onClick={this.postLike}>좋아요아이콘</button>
           <a href="/">
             <img alt="댓글 아이콘" src="/images/Hojung/feed_link_left2.png" />
           </a>

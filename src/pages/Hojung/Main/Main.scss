@@ -277,11 +277,22 @@ img {
           display: inline-block;
         }
         .feedLinkLeft {
+          display: flex;
+          align-items: center;
           a {
-            margin-right: 5px;
-            &:last-child {
-              margin-right: 0;
-            }
+            margin-left: 5px;
+          }
+          button {
+            text-indent: -999em;
+            border: 0;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: transparent;
+            background-image: url('./images/feed_link_left1.png');
+          }
+          .active {
+            background-image: url('./images/feed_link_left1_active.png');
           }
         }
       }

@@ -10,24 +10,26 @@ class Feed extends React.Component {
     this.state = {
       comments: [],
       commentBtn: false,
+      postBrn: false,
     };
   }
-  bringState = _comments => {
-    this.setState({
-      comments: _comments,
-      commentBtn: true,
-    });
-  };
-  y;
+
   componentDidMount() {
-    fetch('http://10.58.1.50:8000/posts/' + `${this.props.id}/comments`)
+    fetch(`http://10.58.3.149:8000/postings/comment/${this.props.id}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
-          comments: data.comments,
+          comments: data.response,
         });
       });
   }
+
+  bringState = data => {
+    this.setState({
+      comments: data,
+      commentBtn: true,
+    });
+  };
 
   handleButtonState = e => {
     const isValid = e.target.value.length >= 1;
@@ -49,7 +51,7 @@ class Feed extends React.Component {
   };
 
   render() {
-    const { writer, imgs, userId, content } = this.props;
+    const { writer, imgs, id, content, username, feedList } = this.props;
     const { comments, commentBtn, commentKey } = this.state;
     const { commentLikeState, commentDelete, bringState, handleButtonState } =
       this;
@@ -63,6 +65,8 @@ class Feed extends React.Component {
             commentLikeState={commentLikeState}
             commentDelete={commentDelete}
             content={content}
+            username={username}
+            feedList={feedList}
           />
           <CommentInput
             commentData={comments}
@@ -70,7 +74,8 @@ class Feed extends React.Component {
             commentKey={commentKey}
             onSubmit={bringState}
             handleButtonState={handleButtonState}
-            userId={userId}
+            id={id}
+            username={username}
           />
         </div>
       </>

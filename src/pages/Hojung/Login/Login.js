@@ -21,7 +21,7 @@ class LoginHojung extends React.Component {
 
   goToMain = e => {
     e.preventDefault();
-    fetch('http://10.58.1.207:8000/users/signin', {
+    fetch('http://10.58.3.149:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: this.state.id,
@@ -30,9 +30,9 @@ class LoginHojung extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
-        if (response.token) {
-          localStorage.setItem('token', response.token);
-          this.props.history.push('/main-hojung');
+        if (response.access_token) {
+          localStorage.setItem('token', response.access_token);
+          this.props.history.push('/main-hojung', response);
         } else {
           alert('아이디 비밀번호를 다시 입력해주세요!');
         }

@@ -6,8 +6,8 @@ class CommentList extends React.Component {
     const { parentElement } = e.target;
     const _comments = commentData;
     _comments.map(el => {
-      if (el.key === Number(parentElement.id)) {
-        el.likeHeartBtn = !el.likeHeartBtn;
+      if (el.id === Number(parentElement.id)) {
+        el.isLiked = !el.isLiked;
       }
     });
     commentLikeState(_comments);
@@ -18,7 +18,7 @@ class CommentList extends React.Component {
     const { parentElement } = e.target;
     const _comments = commentData;
     _comments.map((el, index) => {
-      if (el.key === Number(parentElement.id)) {
+      if (el.id === Number(parentElement.id)) {
         _comments.splice(index, 1);
       }
     });
@@ -31,11 +31,11 @@ class CommentList extends React.Component {
     this.props.commentData.map(el => {
       commentLists.push(
         <li key={el.id} id={el.id}>
-          <a href="/">{el.user_name}</a>
-          {el.text}
+          <a href="/">{el.name}</a>
+          {el.comment_text}
           <button
             onClick={this.commentLike}
-            className={el.likeHeartBtn ? 'heartBtn active' : 'heartBtn'}
+            className={el.isLiked ? 'heartBtn active' : 'heartBtn'}
           >
             좋아요
           </button>
@@ -45,6 +45,7 @@ class CommentList extends React.Component {
         </li>
       );
     });
+    //console.log(commentLists);
     return (
       <div className="feedComment">
         <ul>{commentLists}</ul>

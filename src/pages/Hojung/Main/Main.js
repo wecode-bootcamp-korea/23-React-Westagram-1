@@ -4,18 +4,19 @@ import MainFeed from './MainFeed';
 import SideMenu from './SideMenu';
 
 class MainHojung extends React.Component {
-  logout = e => {
+  logout = () => {
     localStorage.removeItem('token');
     this.props.history.push('/login-hojung');
   };
   render() {
-    const userId = this.props.id;
+    const username = this.props.history.location.state.username;
+    console.log(username);
     return (
       <>
         <div id="main">
           <div className="contain">
             <div onClick={this.logout}>로그아웃</div>
-            <MainFeed userId={userId} />
+            <MainFeed username={username} />
             <SideMenu />
           </div>
         </div>

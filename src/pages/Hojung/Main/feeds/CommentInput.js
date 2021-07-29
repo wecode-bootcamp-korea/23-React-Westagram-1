@@ -2,19 +2,35 @@ import React from 'react';
 
 class CommentInput extends React.Component {
   commentAdd = e => {
-    const { commentData, onSubmit, userId } = this.props;
+    const { commentData, onSubmit } = this.props;
     const { comment } = e.target;
     e.preventDefault();
     if (comment.value === '') {
       alert('댓글을 입력해주세요!');
       return;
     }
-    const _comments = commentData.concat({
+    console.log('>>>>>' + comment.value);
+    // const comment_value = console.log(this.props.id);
+    fetch(`http://10.58.3.149:8000/postings/comment/${this.props.id}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        post: this.props.id,
+        comment_text: comment.value,
+      }),
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    })
+      .then(res => res.json())
+      .then(datas => {
+        console.log(datas);
+      });
+    const data = commentData.concat({
       id: commentData[commentData.length - 1].id + 1,
-      text: comment.value,
-      user_name: userId,
+      name: this.props.username,
+      comment_text: comment.value,
     });
-    onSubmit(_comments);
+    onSubmit(data);
     comment.value = '';
   };
 

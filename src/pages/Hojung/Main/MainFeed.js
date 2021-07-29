@@ -10,23 +10,19 @@ class MainFeed extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://10.58.1.50:8000/posts', {
-      //headers: {
-      //  Authorization: localStorage.getItem('token'),
-      //},
-    })
+    fetch('http://10.58.3.149:8000/postings/post/12', {})
       .then(res => {
         return res.json();
       })
       .then(data => {
         this.setState({
-          feedList: data.posts,
+          feedList: data.response,
         });
       });
   }
 
   render() {
-    const { userId } = this.props;
+    const { username } = this.props;
     return (
       <div className="feeds">
         <article>
@@ -36,9 +32,9 @@ class MainFeed extends React.Component {
                 key={feed.id}
                 id={feed.id}
                 content={feed.content}
-                writer={feed.user_name}
-                imgs={feed.img}
-                userId={userId}
+                writer={feed.feeduserId}
+                imgs={feed.src}
+                username={username}
               />
             );
           })}

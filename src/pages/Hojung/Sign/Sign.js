@@ -9,24 +9,29 @@ class SignHojung extends React.Component {
       id: '',
       pw: '',
       name: '',
-      phone: '',
+      // phone: '',
       btn: false,
     };
   }
 
   goToMain = e => {
     e.preventDefault();
-    fetch('http://10.58.1.207:8000/users/signup', {
+    fetch('http://10.58.3.149:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
         email: this.state.id,
         password: this.state.pw,
         name: this.state.name,
-        phone_number: this.state.phone,
+        //phone_number: this.state.phone,
       }),
     })
       .then(response => response.json())
-      .then(result => console.log('결과: ', result));
+      .then(result => {
+        if (result.message === 'SUCCESS') {
+          this.props.history.push('/login-hojung');
+        }
+        console.log('결과: ', result);
+      });
     //this.props.history.push('/login-hojung');
   };
 
@@ -37,11 +42,7 @@ class SignHojung extends React.Component {
   };
 
   handleKeyPress = e => {
-    const isValid =
-      this.state.id.length >= 1 &&
-      this.state.pw.length >= 8 &&
-      this.state.id.indexOf('@') > -1 &&
-      this.state.id.indexOf('.') > -1;
+    const isValid = this.state.id.length >= 1 && this.state.pw.length >= 8;
     this.setState({
       btn: isValid,
     });
@@ -49,7 +50,7 @@ class SignHojung extends React.Component {
 
   render() {
     const { handleKeyPress, handleInput, goToMain } = this;
-    const { id, pw, btn, name, phone } = this.state;
+    const { id, pw, btn, name } = this.state;
     return (
       <div id="login">
         <div className="loginWrap">
@@ -79,14 +80,14 @@ class SignHojung extends React.Component {
               name="name"
               placeholder="이름"
             />
-            <input
+            {/* <input
               type="text"
               className="input"
               value={phone}
               onChange={handleInput}
               name="phone"
               placeholder="핸드폰"
-            />
+            /> */}
             <button onClick={goToMain} className={btn ? 'active' : ''}>
               회원가입
             </button>
