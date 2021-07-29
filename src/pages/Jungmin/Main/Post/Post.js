@@ -30,18 +30,19 @@ class NewComment extends React.Component {
     let post = this.props.save;
     return (
       <>
-        {post.map(element => {
-          return (
-            <Comment
-              key={element.id}
-              id={element.id}
-              nickname={element.userName}
-              comment={element.content}
-              isLiked={element.isLiked}
-              changeLiked={this.props.changeLiked}
-            />
-          );
-        })}
+        {post &&
+          post.map(element => {
+            return (
+              <Comment
+                key={element.id + element.name}
+                id={element.id}
+                nickname={element.name}
+                comment={element.comment_text}
+                isLiked={element.isLiked}
+                changeLiked={this.props.changeLiked}
+              />
+            );
+          })}
       </>
     );
   }
@@ -81,15 +82,16 @@ class Post extends React.Component {
       save: [],
     };
   }
-
+  // fetch(`http://10.58.3.149:8000/postings/comment/${this.props.id}`, {
+  //     method: 'GET',
+  //   })
+  // 'http://10.58.3.149:8000/postings/comment/';
   componentDidMount() {
-    fetch('http://localhost:3000/data/Jungmin/commentData.json', {
-      method: 'GET',
-    })
+    fetch(`http://10.58.3.149:8000/postings/comment/${this.props.id}`)
       .then(res => res.json())
       .then(datas => {
         this.setState({
-          save: datas,
+          save: datas.response,
         });
       });
   }
@@ -102,10 +104,27 @@ class Post extends React.Component {
 
   submitComment = e => {
     e.preventDefault();
+
+    fetch(`http://10.58.3.149:8000/postings/comment/${this.props.id}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        post: this.props.id,
+        comment_text: this.state.content,
+      }),
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    })
+      .then(res => res.json())
+      .then(datas => {});
+    const email = this.props.userInfo.email.slice(
+      0,
+      this.props.userInfo.email.indexOf('@')
+    ); //로그인 받아온 이메일의 앞 id값
     const contentObject = {
       id: this.state.save[this.state.save.length - 1].id + 1,
-      userName: this.props.userInfo.username,
-      content: this.state.content,
+      name: email,
+      comment_text: this.state.content,
       isLiked: false,
     };
     if (e.target.value === undefined && this.state.content !== '') {
@@ -118,16 +137,23 @@ class Post extends React.Component {
 
   changeLiked = e => {
     const changeSave = Array.from(this.state.save);
+
     changeSave.map(ele => {
-      console.log(Number(ele.id));
       if (ele.id === Number(e.target.id)) {
         ele.isLiked = !ele.isLiked;
       }
     });
-
     this.setState({
       save: changeSave,
     });
+
+    let count = 0;
+    this.state.save.forEach(ele => {
+      if (ele.isLiked === true) {
+        count++;
+      }
+    });
+    this.props.heartCheck(count);
   };
 
   render() {

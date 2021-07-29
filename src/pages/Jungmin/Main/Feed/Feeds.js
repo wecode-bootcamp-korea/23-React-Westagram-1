@@ -19,6 +19,15 @@ class FeedName extends React.Component {
 }
 
 class Feed extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      howManyHeart: 1,
+    };
+  }
+  heartCheck = count => {
+    this.setState({ howManyHeart: count });
+  };
   render() {
     return (
       <article className="feed">
@@ -51,10 +60,20 @@ class Feed extends React.Component {
         <div className="feedUserIdandImg">
           <img alt={this.props.alt} className="profil" src={this.props.src} />
           <div>
-            <p>jjiny_1019</p>님 <p>외 {this.props.heartCheck}명</p>이 좋아합니다
+            <p>jjiny_1019</p>님 <p>외 {this.state.howManyHeart}명</p>이
+            좋아합니다
           </div>
         </div>
-        <Post userInfo={this.props.userInfo} />
+        <div className="forPost">
+          <div>
+            <p>{this.props.feeduserId}</p> {this.props.content} <link />
+          </div>
+        </div>
+        <Post
+          id={this.props.id}
+          userInfo={this.props.userInfo}
+          heartCheck={this.heartCheck}
+        />
       </article>
     );
   }
@@ -69,27 +88,30 @@ class Feeds extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/Jungmin/FeedData.json')
+    fetch('http://10.58.3.149:8000/postings/post/12')
       .then(res => res.json())
-      .then(data => {
+      .then(response => {
         this.setState({
-          feeds: data,
+          feeds: response.response,
         });
       });
   }
 
   render() {
     const feed = this.state.feeds;
+
     return (
       <>
         {feed.map(ele => {
           return (
             <Feed
-              key={ele.id}
+              key={ele.feeduserId}
+              id={ele.id}
               feeduserId={ele.feeduserId}
-              alt={ele.alt}
+              // alt={ele.alt}
               src={ele.src}
               userInfo={this.props.userInfo}
+              content={ele.content}
             />
           );
         })}

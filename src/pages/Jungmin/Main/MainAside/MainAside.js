@@ -1,5 +1,6 @@
 import React from 'react';
 import './MainAside.scss';
+import { withRouter } from 'react-router-dom';
 class Personal extends React.Component {
   render() {
     return (
@@ -82,6 +83,11 @@ class MainAside extends React.Component {
     };
   }
 
+  logout = () => {
+    localStorage.removeItem('token');
+    this.props.history.push('/login-jungmin');
+  };
+
   componentDidMount() {
     fetch('http://localhost:3000/data/Jungmin/StoryBox.json')
       .then(res => res.json())
@@ -92,7 +98,10 @@ class MainAside extends React.Component {
       });
   }
   render() {
-    console.log(this.state.save.story);
+    const email = this.props.userInfo.email.slice(
+      0,
+      this.props.userInfo.email.indexOf('@')
+    );
     return (
       <div className="mainAside">
         <div className="myprofil">
@@ -102,9 +111,12 @@ class MainAside extends React.Component {
             src="/images/Jungmin/sel2.jpg"
           />
           <div className="name">
-            <div className="bold">mango9324_</div>
-            <div className="username">최정민</div>
+            <div className="bold">{email}</div>
+            <div className="username">{this.props.userInfo.username}</div>
           </div>
+          <button className={'loginButton loginButtonOn'} onClick={this.logout}>
+            Logout
+          </button>
         </div>
         <StoryBox story={this.state.save.story} />
         <RecommendBox recommendBox={this.state.save.recommend} />
@@ -119,4 +131,4 @@ class MainAside extends React.Component {
   }
 }
 
-export default MainAside;
+export default withRouter(MainAside);

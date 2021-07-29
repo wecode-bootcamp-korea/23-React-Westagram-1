@@ -18,6 +18,7 @@ import MainHojung from './pages/Hojung/Main/Main';
 // 정민's 컴포넌트
 import LoginJungmin from './pages/Jungmin/Login/Login';
 import MainJungmin from './pages/Jungmin/Main/Main';
+import SignupJungmin from './pages/Jungmin/Login/Signup';
 
 // 정우's 컴포넌트
 import LoginJungwoo from './pages/Jungwoo/Login/Login';
@@ -42,6 +43,7 @@ class Routes extends React.Component {
 
           <Route exact path="/login-jungmin" component={LoginJungmin} />
           <Route exact path="/main-jungmin" component={MainJungmin} />
+          <Route exact path="/signup-jungmin" component={SignupJungmin} />
 
           <Route exact path="/login-jungwoo" component={LoginJungwoo} />
           <Route exact path="/main-jungwoo" component={MainJungwoo} />

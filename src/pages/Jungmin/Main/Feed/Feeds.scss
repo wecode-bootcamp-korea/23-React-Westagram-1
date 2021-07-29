@@ -66,3 +66,19 @@
     display: inline;
   }
 }
+
+.forPost {
+  display: flex;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 16px;
+  font-size: 14px;
+  padding-top: 2px;
+  p {
+    font-weight: 600;
+    display: inline;
+  }
+}
+
+////////
