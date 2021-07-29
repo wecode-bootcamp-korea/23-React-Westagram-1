@@ -5,6 +5,58 @@ import { withRouter } from 'react-router-dom';
 import CommentList from './CommentList.js';
 
 class Comment extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      newReply: '',
+      replies: [
+        /* {
+          userId: '',
+          text: '',
+        }, */
+      ],
+    };
+  }
+
+  componentDidMount = () => {
+    fetch('http://localhost:3000/data/Jungwoo/commentData.json', {
+      method: 'GET', // GET method는 기본값이라서 생략이 가능합니다.
+    }) // 예시코드에서는 이해를 돕기 위해 명시적으로 기입해뒀습니다.
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          replies: data,
+        });
+      });
+  };
+
+  textChange = e => {
+    let { value } = e.target;
+    this.setState({
+      newReply: value,
+    });
+  };
+
+  addComment = () => {
+    let arr = this.state.replies;
+    arr.push({
+      userId: '안녕하세요',
+      text: this.state.newReply,
+    });
+
+    this.setState({
+      replies: arr,
+      newReply: '',
+    });
+  };
+
+  pressEnter = e => {
+    if (e.key === 'Enter' && this.state.newReply) {
+      this.addComment();
+      e.target.value = '';
+    }
+  };
+
   render() {
     return (
       <div className="articleComment">
@@ -28,7 +80,7 @@ class Comment extends React.Component {
 
         <div>
           <ul className="textBox">
-            <CommentList commentList={this.props.replies} />
+            <CommentList commentList={this.state.replies} />
           </ul>
         </div>
 
@@ -37,10 +89,10 @@ class Comment extends React.Component {
           <input
             type="text"
             id="commentText"
-            placeholder="댓글 달기..."
+            placeholder="댓글 달기"
             onChange={this.textChange}
             onKeyPress={this.pressEnter}
-            value={this.props.newReply}
+            value={this.state.newReply}
           />
           <button onClick={this.addComment}>게시</button>
         </div>
