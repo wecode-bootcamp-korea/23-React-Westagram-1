@@ -12,6 +12,7 @@ import LoginDoyun from './pages/Doyun/Login/Login';
 import MainDoyun from './pages/Doyun/Main/Main';
 
 // 호정's 컴포넌트
+import SignHojung from './pages/Hojung/Sign/Sign';
 import LoginHojung from './pages/Hojung/Login/Login';
 import MainHojung from './pages/Hojung/Main/Main';
 
@@ -37,6 +38,7 @@ class Routes extends React.Component {
           <Route exact path="/login-doyun" component={LoginDoyun} />
           <Route exact path="/main-doyun" component={MainDoyun} />
 
+          <Route exact path="/sign-hojung" component={SignHojung} />
           <Route exact path="/login-hojung" component={LoginHojung} />
           <Route exact path="/main-hojung" component={MainHojung} />
 

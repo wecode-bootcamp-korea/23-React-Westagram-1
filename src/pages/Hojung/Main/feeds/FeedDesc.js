@@ -8,7 +8,7 @@ class FeedDesc extends React.Component {
           canon_mj
         </a>
         <div className="feedTxt">
-          위워크에서 진행한 베이킹 클래스... <a href="/">더 보기</a>
+          {this.props.content} <a href="/">더 보기</a>
         </div>
       </div>
     );

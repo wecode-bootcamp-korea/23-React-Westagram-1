@@ -10,10 +10,9 @@ class CommentInput extends React.Component {
       return;
     }
     const _comments = commentData.concat({
-      id: userId,
-      txt: comment.value,
-      likeHeartBtn: false,
-      key: commentData[commentData.length - 1].key + 1,
+      id: commentData[commentData.length - 1].id + 1,
+      text: comment.value,
+      user_name: userId,
     });
     onSubmit(_comments);
     comment.value = '';

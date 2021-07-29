@@ -18,21 +18,22 @@ class Feed extends React.Component {
       commentBtn: true,
     });
   };
-
+  y;
   componentDidMount() {
-    fetch('/data/Hojung/commentData.json')
+    fetch('http://10.58.1.50:8000/posts/' + `${this.props.id}/comments`)
       .then(res => res.json())
       .then(data => {
         this.setState({
-          comments: data,
+          comments: data.comments,
         });
       });
   }
 
   handleButtonState = e => {
-    e.target.value.length >= 1
-      ? this.setState({ commentBtn: true })
-      : this.setState({ commentBtn: false });
+    const isValid = e.target.value.length >= 1;
+    this.setState({
+      commentBtn: isValid,
+    });
   };
 
   commentLikeState = _comments => {
@@ -40,13 +41,15 @@ class Feed extends React.Component {
       comments: _comments,
     });
   };
+
   commentDelete = _comments => {
     this.setState({
       comments: _comments,
     });
   };
+
   render() {
-    const { writer, imgs, userId } = this.props;
+    const { writer, imgs, userId, content } = this.props;
     const { comments, commentBtn, commentKey } = this.state;
     const { commentLikeState, commentDelete, bringState, handleButtonState } =
       this;
@@ -59,6 +62,7 @@ class Feed extends React.Component {
             commentData={comments}
             commentLikeState={commentLikeState}
             commentDelete={commentDelete}
+            content={content}
           />
           <CommentInput
             commentData={comments}

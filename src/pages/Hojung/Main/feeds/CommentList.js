@@ -4,7 +4,7 @@ class CommentList extends React.Component {
   commentLike = e => {
     const { commentData, commentLikeState } = this.props;
     const { parentElement } = e.target;
-    const _comments = Array.from(commentData);
+    const _comments = commentData;
     _comments.map(el => {
       if (el.key === Number(parentElement.id)) {
         el.likeHeartBtn = !el.likeHeartBtn;
@@ -16,7 +16,7 @@ class CommentList extends React.Component {
   commentDelete = e => {
     const { commentData, commentDelete } = this.props;
     const { parentElement } = e.target;
-    const _comments = Array.from(commentData);
+    const _comments = commentData;
     _comments.map((el, index) => {
       if (el.key === Number(parentElement.id)) {
         _comments.splice(index, 1);
@@ -27,11 +27,12 @@ class CommentList extends React.Component {
 
   render() {
     let commentLists = [];
+    console.log(this.props.commentData);
     this.props.commentData.map(el => {
       commentLists.push(
-        <li key={el.key} id={el.key}>
-          <a href="/">{el.id}</a>
-          {el.txt}
+        <li key={el.id} id={el.id}>
+          <a href="/">{el.user_name}</a>
+          {el.text}
           <button
             onClick={this.commentLike}
             className={el.likeHeartBtn ? 'heartBtn active' : 'heartBtn'}

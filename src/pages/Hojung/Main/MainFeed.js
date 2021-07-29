@@ -10,15 +10,17 @@ class MainFeed extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/data/Hojung/FeedData.json')
+    fetch('http://10.58.1.50:8000/posts', {
+      //headers: {
+      //  Authorization: localStorage.getItem('token'),
+      //},
+    })
       .then(res => {
-        console.log(res);
         return res.json();
       })
       .then(data => {
-        console.log(data);
         this.setState({
-          feedList: data,
+          feedList: data.posts,
         });
       });
   }
@@ -30,7 +32,14 @@ class MainFeed extends React.Component {
         <article>
           {this.state.feedList.map(feed => {
             return (
-              <FeedCard writer={feed.writer} imgs={feed.imgs} userId={userId} />
+              <FeedCard
+                key={feed.id}
+                id={feed.id}
+                content={feed.content}
+                writer={feed.user_name}
+                imgs={feed.img}
+                userId={userId}
+              />
             );
           })}
         </article>

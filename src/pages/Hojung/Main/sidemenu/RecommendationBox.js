@@ -12,7 +12,6 @@ class RecommendationBox extends React.Component {
         <div className="con">
           <ul>
             {INFO.map(el => {
-              console.log(INFO);
               return (
                 <li key={el.id}>
                   <div className="recommedImg">
