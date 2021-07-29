@@ -18,10 +18,18 @@ class MainDongwu extends React.Component {
     fetch(`http://localhost:3000/data/Dongwu/feedData.json`)
       .then(res => res.json())
       .then(data => this.setState({ feedInfo: data }));
+
+    // backEnd data fetch
+    // fetch(`http://10.58.1.50:8000/posts`)
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     this.setState({ feedInfo: data.posts });
+    //   });
   }
 
   render() {
     const { feedInfo } = this.state;
+
     const { loginId } = this.props.history.location.state;
     return (
       <section className={`${styles.widthMax} ${styles.heightMax}`}>
@@ -49,6 +57,16 @@ class MainDongwu extends React.Component {
                   feedId={elem.feedId}
                   feedText={elem.feedText}
                 />
+                // backEnd component
+                // <Feed
+                //   key={elem.id}
+                //   postId={elem.id}
+                //   userInfo={loginId}
+                //   feedProfileImg={elem.img}
+                //   feedImg={elem.img}
+                //   feedId={elem.user_name}
+                //   feedText={elem.content}
+                // />
               );
             })}
           </section>

@@ -9,7 +9,6 @@ class LoginDongwu extends React.Component {
         <div className={`${styles.space}`}></div>
         <section className={`${styles.loginSection}`}>
           <main className={`${styles.loginMain}`}>
-            {/* <LoginNav /> */}
             <LoginArticle />
             <div className={`${styles.facebookLogo}`}>
               <span>from</span>

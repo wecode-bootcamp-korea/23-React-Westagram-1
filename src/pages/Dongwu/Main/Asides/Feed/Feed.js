@@ -27,6 +27,18 @@ class Feed extends React.Component {
         });
       });
   }
+  // backEnd data fetch
+  // componentDidMount() {
+  //   fetch('http://10.58.1.50:8000/posts/comments/' + this.props.postId)
+  //     .then(res => {
+  //       return res.json();
+  //     })
+  //     .then(data => {
+  //       this.setState({
+  //         comments: data.comments,
+  //       });
+  //     });
+  // }
 
   render() {
     const { setParentState } = this;

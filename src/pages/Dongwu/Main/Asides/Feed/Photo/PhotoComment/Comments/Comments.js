@@ -4,6 +4,7 @@ import CommentTemplate from './CommentTemplate';
 class Comments extends React.Component {
   render() {
     const { comments, userInfo } = this.props;
+
     return (
       <div className={`${styles.photoComments}`}>
         <div className={`${styles.hidden}`}>
@@ -12,7 +13,7 @@ class Comments extends React.Component {
         {comments.map(elem => {
           return (
             <CommentTemplate
-              key={elem.id}
+              key={`comments` + elem.id}
               userId={elem.userId}
               text={elem.text}
               userInfo={userInfo}

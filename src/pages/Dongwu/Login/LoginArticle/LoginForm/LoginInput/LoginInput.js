@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './LoginInput.module.scss';
 
 class LoginInput extends React.Component {
+  // 수정사항 있는듯 한데 어떻게 변경해야 할지 감이 오지 않습니다.
   loginValidation = () => {
     const { state, setParentState } = this.props;
     state[`loginId`].includes(`@`) && state[`loginPw`].length > 8
