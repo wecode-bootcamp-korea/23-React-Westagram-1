@@ -6,30 +6,31 @@ class Footer extends React.Component {
   constructor() {
     super();
     this.state = {
-      footerList: [
-        '소개',
-        '블로그',
-        '채용 정보',
-        '도움말',
-        'API',
-        '개인정보처리방침',
-        '약관',
-        '인기 계정',
-        '해시 태그',
-        '위치',
-      ],
+      footerLogin: [],
     };
   }
 
+  componentDidMount() {
+    fetch('http://localhost:3000/data/Jungwoo/footerLogin.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          footerLogin: data,
+        });
+      });
+  }
+
   render() {
-    const { footerList } = this.state;
+    const { footerLogin } = this.state;
     return (
-      <footer className="footerContainer">
-        <div className="footerBox">
+      <footer className="footerLoginContainer">
+        <div className="footerLogin">
           <div>
             <ul>
-              {footerList.map(e => (
-                <li>{e}</li>
+              {footerLogin.map(el => (
+                <li>{el.list}</li>
               ))}
             </ul>
           </div>

@@ -15,9 +15,7 @@ class Comment extends React.Component {
   }
 
   componentDidMount = () => {
-    fetch('http://localhost:3000/data/Jungwoo/commentData.json', {
-      method: 'GET', // GET method는 기본값이라서 생략이 가능합니다.
-    }) // 예시코드에서는 이해를 돕기 위해 명시적으로 기입해뒀습니다.
+    fetch('http://localhost:3000/data/Jungwoo/commentData.json', {})
       .then(res => res.json())
       .then(data => {
         this.setState({

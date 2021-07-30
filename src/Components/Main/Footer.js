@@ -6,36 +6,36 @@ class Footer extends React.Component {
   constructor() {
     super();
     this.state = {
-      footerList: [
-        '소개',
-        '도움말',
-        '홍보 센터',
-        'API',
-        '채용 정보',
-        '개인정보처리방침',
-        '약관',
-        '위치',
-        '인기 계정',
-        '해시 태그',
-        '언어',
-      ],
+      footerMain: [],
     };
   }
 
+  componentDidMount() {
+    fetch('http://localhost:3000/data/Jungwoo/footerMain.json', {
+      method: 'GET', // GET method는 기본값이라서 생략이 가능합니다.
+    }) // 예시코드에서는 이해를 돕기 위해 명시적으로 기입해뒀습니다.
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          footerMain: data,
+        });
+      });
+  }
+
   render() {
-    const { footerList } = this.state;
+    const { footerMain } = this.state;
     return (
-      <footer className="footerContainer">
-        <div className="footerBox">
-          <div className="footerBoxTop">
+      <footer className="footerMainContainer">
+        <div className="footerMain">
+          <div className="footerMainTop">
             <ul>
-              {footerList.map(event => (
-                <li>{event}</li>
-              ))}
+              {footerMain.map(el => {
+                return <li key={el.id}>{el.list}</li>;
+              })}
             </ul>
           </div>
 
-          <div className="footerBoxBtm">
+          <div className="footerMainBtm">
             <ul>
               <li>© 2021 INSTAGRAM FROM FACEBOOK</li>
             </ul>

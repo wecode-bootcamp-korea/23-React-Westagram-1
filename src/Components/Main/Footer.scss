@@ -1,15 +1,13 @@
-.footerContainer {
+.footerMainContainer {
   display: block;
   height: 45px;
   margin-top: 25px;
-  margin-left: 275px;
 }
 
-.footerBox {
+.footerMain {
   height: 20px;
   justify-content: center;
   width: 100px;
-
   li {
     display: inline-block;
     color: #c7c7c7;
@@ -19,10 +17,10 @@
     margin: 0 2px;
   }
 }
-.footerBoxTop {
+.footerMainTop {
   width: 330px;
 }
-.footerBoxBtm {
+.footerMainBtm {
   margin-top: 15px;
 
   li {

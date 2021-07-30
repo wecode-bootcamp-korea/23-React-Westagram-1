@@ -9,7 +9,7 @@ class CommentList extends React.Component {
     return (
       <>
         {commentList.map(event => (
-          <li>
+          <li key={event.id}>
             {event.userId}
             <a>{event.text}</a>
           </li>
