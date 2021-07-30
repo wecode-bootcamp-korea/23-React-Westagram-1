@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class MainFeed extends React.Component {
   render() {
@@ -11,14 +12,8 @@ class MainFeed extends React.Component {
           />
         </div>
         <div className="likeInfo">
-          <a href="/" className="likeUser">
-            anieworld
-          </a>
-          님{' '}
-          <a href="/" className="likeUserOther">
-            외 10명
-          </a>
-          이 좋아합니다
+          <Link className="likeUser">anieworld</Link>님{' '}
+          <Link className="likeUserOther">외 10명</Link>이 좋아합니다
         </div>
       </div>
     );

@@ -10,7 +10,7 @@ class MainFeed extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://10.58.3.149:8000/postings/post/12', {})
+    fetch(`${process.env.REACT_APP_API}/postings/post/12`, {})
       .then(res => {
         return res.json();
       })

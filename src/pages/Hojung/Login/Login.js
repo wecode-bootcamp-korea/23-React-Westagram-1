@@ -21,7 +21,7 @@ class LoginHojung extends React.Component {
 
   goToMain = e => {
     e.preventDefault();
-    fetch('http://10.58.3.149:8000/users/signin', {
+    fetch(`${process.env.REACT_APP_API}/users/signin`, {
       method: 'POST',
       body: JSON.stringify({
         email: this.state.id,
@@ -46,10 +46,8 @@ class LoginHojung extends React.Component {
   };
 
   handleKeyPress = e => {
-    const isValid =
-      this.state.id.length >= 1 &&
-      this.state.pw.length >= 5 &&
-      this.state.id.indexOf('@') > -1;
+    const { id, pw } = this.state;
+    const isValid = id.length >= 1 && pw.length >= 5 && id.indexOf('@') > -1;
     this.setState({
       btn: isValid,
     });
@@ -58,8 +56,9 @@ class LoginHojung extends React.Component {
   render() {
     const { handleKeyPress, handleInput, goToMain } = this;
     const { id, pw, btn } = this.state;
+
     return (
-      <div id="login">
+      <div className="login">
         <div className="loginWrap">
           <h1 className="sitelogo">Westargram</h1>
           <form action="/Main" onKeyUp={handleKeyPress}>
@@ -82,7 +81,7 @@ class LoginHojung extends React.Component {
             <button
               onClick={goToMain}
               className={btn ? 'active' : ''}
-              disabled={!btn ? true : false}
+              disabled={!btn}
             >
               로그인
             </button>

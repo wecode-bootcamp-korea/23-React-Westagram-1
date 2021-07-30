@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import './Sign.scss';
 
 class SignHojung extends React.Component {
@@ -9,20 +9,18 @@ class SignHojung extends React.Component {
       id: '',
       pw: '',
       name: '',
-      // phone: '',
       btn: false,
     };
   }
 
   goToMain = e => {
     e.preventDefault();
-    fetch('http://10.58.3.149:8000/users/signup', {
+    fetch(`${process.env.REACT_APP_API}/users/signup`, {
       method: 'POST',
       body: JSON.stringify({
         email: this.state.id,
         password: this.state.pw,
         name: this.state.name,
-        //phone_number: this.state.phone,
       }),
     })
       .then(response => response.json())
@@ -32,7 +30,6 @@ class SignHojung extends React.Component {
         }
         console.log('결과: ', result);
       });
-    //this.props.history.push('/login-hojung');
   };
 
   handleInput = e => {
@@ -80,21 +77,11 @@ class SignHojung extends React.Component {
               name="name"
               placeholder="이름"
             />
-            {/* <input
-              type="text"
-              className="input"
-              value={phone}
-              onChange={handleInput}
-              name="phone"
-              placeholder="핸드폰"
-            /> */}
             <button onClick={goToMain} className={btn ? 'active' : ''}>
               회원가입
             </button>
           </form>
-          <a href="/" className="forgetLink">
-            비밀번호를 잊으셨나요?
-          </a>
+          <Link className="forgetLink">비밀번호를 잊으셨나요?</Link>
         </div>
       </div>
     );

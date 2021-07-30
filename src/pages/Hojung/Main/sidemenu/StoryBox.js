@@ -1,5 +1,6 @@
 import React from 'react';
 import { INFO } from './StoryData';
+import { Link } from 'react-router-dom';
 
 class StoryBox extends React.Component {
   render() {
@@ -7,14 +8,14 @@ class StoryBox extends React.Component {
       <div className="storyBox">
         <div className="tit">
           <h3>스토리</h3>
-          <a href="/">모두보기</a>
+          <Link>모두보기</Link>
         </div>
         <div className="con">
           <ul>
             {INFO.map(el => {
               return (
                 <li key={el.id}>
-                  <a href="/">
+                  <Link>
                     <div className="storyImg">
                       <div className="storyLine">
                         <img alt="스토리 이미지" src={el.src} />
@@ -22,9 +23,9 @@ class StoryBox extends React.Component {
                     </div>
                     <div className="storyWriter">
                       <div className="writer">{el.writer}</div>
-                      <div className="writerTime">{el.writerTime}</div>
+                      <div className="writerTime">{el.writer_time}</div>
                     </div>
-                  </a>
+                  </Link>
                 </li>
               );
             })}

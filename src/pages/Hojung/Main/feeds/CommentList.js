@@ -2,7 +2,7 @@ import React from 'react';
 
 class CommentList extends React.Component {
   commentLike = e => {
-    const { commentData, commentLikeState } = this.props;
+    const { commentData, commentState } = this.props;
     const { parentElement } = e.target;
     const _comments = commentData;
     _comments.map(el => {
@@ -10,11 +10,11 @@ class CommentList extends React.Component {
         el.isLiked = !el.isLiked;
       }
     });
-    commentLikeState(_comments);
+    commentState(_comments);
   };
 
   commentDelete = e => {
-    const { commentData, commentDelete } = this.props;
+    const { commentData, commentState } = this.props;
     const { parentElement } = e.target;
     const _comments = commentData;
     _comments.map((el, index) => {
@@ -22,33 +22,31 @@ class CommentList extends React.Component {
         _comments.splice(index, 1);
       }
     });
-    commentDelete(_comments);
+    commentState(_comments);
   };
 
   render() {
-    let commentLists = [];
-    console.log(this.props.commentData);
-    this.props.commentData.map(el => {
-      commentLists.push(
-        <li key={el.id} id={el.id}>
-          <a href="/">{el.name}</a>
-          {el.comment_text}
-          <button
-            onClick={this.commentLike}
-            className={el.isLiked ? 'heartBtn active' : 'heartBtn'}
-          >
-            좋아요
-          </button>
-          <button className="deleteBtn" onClick={this.commentDelete}>
-            삭제
-          </button>
-        </li>
-      );
-    });
-    //console.log(commentLists);
     return (
       <div className="feedComment">
-        <ul>{commentLists}</ul>
+        <ul>
+          {this.props.commentData.map(el => {
+            return (
+              <li key={el.id} id={el.id}>
+                <a href="/">{el.name}</a>
+                {el.comment_text}
+                <button
+                  onClick={this.commentLike}
+                  className={el.isLiked ? 'heartBtn active' : 'heartBtn'}
+                >
+                  좋아요
+                </button>
+                <button className="deleteBtn" onClick={this.commentDelete}>
+                  삭제
+                </button>
+              </li>
+            );
+          })}
+        </ul>
         <div className="feedTime">42분전</div>
       </div>
     );

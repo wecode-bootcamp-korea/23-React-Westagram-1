@@ -13,20 +13,24 @@ img {
 }
 
 /* nav */
-#header {
+.header {
   border-bottom: 1px solid #ddd;
+
   nav {
-    height: 55px;
+    padding: 20px 0;
     @include flex-align-center;
     justify-content: space-between;
+
     .logoZone {
       font-family: 'Lobster', cursive;
       font-size: 20px;
       line-height: 1.3em;
       font-weight: 400;
     }
+
     .searchZone {
       position: relative;
+
       .searchPop {
         display: none;
         width: 230px;
@@ -39,6 +43,7 @@ img {
         border: 1px solid #ddd;
         border-radius: 5px;
         z-index: 0;
+
         &:before {
           content: '';
           display: block;
@@ -53,12 +58,14 @@ img {
           transform: rotate(45deg);
           z-index: -1;
         }
+
         ul {
           li {
             border-bottom: 1px solid #ddd;
             &:last-child {
               border-bottom: 0;
             }
+
             a {
               padding: 15px;
               @include flex-align-center;
@@ -68,15 +75,18 @@ img {
                 border-radius: 50%;
                 overflow: hidden;
               }
+
               .searchInfo {
                 width: calc(100% - 32px);
                 padding-left: 15px;
+
                 .userId {
                   color: #000;
                   font-size: 16px;
                   line-height: 1.3em;
                   letter-spacing: 0;
                 }
+
                 .userInfo {
                   color: #a9a9a9;
                   font-size: 12px;
@@ -89,8 +99,10 @@ img {
         }
       }
     }
+
     .linkZone {
       @include flex-align-center;
+
       .icon {
         display: inline-block;
         margin-right: 20px;
@@ -99,6 +111,7 @@ img {
           height: 22px;
         }
       }
+
       .heartIcon {
         position: relative;
 
@@ -115,14 +128,17 @@ img {
           background: red;
         }
       }
+
       .mypageBox {
         position: relative;
         line-height: 0;
         cursor: pointer;
+
         img {
           border-radius: 50%;
           height: 22px;
         }
+
         .mypagePop {
           display: none;
           width: 230px;
@@ -149,6 +165,7 @@ img {
             transform: rotate(45deg);
             z-index: -1;
           }
+
           ul {
             a {
               display: block;
@@ -178,21 +195,23 @@ img {
                 }
               }
             }
-            .icon1 {
+            .profileIcon {
               span {
                 &:before {
                   background-image: url('https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/profile.png');
                 }
               }
             }
-            .icon2 {
+
+            .mypageIcon {
               span {
                 &:before {
                   background-image: url('./images/feed_link_right1.png');
                 }
               }
             }
-            .icon3 {
+
+            .settingIcon {
               span {
                 &:before {
                   background-image: url('./images/setting.png');
@@ -200,8 +219,10 @@ img {
               }
             }
           }
+
           .logout {
             border-top: 1px solid #ddd;
+
             a {
               display: block;
               padding: 15px;
@@ -221,24 +242,29 @@ img {
   padding-top: 30px;
   background: #fafafa;
   padding-bottom: 100px;
+
   .contain {
     display: flex;
     justify-content: space-between;
   }
+
   /* 왼쪽 영역 */
   .feeds {
     width: 615px;
+
     .feed {
       margin-bottom: 30px;
       background: #fff;
       &:last-child {
         margin-bottom: 0;
       }
+
       .writer {
         @include flex-align-center;
         justify-content: space-between;
         padding: 15px;
         border: 1px solid #ddd;
+
         .writerInfo {
           @include flex-align-center;
           .writerImg {
@@ -247,41 +273,50 @@ img {
             border-radius: 50%;
             overflow: hidden;
           }
+
           .writerId {
             padding-left: 15px;
             color: 14px;
             line-height: 1.3em;
           }
         }
+
         .writerOtherMenu {
           a {
             display: block;
           }
         }
       }
+
       .imgs {
         img {
           width: 100%;
         }
       }
+
       .feedInfoWrap {
         border: 1px solid #ddd;
         border-top: 0;
         padding: 15px;
       }
+
       .feedLink {
         @include flex-align-center;
         justify-content: space-between;
         margin-bottom: 20px;
+
         a {
           display: inline-block;
         }
+
         .feedLinkLeft {
           display: flex;
           align-items: center;
+
           a {
             margin-left: 5px;
           }
+
           button {
             text-indent: -999em;
             border: 0;
@@ -291,23 +326,28 @@ img {
             background-color: transparent;
             background-image: url('./images/feed_link_left1.png');
           }
+
           .active {
             background-image: url('./images/feed_link_left1_active.png');
           }
         }
       }
+
       .likeCount {
         @include flex-align-center;
         margin-bottom: 15px;
+
         .likeImg {
           width: 20px;
           height: 20px;
           border-radius: 50%;
           overflow: hidden;
         }
+
         .likeInfo {
           padding-left: 12px;
           font-size: 15px;
+
           a {
             display: inline-block;
             font-weight: 700;
@@ -315,14 +355,17 @@ img {
           }
         }
       }
+
       .feedDecs {
         @include flex-align-center;
         margin-bottom: 8px;
+
         .feedWriter {
           color: #000;
           font-weight: 700;
           margin-right: 10px;
         }
+
         .feedTxt {
           a {
             display: inline-block;
@@ -331,19 +374,23 @@ img {
           }
         }
       }
+
       .feedComment {
         ul {
           margin-bottom: 15px;
+
           li {
             position: relative;
             @include flex-align-center;
             margin-bottom: 8px;
+
             a {
               display: inline-block;
               color: #000;
               font-weight: 700;
               margin-right: 10px;
             }
+
             button {
               border: 0;
               text-indent: -999em;
@@ -356,14 +403,17 @@ img {
               background-color: transparent;
               background-size: 100% 100%;
             }
+
             .heartBtn {
               right: 30px;
               background-image: url('./images/feed_link_left1.png');
             }
+
             .heartBtn.active {
               background-image: url('./images/feed_link_left1_active.png');
             }
-            button.deleteBtn {
+
+            .deleteBtn {
               right: 0;
               background-image: url('./images/close.png');
             }
@@ -375,18 +425,22 @@ img {
           font-size: 12px;
         }
       }
+
       .feedCommentInput {
         padding: 0 15px;
         border: 1px solid #ddd;
         border-top: 0;
+
         form {
           @include flex-align-center;
+
           .input {
             border: 0;
             padding-left: 0;
             height: 45px;
             width: calc(100% - 35px);
           }
+
           .commentBtn {
             display: block;
             color: #00376b;
@@ -395,6 +449,7 @@ img {
             border: 0;
             background-color: transparent;
           }
+
           .commentBtn.active {
             opacity: 1;
           }
@@ -404,23 +459,26 @@ img {
   }
   /* 오른쪽 영역 */
   .sideMenu {
-    width: 290px;
     .myProfile {
       @include flex-align-center;
       margin-bottom: 15px;
+
       .myImg {
         width: 56px;
         height: 56px;
         border-radius: 50%;
         overflow: hidden;
       }
+
       .myInfo {
         padding-left: 15px;
+
         .myId {
           color: #000;
           font-size: 14px;
           line-height: 1.3em;
         }
+
         .myDesc {
           color: #a9a9a9;
           font-size: 12px;
@@ -429,6 +487,7 @@ img {
       }
     }
     .storyBox {
+      width: 290px;
       height: 200px;
       overflow-x: hidden;
       overflow-y: scroll;
@@ -437,18 +496,23 @@ img {
       border-radius: 5px;
       padding: 15px;
       margin-bottom: 10px;
+
       .con ul li {
         margin-bottom: 10px;
+
         &:last-child {
           margin-bottom: 0;
         }
+
         a {
           @include flex-align-center;
+
           .storyImg {
             position: relative;
             width: 45px;
             height: 45px;
             padding: 5px;
+
             &:after {
               content: '';
               display: block;
@@ -461,6 +525,7 @@ img {
               border: 2px solid red;
               box-sizing: border-box;
             }
+
             .storyLine {
               overflow: hidden;
               border-radius: 100%;
@@ -469,10 +534,12 @@ img {
         }
         .storyWriter {
           padding-left: 12px;
+
           .writer {
             color: #000;
             line-height: 1.3em;
           }
+
           .writerTime {
             color: #a39f9f;
             line-height: 1.3em;
@@ -481,20 +548,24 @@ img {
       }
     }
     .recommendationBox {
+      width: 290px;
       border: 1px solid #ddd;
       background: #fff;
       border-radius: 5px;
       padding: 15px;
       margin-bottom: 15px;
     }
+
     .tit {
       @include flex-align-center;
       justify-content: space-between;
       margin-bottom: 12px;
+
       h3 {
         font-size: 15px;
         line-height: 1.3em;
       }
+
       a {
         display: block;
         font-size: 12px;
@@ -510,20 +581,24 @@ img {
           &:last-child {
             margin-bottom: 0;
           }
+
           .recommedImg {
             width: 40px;
             height: 40px;
             overflow: hidden;
             border-radius: 100%;
           }
+
           .recommedUser {
             padding-left: 12px;
             width: calc(100% - 40px);
             padding-right: 50px;
+
             .user {
               color: #000;
               line-height: 1.3em;
             }
+
             .userTxt {
               font-size: 14px;
               color: #a39f9f;
@@ -534,6 +609,7 @@ img {
               text-overflow: ellipsis;
             }
           }
+
           .userFollow {
             display: block;
             position: absolute;
@@ -551,9 +627,11 @@ img {
     color: #b1afaf;
     font-size: 14px;
     line-height: 1.5em;
+
     .footLink {
       li {
         display: inline-block;
+
         a {
           display: block;
           padding-right: 10px;
@@ -587,6 +665,7 @@ img {
   .sideMenu {
     display: none;
   }
+
   #main .feeds {
     width: 100%;
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { INFO } from './RecommendData';
+import { Link } from 'react-router-dom';
 
 class RecommendationBox extends React.Component {
   render() {
@@ -7,7 +8,7 @@ class RecommendationBox extends React.Component {
       <div className="recommendationBox">
         <div className="tit">
           <h3>회원님을 위한 추천</h3>
-          <a href="/">모두보기</a>
+          <Link>모두보기</Link>
         </div>
         <div className="con">
           <ul>
@@ -21,9 +22,7 @@ class RecommendationBox extends React.Component {
                     <div className="user">{el.writer}</div>
                     <div className="userTxt">{el.writerText}</div>
                   </div>
-                  <a href="/" className="userFollow">
-                    팔로우
-                  </a>
+                  <Link className="userFollow">팔로우</Link>
                 </li>
               );
             })}

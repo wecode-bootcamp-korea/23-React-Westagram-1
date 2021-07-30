@@ -10,17 +10,14 @@ class MainHojung extends React.Component {
   };
   render() {
     const username = this.props.history.location.state.username;
-    console.log(username);
     return (
-      <>
-        <div id="main">
-          <div className="contain">
-            <div onClick={this.logout}>로그아웃</div>
-            <MainFeed username={username} />
-            <SideMenu />
-          </div>
+      <div id="main">
+        <div className="contain">
+          <div onClick={this.logout}>로그아웃</div>
+          <MainFeed username={username} />
+          <SideMenu />
         </div>
-      </>
+      </div>
     );
   }
 }
