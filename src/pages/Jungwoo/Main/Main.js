@@ -31,7 +31,7 @@ class MainJungwoo extends React.Component {
             <div className="articlePic">
               <img src="https://source.unsplash.com/user/erondu/1600x900" />
             </div>
-            <Comment />
+            <Comment MyProfile={this.state.MyProfile} />
           </article>
           <RightFeed MyProfile={this.state.MyProfile} />
         </main>

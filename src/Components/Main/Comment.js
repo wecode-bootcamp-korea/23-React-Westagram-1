@@ -9,12 +9,7 @@ class Comment extends React.Component {
     super();
     this.state = {
       newReply: '',
-      replies: [
-        /* {
-          userId: '',
-          text: '',
-        }, */
-      ],
+      replies: [],
     };
   }
 
@@ -40,7 +35,7 @@ class Comment extends React.Component {
   addComment = () => {
     let arr = this.state.replies;
     arr.push({
-      userId: '안녕하세요',
+      userId: this.props.MyProfile[0].MyId,
       text: this.state.newReply,
     });
 
