@@ -3,6 +3,7 @@ import PhotoProfile from './Photo/PhotoProfile/PhotoProfile';
 import PhotoComment from './Photo/PhotoComment/PhotoComment';
 import PhotoMain from './Photo/PhotoMain/PhotoMain';
 import PhotoCommentForm from './Photo/PhotoCommentForm/PhotoCommentForm';
+
 import styles from './Feed.module.scss';
 class Feed extends React.Component {
   constructor(props) {
@@ -12,8 +13,13 @@ class Feed extends React.Component {
     };
   }
 
-  setParentState = (key, value) => {
-    this.setState({ [key]: value });
+  setCommentsList = commentInfoObj => {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        comments: [...prevState.comments, commentInfoObj],
+      };
+    });
   };
 
   componentDidMount() {
@@ -41,7 +47,7 @@ class Feed extends React.Component {
   // }
 
   render() {
-    const { setParentState } = this;
+    const { setCommentsList } = this;
     const { comments } = this.state;
     const { feedProfileImg, feedId, feedImg, feedText, userInfo } = this.props;
 
@@ -76,7 +82,7 @@ class Feed extends React.Component {
         <PhotoCommentForm
           userInfo={userInfo}
           comments={comments}
-          setParentState={setParentState}
+          setCommentsList={setCommentsList}
         />
       </div>
     );

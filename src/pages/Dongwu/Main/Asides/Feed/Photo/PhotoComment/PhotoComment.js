@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './PhotoComment.module.scss';
 import Comments from './Comments/Comments';
+
+import styles from './PhotoComment.module.scss';
 
 class PhotoComment extends React.Component {
   render() {

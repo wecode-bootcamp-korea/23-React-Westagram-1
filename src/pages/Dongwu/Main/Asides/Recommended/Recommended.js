@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import Footer from './Footer/Footer';
+
 import styles from './Recommended.module.scss';
 
 class Recommended extends React.Component {
@@ -11,10 +11,7 @@ class Recommended extends React.Component {
       <div className={`${styles.Recommended}`}>
         <div className={`${styles.userProfile}`}>
           <div className={`${styles.userProfileDesc}`}>
-            <img
-              alt="profile img"
-              src={process.env.PUBLIC_URL + `/images/Dongwu/Main/freeImage.png`}
-            />
+            <img alt="profile img" src="/images/Dongwu/Main/freeImage.png" />
             <span>steam_udon</span>
           </div>
           <div className={`${styles.userProfileConvert}`}>
@@ -30,9 +27,7 @@ class Recommended extends React.Component {
             <div className={`${styles.recommendedUserProfileDesc}`}>
               <img
                 alt="recommended user profile img"
-                src={
-                  process.env.PUBLIC_URL + `/images/Dongwu/Main/freeImage.png`
-                }
+                src="/images/Dongwu/Main/freeImage.png"
               />
               <div className={`${styles.recommendedUserProfileId}`}>
                 <span>id</span>

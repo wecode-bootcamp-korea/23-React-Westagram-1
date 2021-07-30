@@ -1,46 +1,58 @@
 import React from 'react';
+
 import styles from './LoginInput.module.scss';
 
-class LoginInput extends React.Component {
-  // 수정사항 있는듯 한데 어떻게 변경해야 할지 감이 오지 않습니다.
+class LoginInputTemplate extends React.Component {
   loginValidation = () => {
-    const { state, setParentState } = this.props;
-    state[`loginId`].includes(`@`) && state[`loginPw`].length > 8
-      ? setParentState(`disabled`, false)
-      : setParentState(`disabled`, true);
+    const { loginId, loginPw, toggleBtnDisabled } = this.props;
+    const isFormValid = loginId.includes(`@`) && loginPw.length > 8;
+
+    toggleBtnDisabled(isFormValid);
   };
 
-  renderInput = (labelId, inputId, inputType, placeholder) => {
+  render() {
     const { loginValidation } = this;
-    const { setParentState } = this.props;
+    const { setLoginInfo, labelId, inputType, placeholder } = this.props;
     return (
       <div className={`${styles.loginBlockLabel}`}>
         <label id={labelId}>
           <input
-            id={inputId}
             type={inputType}
             placeholder={placeholder}
             onChange={event => {
               loginValidation();
-              setParentState(labelId, event.target.value);
+              setLoginInfo(labelId, event.target.value);
             }}
           />
         </label>
       </div>
     );
-  };
+  }
+}
 
+class LoginInput extends React.Component {
   render() {
-    const { renderInput } = this;
+    const { loginId, loginPw, toggleBtnDisabled, setLoginInfo } = this.props;
     return (
       <>
-        {renderInput(
-          `loginId`,
-          `loginIdInput`,
-          `text`,
-          `전화번호, 사용자 이름 또는 이메일`
-        )}
-        {renderInput(`loginPw`, `loginPwInput`, `password`, `비밀번호`)}
+        <LoginInputTemplate
+          loginId={loginId}
+          loginPw={loginPw}
+          setLoginInfo={setLoginInfo}
+          toggleBtnDisabled={toggleBtnDisabled}
+          labelId="loginId"
+          inputType="text"
+          placeholder="전화번호, 사용자 이름 또는 이메일"
+        />
+        <LoginInputTemplate
+          loginId={loginId}
+          loginPw={loginPw}
+          setLoginInfo={setLoginInfo}
+          toggleBtnDisabled={toggleBtnDisabled}
+          labelId="loginPw"
+          inputType="password"
+          placeholder="비밀번호"
+        />
       </>
     );
   }

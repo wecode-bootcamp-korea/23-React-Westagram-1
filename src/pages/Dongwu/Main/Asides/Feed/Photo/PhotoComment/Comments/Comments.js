@@ -1,6 +1,8 @@
 import React from 'react';
-import styles from './Comments.module.scss';
 import CommentTemplate from './CommentTemplate';
+
+import styles from './Comments.module.scss';
+
 class Comments extends React.Component {
   render() {
     const { comments, userInfo } = this.props;

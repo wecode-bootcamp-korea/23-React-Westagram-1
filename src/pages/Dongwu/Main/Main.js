@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import Story from './Asides/Story/Story';
 import Feed from './Asides/Feed/Feed';
 import Recommended from './Asides/Recommended/Recommended';
+
 import styles from './Main.module.scss';
 // import Nav from './Asides/Nav';
 

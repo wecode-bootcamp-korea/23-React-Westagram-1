@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import styles from './Story.module.scss';
 
 class Story extends React.Component {
@@ -14,9 +15,7 @@ class Story extends React.Component {
             >
               <img
                 alt="story profile img"
-                src={
-                  process.env.PUBLIC_URL + `/images/Dongwu/Main/freeImage.png`
-                }
+                src="/images/Dongwu/Main/freeImage.png"
               />
             </Link>
 

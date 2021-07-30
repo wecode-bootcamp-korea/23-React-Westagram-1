@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FOOTER_LIST from './FooterList';
+
 import styles from './Footer.module.scss';
 class Footer extends React.Component {
   render() {

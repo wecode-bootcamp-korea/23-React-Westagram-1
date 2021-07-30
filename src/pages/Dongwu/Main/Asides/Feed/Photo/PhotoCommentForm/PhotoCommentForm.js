@@ -1,42 +1,47 @@
 import React from 'react';
-import styles from './PhotoCommentForm.module.scss';
 import PhotoCommentInput from './PhotoCommentInput';
+
+import styles from './PhotoCommentForm.module.scss';
+
 class PhotoCommentForm extends React.Component {
   constructor() {
     super();
     this.state = {
       commentsText: ``,
-      input: {},
     };
   }
 
-  setCommentFormState = (key, value) => {
-    this.setState({ [key]: value });
+  setCommentText = value => {
+    this.setState({ commentsText: value });
   };
 
   handleSubmit = e => {
-    const { commentsText, input } = this.state;
-    const { comments, userInfo, setParentState } = this.props;
+    const { commentsText } = this.state;
+    const { comments, userInfo, setCommentsList } = this.props;
     e.preventDefault();
-    if (input.current.value) {
-      let commentsInfo = {
+    if (commentsText) {
+      let commentInfo = {
         id: comments[comments.length - 1].id + 1,
         userId: userInfo.slice(0, userInfo.indexOf(`@`)),
         text: commentsText,
       };
-      this.setState(state => {
-        state.input.current.value = ``;
-        setParentState(`comments`, [...comments, commentsInfo]);
+      setCommentsList(commentInfo);
+      this.setState(prevState => {
+        return { ...prevState, commentsText: `` };
       });
     }
   };
 
   render() {
-    const { handleSubmit, setCommentFormState } = this;
+    const { handleSubmit, setCommentText } = this;
+    const { commentsText } = this.state;
 
     return (
       <form className={`${styles.commentsForm}`} onSubmit={handleSubmit}>
-        <PhotoCommentInput setCommentFormState={setCommentFormState} />
+        <PhotoCommentInput
+          setCommentText={setCommentText}
+          commentsText={commentsText}
+        />
         <i className="far fa-smile-wink"></i>
         <button>게시</button>
       </form>
