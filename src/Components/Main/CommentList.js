@@ -5,12 +5,13 @@ import { withRouter } from 'react-router-dom';
 
 class CommentList extends React.Component {
   render() {
+    const { commentList } = this.props;
     return (
       <>
-        {this.props.commentList.map(e => (
+        {commentList.map(event => (
           <li>
-            {e.userId}
-            <a>{e.text}</a>
+            {event.userId}
+            <a>{event.text}</a>
           </li>
         ))}
       </>

@@ -1,0 +1,89 @@
+/* 오른쪽 피드 */
+.main-right {
+  width: 293px;
+  height: 415px;
+  margin-top: 80px;
+  margin-left: 10px;
+  padding-left: 17px;
+}
+
+.rightProfile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 96px;
+}
+
+.profileJungwoo {
+  width: 56px;
+  height: 56px;
+  border-radius: 150px;
+  display: inline;
+  margin-right: 15px;
+}
+
+.rightProfileClass {
+  display: inline;
+  padding: 20px;
+}
+
+#navName {
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(var(--f52, 142, 142, 142), 1);
+}
+
+.rightProfile > p {
+  display: inline;
+}
+
+.rightRecommendTextBlue {
+  font-size: 12px;
+  color: rgba(var(--d69, 0, 149, 246), 1);
+  font-weight: 600;
+}
+
+.rightRecommendTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 34px;
+  padding-top: 20px;
+  margin: 10px 0;
+
+  h6 {
+    display: inline;
+    color: rgba(var(--f52, 142, 142, 142), 1);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  p {
+    display: inline;
+    color: black;
+  }
+}
+
+.rightRecommendPeople {
+  height: 240px;
+}
+
+.rightProfile {
+  height: 48px;
+}
+
+.rightProfileImg {
+  width: 37px;
+  height: 37px;
+  border-radius: 150px;
+  display: inline;
+}
+
+.rightProfileclassName {
+  margin-left: -80px;
+}
+.rightprofilenavName {
+  font-size: 12px;
+  line-height: 10px;
+  color: rgba(var(--f52, 142, 142, 142), 1);
+}

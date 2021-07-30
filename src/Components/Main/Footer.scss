@@ -1,0 +1,36 @@
+.footerContainer {
+  display: block;
+  height: 45px;
+  margin-top: 25px;
+  margin-left: 275px;
+}
+
+.footerBox {
+  height: 20px;
+  justify-content: center;
+  width: 100px;
+
+  li {
+    display: inline-block;
+    color: #c7c7c7;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    margin: 0 2px;
+  }
+}
+.footerBoxTop {
+  width: 330px;
+}
+.footerBoxBtm {
+  margin-top: 15px;
+
+  li {
+    display: inline-block;
+    color: rgba(var(--edc, 199, 199, 199), 1);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 13px;
+    margin: 0 2px;
+  }
+}

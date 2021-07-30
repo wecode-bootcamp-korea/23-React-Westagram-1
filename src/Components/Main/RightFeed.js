@@ -3,6 +3,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Footer from './Footer.js';
+import './RightFeed.scss';
 
 class RightFeed extends React.Component {
   constructor() {
@@ -38,7 +39,8 @@ class RightFeed extends React.Component {
     };
   }
   render() {
-    console.log(this.props);
+    const { MyProfile } = this.props;
+    const { userProfile } = this.state;
     return (
       <div className="main-right">
         <div className="rightProfile">
@@ -47,11 +49,12 @@ class RightFeed extends React.Component {
             src="../../images/Jungwoo/caleb-ekeroth.jpg"
           />
           <div className="rightProfileclassName">
-            <p className="navId">{this.props.MyProfile[0].MyId}</p>
-            <p id="navName">{this.props.MyProfile[0].MyName}</p>
+            <p className="navId">{MyProfile[0].MyId}</p>
+            <p id="navName">{MyProfile[0].MyName}</p>
           </div>
           <p className="rightRecommendTextBlue">전환</p>
         </div>
+
         <div className="rightRecommend">
           <div className="rightRecommendTitle">
             <h6>회원님을 위한 추천</h6>
@@ -59,7 +62,7 @@ class RightFeed extends React.Component {
           </div>
           <div className="rightRecommendPeople">
             <div className="rightRecommendPerson">
-              {this.state.userProfile.map(e => {
+              {userProfile.map(e => {
                 return (
                   <div className="rightProfile">
                     <img className="rightProfileImg" src={e.url} />
@@ -74,7 +77,6 @@ class RightFeed extends React.Component {
             </div>
           </div>
         </div>
-
         <Footer />
       </div>
     );

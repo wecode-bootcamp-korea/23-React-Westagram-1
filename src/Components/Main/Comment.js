@@ -3,6 +3,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import CommentList from './CommentList.js';
+import './Comment.scss';
 
 class Comment extends React.Component {
   constructor() {
@@ -33,26 +34,31 @@ class Comment extends React.Component {
   };
 
   addComment = () => {
-    let arr = this.state.replies;
-    arr.push({
-      userId: this.props.MyProfile[0].MyId,
-      text: this.state.newReply,
+    const { replies, newReply } = this.state;
+    const { MyProfile } = this.props;
+    let arr = replies;
+    let newArr = arr.concat({
+      userId: MyProfile[0].MyId,
+      text: newReply,
     });
 
     this.setState({
-      replies: arr,
+      replies: newArr,
       newReply: '',
     });
   };
 
-  pressEnter = e => {
-    if (e.key === 'Enter' && this.state.newReply) {
+  pressEnter = event => {
+    let { value } = event.target;
+    if (event.key === 'Enter' && this.state.newReply) {
       this.addComment();
-      e.target.value = '';
+      value = '';
     }
   };
 
   render() {
+    const { textChange, addComment, pressEnter } = this;
+    const { replies, newReply } = this.state;
     return (
       <div className="articleComment">
         <div className="commentIcons">
@@ -64,32 +70,27 @@ class Comment extends React.Component {
             src="../../images/Jungwoo/bookmark.png"
           />
         </div>
-
         <div className="commentLike">
           <p>좋아요 1,065개</p>
         </div>
-
         <div className="commentHour">
           <p>5시간 전</p>
         </div>
-
         <div>
           <ul className="textBox">
-            <CommentList commentList={this.state.replies} />
+            <CommentList commentList={replies} />
           </ul>
         </div>
-
         <div className="commentInput">
           <img src="../../images/Jungwoo/smile.png" />
           <input
             type="text"
             id="commentText"
             placeholder="댓글 달기"
-            onChange={this.textChange}
-            onKeyPress={this.pressEnter}
-            value={this.state.newReply}
+            onChange={textChange}
+            onKeyPress={pressEnter}
           />
-          <button onClick={this.addComment}>게시</button>
+          <button onClick={addComment}>게시</button>
         </div>
       </div>
     );

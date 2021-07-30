@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import './Footer.scss';
 
 class Footer extends React.Component {
   constructor() {
@@ -21,12 +22,13 @@ class Footer extends React.Component {
   }
 
   render() {
+    const { footerList } = this.state;
     return (
       <footer className="footerContainer">
         <div className="footerBox">
           <div>
             <ul>
-              {this.state.footerList.map(e => (
+              {footerList.map(e => (
                 <li>{e}</li>
               ))}
             </ul>
