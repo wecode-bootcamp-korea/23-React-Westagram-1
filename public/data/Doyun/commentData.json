@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "userName": "dua_lipa",
+    "content": "Welcome to world best coding bootcamp!",
+    "isLiked": true,
+    "img": "/images/Doyun/dua_lipa.jpeg"
+  },
+  {
+    "id": 2,
+    "userName": "Doyun",
+    "content": "Hi there.",
+    "isLiked": false,
+    "img": "/images/Doyun/profile.png"
+  },
+  {
+    "id": 3,
+    "userName": "instagram",
+    "content": "Hey.",
+    "isLiked": false,
+    "img": "/images/Doyun/instagram.png"
+  }
+]

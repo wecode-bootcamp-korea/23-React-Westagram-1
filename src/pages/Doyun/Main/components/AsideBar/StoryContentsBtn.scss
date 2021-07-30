@@ -1,0 +1,31 @@
+.storyContentsBtn {
+  display: flex;
+  padding: 5px 0px 5px 10px;
+  max-height: 500px;
+  justify-content: flex-start;
+
+  .profile {
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    margin-right: 5px;
+  }
+  .contentsContainer {
+    .name {
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding-bottom: 4px;
+    }
+    .timeGap {
+      font-size: 0.6rem;
+    }
+  }
+  button {
+    margin-left: auto;
+    border: none;
+    background-color: #ffffff;
+    margin-right: 10px;
+    color: #0095f6;
+    font-weight: 700;
+  }
+}
