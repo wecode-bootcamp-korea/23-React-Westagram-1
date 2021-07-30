@@ -3,9 +3,9 @@ import StoryContents from './StoryContents';
 import StoryContentsBtn from './StoryContentsBtn';
 import Profile from '../Profile';
 
-import './Rightmenu.scss';
+import './AsideBar.scss';
 
-export class Rightmenu extends Component {
+export class AsideBar extends Component {
   render() {
     return (
       <>
@@ -38,4 +38,4 @@ export class Rightmenu extends Component {
   }
 }
 
-export default Rightmenu;
+export default AsideBar;

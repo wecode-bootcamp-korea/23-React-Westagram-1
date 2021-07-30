@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import Feed from './components/Feed/Feed';
-import Rightmenu from './components/Rightmenu/Rightmenu';
+import AsideBar from './components/AsideBar/AsideBar';
 import './Contents.scss';
 
 export class Contents extends Component {
   render() {
     return (
-      <>
-        <main>
-          <Feed />
-          <Rightmenu />
-        </main>
-      </>
+      <main>
+        <Feed />
+        <AsideBar />
+      </main>
     );
   }
 }

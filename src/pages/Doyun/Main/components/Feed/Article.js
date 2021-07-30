@@ -12,9 +12,7 @@ export class Article extends Component {
   }
 
   componentDidMount() {
-    fetch('/data/Doyun/commentData.json', {
-      method: 'GET',
-    })
+    fetch('/data/Doyun/commentData.json', {})
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -29,20 +27,36 @@ export class Article extends Component {
     });
   };
 
-  addComment = () => {
+  addComment = e => {
     const { value, commentList } = this.state;
-    if (!value) {
-      alert('add comment pls');
-    } else {
-      this.setState({
-        commentList: commentList.concat({
-          id: Math.random(),
-          content: value,
-          img: '/images/Doyun/profile.png',
-        }),
-        value: '',
-      });
-      document.getElementsByClassName('commentInput')[0].value = '';
+    if (e.key === 'Enter') {
+      if (!value) {
+        alert('add comment pls');
+      } else {
+        this.setState({
+          commentList: commentList.concat({
+            id: Math.random(),
+            content: value,
+            img: '/images/Doyun/profile.png',
+          }),
+          value: '',
+        });
+        document.getElementsByClassName('commentInput')[0].value = '';
+      }
+    } else if (e.target.classList[0] === 'fas') {
+      if (!value) {
+        alert('add comment pls');
+      } else {
+        this.setState({
+          commentList: commentList.concat({
+            id: Math.random(),
+            content: value,
+            img: '/images/Doyun/profile.png',
+          }),
+          value: '',
+        });
+        document.getElementsByClassName('commentInput')[0].value = '';
+      }
     }
   };
 
@@ -59,11 +73,9 @@ export class Article extends Component {
   // };
 
   render() {
-    console.log(this.state);
     const { getValue, addComment, addCommEnter } = this;
     const { commentList } = this.state;
     const { profile, main, like } = this.props;
-    console.log(like);
     return (
       <>
         <article className="article">
@@ -101,7 +113,7 @@ export class Article extends Component {
               type="text"
               placeholder="add a comment.."
               onChange={getValue}
-              onKeyPress={addCommEnter}
+              onKeyPress={addComment}
             />
             <button onClick={addComment}>
               <i className="fas fa-check"></i>

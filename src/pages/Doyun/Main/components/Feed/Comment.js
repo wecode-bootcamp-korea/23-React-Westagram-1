@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Comment.scss';
 
-export class comment extends Component {
+export class Comment extends Component {
   render() {
     const { img, id, msg } = this.props;
     return (
@@ -17,4 +17,4 @@ export class comment extends Component {
   }
 }
 
-export default comment;
+export default Comment;

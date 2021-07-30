@@ -8,27 +8,23 @@
   margin: 25px auto;
   border: 1px solid #bbbbbb;
   background-color: #ffffff;
+
   .mainLogo {
     font-family: 'Lobster', cursive;
     font-weight: 50;
     font-size: 2.5rem;
     margin-bottom: 40px;
   }
+
   input {
     background-color: #fafafa;
     border: 1px solid #ebebeb;
     margin-bottom: 15px;
     padding: 10px 5px;
     width: 250px;
-    .idInput {
-      font-family: 'Quicksand', sans-serif;
-    }
-    .passwordInput {
-      font-family: 'Quicksand', sans-serif;
-    }
   }
+
   button {
-    font-family: 'Quicksand', sans-serif;
     width: 250px;
     border: none;
     background-color: #c4e1fb;
@@ -37,10 +33,12 @@
     margin-bottom: 70px;
     transition: 0.3s ease background-color;
   }
+
   .active {
     background-color: #0295f6;
     cursor: pointer;
   }
+
   a {
     font-size: 0.8rem;
     color: #144474;

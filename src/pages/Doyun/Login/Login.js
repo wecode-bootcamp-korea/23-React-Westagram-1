@@ -23,9 +23,26 @@ class LoginDoyun extends React.Component {
     });
   };
 
+  handleLogin = () => {
+    fetch('http://10.58.3.21:8000/userssignup', {
+      method: 'Post',
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (result.TOKEN) {
+          window.location.href = 'http://localhost:3000/main-doyun';
+          localStorage.setItem('TOKEN', result.TOKEN);
+        }
+        return null;
+      });
+  };
+
   render() {
-    const { handleIdInput, handlePasswordInput } = this;
-    console.log(this.state);
+    const { handleIdInput, handlePasswordInput, handleLogin } = this;
     return (
       <div className="login">
         <h1 className="mainLogo">Westargram</h1>
@@ -48,23 +65,7 @@ class LoginDoyun extends React.Component {
               ? 'active'
               : ''
           }
-          onClick={() => {
-            fetch('http://10.58.3.21:8000/userssignup', {
-              method: 'Post',
-              body: JSON.stringify({
-                email: this.state.email,
-                password: this.state.password,
-              }),
-            })
-              .then(response => response.json())
-              .then(result => {
-                if (result.TOKEN) {
-                  window.location.href = 'http://localhost:3000/main-doyun';
-                  localStorage.setItem('TOKEN', result.TOKEN);
-                }
-                return null;
-              });
-          }}
+          onClick={handleLogin}
         >
           log in
         </button>
