@@ -52,11 +52,18 @@ export class Article extends Component {
     }
   };
 
+  // addLike = () => {
+  //   const index = this.props.number;
+  //   const like = this.props.like + 1;
+  //   this.props.setter(index, like);
+  // };
+
   render() {
+    console.log(this.state);
     const { getValue, addComment, addCommEnter } = this;
     const { commentList } = this.state;
-    const { profile, main } = this.props;
-
+    const { profile, main, like } = this.props;
+    console.log(like);
     return (
       <>
         <article className="article">
@@ -67,12 +74,12 @@ export class Article extends Component {
           </div>
           <img className="articleImg" src={main} alt="dua-lipa" />
           <div className="articleInfoIcon">
-            <i className="far fa-heart"></i>
+            <i className="far fa-heart" onClick={this.addLike}></i>
             <i className="far fa-comment"></i>
             <i className="fas fa-share-alt"></i>
             <i className="far fa-bookmark"></i>
           </div>
-          <p className="articleLikes">33 likes</p>
+          <p className="articleLikes">{like} likes</p>
           <p className="articleTimeGap">8 hours ago</p>
           <div className="commentLine">
             <ul>

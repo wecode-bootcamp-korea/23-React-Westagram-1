@@ -6,15 +6,14 @@ class LoginDoyun extends React.Component {
   constructor() {
     super();
     this.state = {
-      id: '',
+      email: '',
       password: '',
-      buttonId: false,
     };
   }
 
   handleIdInput = e => {
     this.setState({
-      id: e.target.value,
+      email: e.target.value,
     });
   };
 
@@ -26,6 +25,7 @@ class LoginDoyun extends React.Component {
 
   render() {
     const { handleIdInput, handlePasswordInput } = this;
+    console.log(this.state);
     return (
       <div className="login">
         <h1 className="mainLogo">Westargram</h1>
@@ -43,10 +43,28 @@ class LoginDoyun extends React.Component {
         />
         <button
           className={
-            this.state.id.indexOf('@') !== -1 && this.state.password.length >= 5
+            this.state.email.indexOf('@') !== -1 &&
+            this.state.password.length >= 5
               ? 'active'
               : ''
           }
+          onClick={() => {
+            fetch('http://10.58.3.21:8000/userssignup', {
+              method: 'Post',
+              body: JSON.stringify({
+                email: this.state.email,
+                password: this.state.password,
+              }),
+            })
+              .then(response => response.json())
+              .then(result => {
+                if (result.TOKEN) {
+                  window.location.href = 'http://localhost:3000/main-doyun';
+                  localStorage.setItem('TOKEN', result.TOKEN);
+                }
+                return null;
+              });
+          }}
         >
           log in
         </button>

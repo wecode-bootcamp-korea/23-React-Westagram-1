@@ -22,12 +22,30 @@ class Feed extends Component {
       });
   }
 
+  // setLike = (index, _like) => {
+  //   this.setState(prevState => {
+  //     prevState.feed.map(el =>
+  //       el.id === index + 1 ? { ...el, like: _like + 1 } : el
+  //     );
+  //   });
+  // };
+
   render() {
     return (
       <>
         <div className="feed">
-          {this.state.feed.map((c, i) => {
-            return <Article key={c.id} profile={c.profile} main={c.img} />;
+          {this.state.feed.map((content, i) => {
+            return (
+              <Article
+                add={this.addLike}
+                setter={this.setLike}
+                like={content.like}
+                number={i}
+                key={content.id}
+                profile={content.profile}
+                main={content.img}
+              />
+            );
           })}
         </div>
       </>
