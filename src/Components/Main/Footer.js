@@ -27,19 +27,14 @@ class Footer extends React.Component {
     return (
       <footer className="footerMainContainer">
         <div className="footerMain">
-          <div className="footerMainTop">
-            <ul>
-              {footerMain.map(el => {
-                return <li key={el.id}>{el.list}</li>;
-              })}
-            </ul>
-          </div>
-
-          <div className="footerMainBtm">
-            <ul>
-              <li>© 2021 INSTAGRAM FROM FACEBOOK</li>
-            </ul>
-          </div>
+          <ul>
+            {footerMain.map(el => {
+              return <li key={el.id}>{el.list}</li>;
+            })}
+          </ul>
+          <ul>
+            <li>© 2021 INSTAGRAM FROM FACEBOOK</li>
+          </ul>
         </div>
       </footer>
     );

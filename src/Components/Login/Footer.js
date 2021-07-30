@@ -27,19 +27,15 @@ class Footer extends React.Component {
     return (
       <footer className="footerLoginContainer">
         <div className="footerLogin">
-          <div>
-            <ul>
-              {footerLogin.map(el => (
-                <li>{el.list}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <ul>
-              <li>한국어</li>
-              <li>© 2021 Instagram from Facebook</li>
-            </ul>
-          </div>
+          <ul>
+            {footerLogin.map(el => (
+              <li>{el.list}</li>
+            ))}
+          </ul>
+          <ul>
+            <li>한국어</li>
+            <li>© 2021 Instagram from Facebook</li>
+          </ul>
         </div>
       </footer>
     );

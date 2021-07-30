@@ -48,9 +48,10 @@ class Comment extends React.Component {
 
   pressEnter = event => {
     let { value } = event.target;
-    if (event.key === 'Enter' && this.state.newReply) {
+    let { newReply } = this.state;
+    if (event.key === 'Enter' && newReply) {
       this.addComment();
-      value = '';
+      newReply = '';
     }
   };
 
@@ -87,6 +88,7 @@ class Comment extends React.Component {
             placeholder="댓글 달기"
             onChange={textChange}
             onKeyPress={pressEnter}
+            value={this.state.newReply}
           />
           <button onClick={addComment}>게시</button>
         </div>
