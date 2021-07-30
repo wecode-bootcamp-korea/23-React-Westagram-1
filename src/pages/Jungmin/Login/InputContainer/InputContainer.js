@@ -64,7 +64,7 @@ class InputContainer extends React.Component {
   };
 
   goToMain = () => {
-    fetch('http://10.58.3.149:8000/users/signin', {
+    fetch('http://10.58.6.61:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: this.state.username,

@@ -46,8 +46,6 @@ class SignupInputContainer extends React.Component {
     };
   }
 
-  componentDidMount() {}
-
   changeState = e => {
     const { name, value } = e.target;
     if (name === 'username') {
@@ -60,7 +58,8 @@ class SignupInputContainer extends React.Component {
   };
 
   goToLogin = () => {
-    fetch('http://10.58.3.149:8000/users/signup', {
+    console.log('sdf');
+    fetch('http://10.58.6.61:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
         email: this.state.email,
@@ -111,7 +110,7 @@ class SignupInputContainer extends React.Component {
         />
 
         <Andline />
-        <Button goTo={this.ggoToLogin} disabled={logindisable} />
+        <Button goTo={this.goToLogin} disabled={logindisable} />
       </div>
     );
   }

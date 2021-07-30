@@ -88,7 +88,7 @@ class Feeds extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://10.58.3.149:8000/postings/post/12')
+    fetch('http://10.58.6.61:8000/postings/post/12')
       .then(res => res.json())
       .then(response => {
         this.setState({

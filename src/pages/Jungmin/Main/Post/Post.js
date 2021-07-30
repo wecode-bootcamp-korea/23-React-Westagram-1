@@ -82,12 +82,9 @@ class Post extends React.Component {
       save: [],
     };
   }
-  // fetch(`http://10.58.3.149:8000/postings/comment/${this.props.id}`, {
-  //     method: 'GET',
-  //   })
-  // 'http://10.58.3.149:8000/postings/comment/';
+
   componentDidMount() {
-    fetch(`http://10.58.3.149:8000/postings/comment/${this.props.id}`)
+    fetch(`http://10.58.6.61:8000/postings/comment/${this.props.id}`)
       .then(res => res.json())
       .then(datas => {
         this.setState({
@@ -105,7 +102,7 @@ class Post extends React.Component {
   submitComment = e => {
     e.preventDefault();
 
-    fetch(`http://10.58.3.149:8000/postings/comment/${this.props.id}`, {
+    fetch(`http://10.58.6.61:8000/postings/comment/${this.props.id}`, {
       method: 'POST',
       body: JSON.stringify({
         post: this.props.id,
