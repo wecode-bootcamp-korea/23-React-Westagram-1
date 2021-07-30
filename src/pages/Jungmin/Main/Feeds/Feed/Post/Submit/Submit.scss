@@ -1,0 +1,29 @@
+.submit {
+  display: flex;
+  justify-content: space-between;
+
+  .textMessage {
+    width: 90%;
+    height: 55px;
+    border: 0;
+    outline: 0;
+    padding-left: 16px;
+  }
+
+  .postButton {
+    margin: 0;
+    border: 0;
+    outline: 0;
+    color: #0095f6;
+    background-color: white;
+    width: 10%;
+  }
+
+  .postButtonOn {
+    opacity: 1;
+  }
+
+  .postButtonoff {
+    opacity: 0.5;
+  }
+}

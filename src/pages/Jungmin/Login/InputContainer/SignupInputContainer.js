@@ -1,37 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import InputBox from './InputBox';
+import InputBox from './InputBox/InputBox';
+import Andline from './Andline/Andline';
+import Button from './Button/Button';
 import './InputContainer.scss';
-
-class Button extends React.Component {
-  render() {
-    return (
-      <button
-        className={
-          !this.props.disabled
-            ? 'loginButton loginButtonOn'
-            : 'loginButton loginButtonOff '
-        }
-        disabled={this.props.disabled}
-        onClick={this.props.goTo}
-      >
-        회원가입
-      </button>
-    );
-  }
-}
-
-class Andline extends React.Component {
-  render() {
-    return (
-      <div className="andLine">
-        <div className="line"></div>
-        <div className="and">또는</div>
-        <div className="line"></div>
-      </div>
-    );
-  }
-}
 
 class SignupInputContainer extends React.Component {
   constructor(props) {
@@ -57,30 +29,33 @@ class SignupInputContainer extends React.Component {
     }
   };
 
-  goToLogin = () => {
-    console.log('sdf');
-    fetch('http://10.58.6.61:8000/users/signup', {
-      method: 'POST',
-      body: JSON.stringify({
-        email: this.state.email,
-        name: this.state.username,
-        password: this.state.password,
-      }),
-    })
-      .then(response => response.json())
-      .then(result => {
-        if (result.message === 'SUCCESS') {
-          this.props.history.push('/login-jungmin');
-        } else {
-          alert(
-            '이름과 이메일 형식을 지켜주세요 . 비밀번호는 5글자 이상입니다.'
-          );
-        }
-      });
+  goToLogin = e => {
+    e.preventDefault();
+    // fetch('http://10.58.6.61:8000/users/signup', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     email: this.state.email,
+    //     name: this.state.username,
+    //     password: this.state.password,
+    //   }),
+    // })
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     if (result.message === 'SUCCESS') {
+    //       this.props.history.push('/login-jungmin');
+    //     } else {
+    //       alert(
+    //         '이름과 이메일 형식을 지켜주세요 . 비밀번호는 5글자 이상입니다.'
+    //       );
+    //     }
+    //   });
+
+    alert('축하합니다');
+    this.props.history.push('/login-jungmin');
   };
 
   render() {
-    let logindisable =
+    let signupDisable =
       this.state.disableId || this.state.disablePw || this.state.disableName;
     return (
       <div className="inputContainer">
@@ -89,7 +64,7 @@ class SignupInputContainer extends React.Component {
           type="text"
           placeholder="사용자 이름"
           State={this.state}
-          goTo={logindisable || this.goToLogin}
+          goTo={signupDisable || this.goToLogin}
           onchange={this.changeState}
         />
         <InputBox
@@ -97,20 +72,29 @@ class SignupInputContainer extends React.Component {
           type="text"
           placeholder="이메일"
           State={this.state}
-          goTo={logindisable || this.goToLogin}
+          goTo={signupDisable || this.goToLogin}
           onchange={this.changeState}
         />
         <InputBox
           name="password"
           type="password"
-          goTo={logindisable || this.goToLogin}
+          goTo={signupDisable || this.goToLogin}
           onchange={this.changeState}
           placeholder="비밀번호"
           State={this.state}
         />
 
         <Andline />
-        <Button goTo={this.goToLogin} disabled={logindisable} />
+        <Button
+          className={
+            !signupDisable
+              ? 'loginButton loginButtonOn'
+              : 'loginButton loginButtonOff '
+          }
+          buttonName="회원가입하기"
+          goTo={this.goToLogin}
+          disabled={signupDisable}
+        />
       </div>
     );
   }

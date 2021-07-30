@@ -1,42 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import InputBox from './InputBox';
+import InputBox from './InputBox/InputBox';
 import './InputContainer.scss';
-
-class Button extends React.Component {
-  render() {
-    return (
-      <>
-        <button
-          className={
-            !this.props.disabled
-              ? 'loginButton loginButtonOn'
-              : 'loginButton loginButtonOff '
-          }
-          disabled={this.props.disabled}
-          onClick={this.props.goToMain}
-        >
-          로그인
-        </button>
-        <button onClick={this.props.goToSignup} className="forgetPw">
-          회원가입하기
-        </button>
-      </>
-    );
-  }
-}
-
-class Andline extends React.Component {
-  render() {
-    return (
-      <div className="andLine">
-        <div className="line"></div>
-        <div className="and">또는</div>
-        <div className="line"></div>
-      </div>
-    );
-  }
-}
+import Andline from './Andline/Andline';
+import Button from './Button/Button';
 
 class InputContainer extends React.Component {
   constructor(props) {
@@ -48,8 +15,6 @@ class InputContainer extends React.Component {
       disablePw: true,
     };
   }
-
-  componentDidMount() {}
 
   changeState = e => {
     const { name, value } = e.target;
@@ -63,23 +28,28 @@ class InputContainer extends React.Component {
     this.props.history.push('./signup-jungmin');
   };
 
-  goToMain = () => {
-    fetch('http://10.58.6.61:8000/users/signin', {
-      method: 'POST',
-      body: JSON.stringify({
-        email: this.state.username,
-        password: this.state.password,
-      }),
-    })
-      .then(response => response.json())
-      .then(result => {
-        if (result.access_token) {
-          localStorage.setItem('token', result.access_token);
-          this.props.history.push('/main-jungmin', result);
-        } else {
-          alert('이메일과 비밀번호를 확인해주세요 !');
-        }
-      });
+  goToMain = e => {
+    e.preventDefault();
+    // fetch('http://10.58.6.132:8000/users/signin', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     email: this.state.username,
+    //     password: this.state.password,
+    //   }),
+    // })
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     console.log(result.token);
+    //     if (result.token) {
+    //       localStorage.setItem('token', result.token);
+    //       this.props.history.push('/main-jungmin');
+
+    //       //   this.props.history.push('/main-jungmin', result);
+    //       // } else {
+    //       //   alert('이메일과 비밀번호를 확인해주세요 !');
+    //     }
+    //  this.props.history.push('/main-jungmin', result);
+    // });
     this.props.history.push('/main-jungmin', this.state);
   };
 
@@ -91,7 +61,6 @@ class InputContainer extends React.Component {
           name="username"
           type="text"
           placeholder="사용자 이메일"
-          State={this.state}
           goTo={logindisable || this.goToMain}
           onchange={this.changeState}
         />
@@ -101,13 +70,22 @@ class InputContainer extends React.Component {
           goTo={logindisable || this.goToMain}
           onchange={this.changeState}
           placeholder="비밀번호"
-          State={this.state}
         />
         <Andline />
         <Button
-          goToSignup={this.goToSignup}
-          goToMain={this.goToMain}
+          className={
+            !logindisable
+              ? 'loginButton loginButtonOn'
+              : 'loginButton loginButtonOff '
+          }
+          buttonName="로그인"
+          goTo={this.goToMain}
           disabled={logindisable}
+        />
+        <Button
+          className="loginButton loginButtonOn"
+          buttonName="회원가입 하기"
+          goTo={this.goToSignup}
         />
       </div>
     );

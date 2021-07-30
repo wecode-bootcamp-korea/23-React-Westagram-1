@@ -1,79 +1,8 @@
 import React from 'react';
 import './MainAside.scss';
 import { withRouter } from 'react-router-dom';
-class Personal extends React.Component {
-  render() {
-    return (
-      <div className="personal">
-        <img
-          className="personalimg"
-          alt={this.props.alt}
-          src={this.props.src}
-        />
-        <div className="name">
-          <div className="bold who">{this.props.nickname}</div>
-          <div className="Information">{this.props.Information}</div>
-        </div>
-      </div>
-    );
-  }
-}
-
-class StoryBox extends React.Component {
-  render() {
-    const story1 = this.props.story;
-    return (
-      <div className="storyBox">
-        <div className="storybar">
-          <span className="username"> 스토리</span>
-          <span className="bold">모두보기</span>
-        </div>
-        <div>
-          {story1 &&
-            story1.map(ele => {
-              return (
-                <Personal
-                  key={ele.id}
-                  nickname={ele.nickname}
-                  Information={ele.Information}
-                  alt={ele.alt}
-                  src={ele.src}
-                />
-              );
-            })}
-        </div>
-      </div>
-    );
-  }
-}
-
-class RecommendBox extends React.Component {
-  render() {
-    const recommendBox = this.props.recommendBox;
-    return (
-      <div className="recommendBox">
-        <div className="recommendbar">
-          <span className="username"> 회원님을 위한 추천</span>
-          <span className="bold">모두보기</span>
-        </div>
-        <div>
-          {recommendBox &&
-            recommendBox.map(ele => {
-              return (
-                <Personal
-                  key={ele.id}
-                  nickname={ele.nickname}
-                  Information={ele.Information}
-                  alt={ele.alt}
-                  src={ele.src}
-                />
-              );
-            })}
-        </div>
-      </div>
-    );
-  }
-}
+import StoryBox from './storyBox/StoryBox';
+import RecommendBox from './RecommendBox/RecommendBox';
 
 class MainAside extends React.Component {
   constructor(props) {
@@ -98,10 +27,13 @@ class MainAside extends React.Component {
       });
   }
   render() {
-    const email = this.props.userInfo.email.slice(
-      0,
-      this.props.userInfo.email.indexOf('@')
-    );
+    const { userInfo } = this.props;
+    const { story, recommend } = this.state.save;
+    // let email = this.props.userInfo.email;
+    // if (this.props.userInfo.email) {
+    //   email = email.slice(0, this.props.userInfo.email.indexOf('@'));
+    // } ///this.props.userInfo.email 회원가입할때 적은 이메일값 //if 안쓰면 처음에 componentDidMount()들어오기전 email값이 없어서 slice함수에서 오류가 난다.
+    //처음에는 그냥 출력하고  this.props.userInfo.email에 값이 들어오면 그때슬라이스해서 넣어줌 !
     return (
       <div className="mainAside">
         <div className="myprofil">
@@ -111,15 +43,17 @@ class MainAside extends React.Component {
             src="/images/Jungmin/sel2.jpg"
           />
           <div className="name">
-            <div className="bold">{email}</div>
-            <div className="username">{this.props.userInfo.username}</div>
+            {/* <div className="bold">{email}</div> */}
+            <div className="bold">{userInfo}</div>
+            {/* <div className="username">{this.props.userInfo.username}</div> */}
+            <div className="username">최정민</div>
           </div>
-          <button className={'loginButton loginButtonOn'} onClick={this.logout}>
+          <button className="logoutButton" onClick={this.logout}>
             Logout
           </button>
         </div>
-        <StoryBox story={this.state.save.story} />
-        <RecommendBox recommendBox={this.state.save.recommend} />
+        <StoryBox story={story} />
+        <RecommendBox recommendBox={recommend} />
         <div className="info">
           westagram
           정보.지원.홍보센터.API.채용정보.개인정보처리방침.약관.디렉터리.프로필.해시태그.언어
