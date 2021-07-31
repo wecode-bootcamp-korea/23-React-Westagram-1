@@ -66,7 +66,7 @@ class Post extends React.Component {
   };
 
   changeLiked = e => {
-    const changeSave = Array.from(this.state.save);
+    const changeSave = [...this.state.save];
     changeSave.map(ele => {
       if (ele.id === Number(e.target.id)) {
         ele.isLiked = !ele.isLiked;
@@ -75,14 +75,6 @@ class Post extends React.Component {
     this.setState({
       save: changeSave,
     });
-
-    let count = 0;
-    this.state.save.forEach(ele => {
-      if (ele.isLiked === true) {
-        count++;
-      }
-    });
-    this.props.heartCheck(count);
   };
 
   render() {

@@ -12,20 +12,17 @@ class SignupInputContainer extends React.Component {
       username: '',
       email: '',
       password: '',
-      disableId: true,
-      disablePw: true,
-      disableName: true,
     };
   }
 
   changeState = e => {
     const { name, value } = e.target;
     if (name === 'username') {
-      this.setState({ username: value, disableName: value === true });
+      this.setState({ username: value });
     } else if (name === 'email') {
-      this.setState({ email: value, disableId: value.indexOf('@') === -1 });
+      this.setState({ email: value });
     } else if (name === 'password') {
-      this.setState({ password: value, disablePw: value.length < 5 });
+      this.setState({ password: value });
     }
   };
 
@@ -55,8 +52,9 @@ class SignupInputContainer extends React.Component {
   };
 
   render() {
+    const { username, email, password } = this.state;
     let signupDisable =
-      this.state.disableId || this.state.disablePw || this.state.disableName;
+      username === true || email.indexOf('@') === -1 || password.length < 5;
     return (
       <div className="inputContainer">
         <InputBox

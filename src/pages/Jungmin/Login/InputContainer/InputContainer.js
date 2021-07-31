@@ -11,17 +11,15 @@ class InputContainer extends React.Component {
     this.state = {
       username: '',
       password: '',
-      disableId: true,
-      disablePw: true,
     };
   }
 
   changeState = e => {
     const { name, value } = e.target;
     if (name === 'username') {
-      this.setState({ username: value, disableId: value.indexOf('@') === -1 });
+      this.setState({ username: value });
     } else if (name === 'password') {
-      this.setState({ password: value, disablePw: value.length < 5 });
+      this.setState({ password: value });
     }
   };
   goToSignup = () => {
@@ -54,7 +52,9 @@ class InputContainer extends React.Component {
   };
 
   render() {
-    let logindisable = this.state.disableId || this.state.disablePw;
+    const { username, password } = this.state;
+    let logindisable = username.indexOf('@') === -1 || password.length < 5;
+
     return (
       <div className="inputContainer">
         <InputBox

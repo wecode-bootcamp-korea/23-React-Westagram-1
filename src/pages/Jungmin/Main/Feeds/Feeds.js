@@ -10,6 +10,22 @@ class Feeds extends React.Component {
     };
   }
 
+  heartCountAndCheck = e => {
+    const changefeed = [...this.state.feeds];
+    changefeed.map(el => {
+      if (el.id === Number(e.target.id)) {
+        el.heartCheck
+          ? (el.heartCount = --el.heartCount)
+          : (el.heartCount = ++el.heartCount);
+        el.heartCheck = !el.heartCheck;
+      }
+    });
+
+    this.setState({
+      feeds: changefeed,
+    });
+  };
+
   componentDidMount() {
     fetch('http://localhost:3000/data/Jungmin/feedData.json')
       .then(res => res.json())
@@ -27,13 +43,16 @@ class Feeds extends React.Component {
         {feed.map(ele => {
           return (
             <Feed
-              key={ele.feeduserId}
+              key={ele.id}
               id={ele.id}
               feeduserId={ele.feeduserId}
               alt={ele.alt}
               src={ele.src}
               userInfo={this.props.userInfo}
               content={ele.content}
+              heartCheck={ele.heartCheck}
+              heartCount={ele.heartCount}
+              heartCountAndCheck={this.heartCountAndCheck}
             />
           );
         })}

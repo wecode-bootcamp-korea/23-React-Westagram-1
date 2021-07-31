@@ -4,18 +4,18 @@ import Post from './Post/Post';
 import FeedName from './FeedName/FeedName';
 
 class Feed extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      heartCount: 1,
-    };
-  }
-  heartCheck = count => {
-    this.setState({ heartCount: count });
-  };
   render() {
-    const { feeduserId, alt, src, content, userInfo, id } = this.props;
-    const { heartCount } = this.state;
+    const {
+      feeduserId,
+      alt,
+      src,
+      content,
+      userInfo,
+      id,
+      heartCount,
+      heartCheck,
+      heartCountAndCheck,
+    } = this.props;
     return (
       <article className="feed">
         <FeedName feeduserId={feeduserId} alt={alt} src={src} />
@@ -24,11 +24,20 @@ class Feed extends React.Component {
         </div>
         <div className="feedmessage">
           <div className="feedUserIdandImg">
-            <button type="button" className="heartButton">
+            <button
+              type="button"
+              className="heartButton"
+              onClick={heartCountAndCheck}
+            >
               <img
                 alt="heart"
+                id={this.props.id}
                 className="heart"
-                src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png "
+                src={
+                  heartCheck
+                    ? '/images/Jungmin/heart.png'
+                    : 'https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png '
+                }
               />
             </button>
             <div className="messageButton">
@@ -51,7 +60,7 @@ class Feed extends React.Component {
             <p>{feeduserId}</p> {content} <link />
           </div>
         </div>
-        <Post id={id} userInfo={userInfo} heartCheck={this.heartCheck} />
+        <Post id={id} userInfo={userInfo} />
       </article>
     );
   }

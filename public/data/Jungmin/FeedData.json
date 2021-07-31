@@ -4,27 +4,35 @@
     "feeduserId": "mango_9324",
     "alt": "mango_9324Profilimg",
     "src": "/images/Jungmin/sel2.jpg",
-    "heartCheck": 10
+    "content": "오오오 너무좋아 ",
+    "heartCheck": false,
+    "heartCount": 10
   },
   {
     "id": 2,
     "feeduserId": "mango_9324",
     "alt": "mango_9324Profilimg",
     "src": "/images/Jungmin/sel2.jpg",
-    "heartCheck": 20
+    "content": "오오오 너무좋아 ",
+    "heartCheck": true,
+    "heartCount": 20
   },
   {
     "id": 3,
     "feeduserId": "mango_9324",
     "alt": "mango_9324Profilimg",
     "src": "/images/Jungmin/sel2.jpg",
-    "heartCheck": 30
+    "content": "오오오 너무좋아 ",
+    "heartCheck": true,
+    "heartCount": 30
   },
   {
     "id": 4,
     "feeduserId": "mango_9324",
     "alt": "mango_9324Profilimg",
     "src": "/images/Jungmin/sel2.jpg",
-    "heartCheck": 100
+    "content": "오오오 너무좋아 ",
+    "heartCheck": true,
+    "heartCount": 100
   }
 ]
