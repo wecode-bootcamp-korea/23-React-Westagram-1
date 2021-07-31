@@ -25,7 +25,10 @@ class MainJungwoo extends React.Component {
         <main className="mainContainer">
           <article className="feedsArticle">
             <div className="articleHeader">
-              <img src="../../images/Jungwoo/caleb-ekeroth.jpg" />
+              <img
+                className="myPic"
+                src="../../images/Jungwoo/caleb-ekeroth.jpg"
+              />
               <p className="navId">{MyProfile[0].MyId}</p>
               <img className="dot" src="../../images/Jungwoo/more.png" />
             </div>

@@ -1,4 +1,16 @@
-/* 오른쪽 피드 */
+//오른쪽 피드
+
+@media only screen and (max-width: 1024px) {
+  .rightFeed {
+    display: none;
+  }
+}
+%spaceBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .rightFeed {
   width: 293px;
   height: 415px;
@@ -7,9 +19,7 @@
 }
 
 .myProfile {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @extend %spaceBetween;
   height: 45px;
   img {
     width: 56px;
@@ -33,9 +43,7 @@
 }
 
 .RecommendTitle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @extend %spaceBetween;
   height: 34px;
   padding-top: 20px;
   margin: 10px 0;
@@ -54,9 +62,7 @@
 }
 
 .userProfile {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @extend %spaceBetween;
   height: 48px;
   img {
     width: 37px;

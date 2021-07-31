@@ -28,8 +28,8 @@ class Footer extends React.Component {
       <footer className="footerMainContainer">
         <div className="footerMain">
           <ul>
-            {footerMain.map(el => {
-              return <li key={el.id}>{el.list}</li>;
+            {footerMain.map((el, i) => {
+              return <li key={i}>{el.list}</li>;
             })}
           </ul>
           <ul>

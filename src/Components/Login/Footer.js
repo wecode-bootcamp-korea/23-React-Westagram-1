@@ -28,8 +28,8 @@ class Footer extends React.Component {
       <footer className="footerLoginContainer">
         <div className="footerLogin">
           <ul>
-            {footerLogin.map(el => (
-              <li>{el.list}</li>
+            {footerLogin.map((el, i) => (
+              <li key={i}>{el.list}</li>
             ))}
           </ul>
           <ul>

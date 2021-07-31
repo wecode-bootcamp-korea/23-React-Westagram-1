@@ -11,28 +11,28 @@ class LoginJungwoo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      idInputValue: '',
-      pwInputValue: '',
+      id: '',
+      pw: '',
     };
   }
 
   handleIdInput = event => {
     const { value } = event.target;
     this.setState({
-      idInputValue: value, //event.target.value
+      id: value, //event.target.value
     });
   };
 
   handlePwInput = event => {
     const { value } = event.target;
     this.setState({
-      pwInputValue: value,
+      pw: value,
     });
   };
 
   render() {
     const { handleIdInput, handlePwInput } = this;
-    const { idInputValue, pwInputValue } = this.state;
+    const { id, pw } = this.state;
     return (
       <>
         <div className="container">
@@ -43,15 +43,15 @@ class LoginJungwoo extends React.Component {
                 <LoginBox
                   handleIdInput={handleIdInput}
                   handlePwInput={handlePwInput}
-                  idInputValue={idInputValue}
-                  pwInputValue={pwInputValue}
+                  id={id}
+                  pw={pw}
                 />
               </div>
               <SignUp
                 handleIdInput={handleIdInput}
                 handlePwInput={handlePwInput}
-                idInputValue={idInputValue}
-                pwInputValue={pwInputValue}
+                id={id}
+                pw={pw}
               />
             </div>
           </div>

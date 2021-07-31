@@ -4,14 +4,12 @@ import './BtnLogin.scss';
 
 class BtnLogin extends React.Component {
   render(props) {
-    const { idInputValue, pwInputValue, goToMain } = this.props;
+    const { id, pw, goToMain } = this.props;
     return (
       <div className="btnLogin">
         <button
           className={
-            idInputValue.includes('@') && pwInputValue.length > 5
-              ? `activated`
-              : `deActivated`
+            id.includes('@') && pw.length > 5 ? `activated` : `deActivated`
           }
           onClick={goToMain}
         >

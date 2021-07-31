@@ -4,20 +4,22 @@ import './SignUp.scss';
 
 class SignUp extends React.Component {
   signUp = props => {
-    const { idInputValue, pwInputValue } = this.props;
-    idInputValue.indexOf('@') !== -1 && pwInputValue.length > 5
-      ? fetch('http://192.168.29.61:8000/users/signup', {
-          method: 'POST',
-          body: JSON.stringify({
-            email: this.state.idInputValue,
-            password: this.state.pwInputValue,
-          }),
-        })
-          .then(response => response.json())
-          .then(result => {
-            console.log('결과: ', result);
-          })
-      : alert('아이디와 비밀번호를 정확히 입력해 주세요.');
+    const { id, pw } = this.props;
+    if (id.indexOf('@') !== -1 && pw.length > 5) {
+      fetch('http://192.168.29.61:8000/users/signup', {
+        method: 'POST',
+        body: JSON.stringify({
+          email: this.state.id,
+          password: this.state.pw,
+        }),
+      })
+        .then(response => response.json())
+        .then(result => {
+          console.log('결과: ', result);
+        });
+    } else {
+      alert('아이디와 비밀번호를 정확히 입력해 주세요.');
+    }
   };
 
   render(props) {
