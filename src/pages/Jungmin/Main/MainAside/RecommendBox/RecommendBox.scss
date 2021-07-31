@@ -1,0 +1,12 @@
+.recommendBox {
+  margin-top: 15px;
+  background-color: white;
+  border: 1.5px solid rgba(var(--b6a, 219, 219, 219), 1);
+
+  .recommendbar {
+    padding: 4px;
+  }
+  span.username {
+    padding: 3px 86px 3px 10px;
+  }
+}

@@ -1,0 +1,11 @@
+.storyBox {
+  background-color: white;
+  border: 1.5px solid rgba(var(--b6a, 219, 219, 219), 1);
+
+  .storybar {
+    padding: 4px;
+  }
+  span.username {
+    padding: 3px 160px 3px 10px;
+  }
+}

@@ -1,15 +1,16 @@
 import React from 'react';
-import InputContainer from './InputContainer/InputContainer';
+import SignupInputContainer from './InputContainer/SignupInputContainer';
+
 import './Login.scss';
 
-class LoginJungmin extends React.Component {
+class SignupJungmin extends React.Component {
   render() {
     return (
       <>
         <div className="loginMain">
           <div className="loginContainer">
             <h1 className="logo">westagram</h1>
-            <InputContainer />
+            <SignupInputContainer />
           </div>
         </div>
       </>
@@ -17,4 +18,4 @@ class LoginJungmin extends React.Component {
   }
 }
 
-export default LoginJungmin;
+export default SignupJungmin;

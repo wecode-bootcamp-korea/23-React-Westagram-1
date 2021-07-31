@@ -1,0 +1,45 @@
+.feedName {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// 공통
+.moreicon {
+  margin-right: 10px;
+  font-size: small;
+  color: gray;
+}
+
+.feedUserIdandImg {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+
+  .profil {
+    height: 32px;
+    border-radius: 100%;
+    display: block;
+    margin-right: 10px;
+  }
+  p {
+    font-weight: 600;
+    display: inline;
+  }
+}
+
+.forPost {
+  display: flex;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 16px;
+  font-size: 14px;
+  padding-top: 2px;
+  p {
+    font-weight: 600;
+    display: inline;
+  }
+}
+
+////////

@@ -1,0 +1,19 @@
+.post {
+  word-break: break-all;
+  p {
+    font-weight: 600;
+    display: inline;
+  }
+
+  .commendTime {
+    padding-left: 16px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+  }
+
+  .username {
+    color: rgba(var(--f52, 142, 142, 142), 1);
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
