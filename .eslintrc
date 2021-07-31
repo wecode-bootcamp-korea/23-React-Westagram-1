@@ -1,3 +1,6 @@
 {
-  "extends": ["react-app", "plugin:prettier/recommended"]
+  "extends": ["react-app", "plugin:prettier/recommended"],
+  "rules": {
+    "linebreak-style": 0 // "off" 옵션을 주면 규칙이 아예 작동하지 않음
+  }
 }

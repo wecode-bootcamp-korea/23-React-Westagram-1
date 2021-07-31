@@ -1,0 +1,19 @@
+.footerMainContainer {
+  display: block;
+  height: 45px;
+  margin-top: 30px;
+}
+
+.footerMain {
+  width: 300px;
+  ul {
+    margin-bottom: 10px;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 2px;
+    color: #c7c7c7;
+    font-size: 11px;
+  }
+}

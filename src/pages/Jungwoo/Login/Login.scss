@@ -1,0 +1,32 @@
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #fafafa;
+}
+
+.container {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  margin-left: -175px;
+  width: 350px;
+  text-align: center;
+}
+
+.mainBoxContainer {
+  width: 354px;
+  height: 398px;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  border: 1px solid rgb(216, 216, 216);
+  background-color: #ffffff;
+
+  h1 {
+    font-family: 'Lobster', cursive;
+    font-size: 42px;
+    font-weight: 600;
+    margin: auto 12px;
+    padding: 18px;
+  }
+}

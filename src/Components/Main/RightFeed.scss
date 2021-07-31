@@ -1,0 +1,81 @@
+//오른쪽 피드
+
+@media only screen and (max-width: 1024px) {
+  .rightFeed {
+    display: none;
+  }
+}
+%spaceBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rightFeed {
+  width: 293px;
+  height: 415px;
+  margin: 80px 0 0 10px;
+  padding-left: 17px;
+}
+
+.myProfile {
+  @extend %spaceBetween;
+  height: 45px;
+  img {
+    width: 56px;
+    height: 56px;
+    margin-right: 15px;
+    border-radius: 150px;
+  }
+  span {
+    margin-left: -80px;
+    p {
+      color: rgba(var(--f52, 142, 142, 142), 1);
+      font-size: 14px;
+    }
+  }
+}
+
+.textBlue {
+  color: rgba(var(--d69, 0, 149, 246), 1);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.RecommendTitle {
+  @extend %spaceBetween;
+  height: 34px;
+  padding-top: 20px;
+  margin: 10px 0;
+
+  h6 {
+    color: rgba(var(--f52, 142, 142, 142), 1);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  p {
+    color: black;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+
+.userProfile {
+  @extend %spaceBetween;
+  height: 48px;
+  img {
+    width: 37px;
+    height: 37px;
+    border-radius: 150px;
+  }
+  span {
+    margin-left: -90px;
+  }
+}
+
+.userProfileName {
+  color: rgba(var(--f52, 142, 142, 142), 1);
+  font-size: 12px;
+  line-height: 10px;
+}
